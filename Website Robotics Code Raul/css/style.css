@@ -7,20 +7,6 @@
 }
 
 
-/*** Spinner ***/
-#spinner {
-    opacity: 0;
-    visibility: hidden;
-    transition: opacity .5s ease-out, visibility 0s linear .5s;
-    z-index: 99999;
-}
-
-#spinner.show {
-    transition: opacity .5s ease-out, visibility 0s linear 0s;
-    visibility: visible;
-    opacity: 1;
-}
-
 .back-to-top {
     position: fixed;
     display: none;
@@ -88,6 +74,8 @@ h6,
 .navbar {
     padding: 11px 0 !important;
     height: 75px;
+    display: flex;
+    align-items: center;
 }
 
 .navbar .navbar-nav .nav-link {
@@ -109,6 +97,10 @@ h6,
     font-weight: 900;
     vertical-align: middle;
     margin-left: 8px;
+}
+
+.navbar-brand img {
+    max-height: 95px; /* Ajuste conforme necessário */
 }
 
 @media (max-width: 991.98px) {
