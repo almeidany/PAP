@@ -282,75 +282,6 @@ h6,
 }
 
 
-/*** Newsletter ***/
-.newsletter {
-    background: url(../img/bg-hero.png) center center no-repeat;
-    background-size: cover;
-}
-
-@media (min-width: 992px) {
-    .newsletter .container {
-        max-width: 100% !important;
-    }
-
-    .newsletter .newsletter-text  {
-        padding-right: calc(((100% - 960px) / 2) + .75rem);
-    }
-}
-
-@media (min-width: 1200px) {
-    .newsletter .newsletter-text  {
-        padding-right: calc(((100% - 1140px) / 2) + .75rem);
-    }
-}
-
-@media (min-width: 1400px) {
-    .newsletter .newsletter-text  {
-        padding-right: calc(((100% - 1320px) / 2) + .75rem);
-    }
-}
-
-
-/*** Case Study ***/
-.case-item img {
-    transition: .5s;
-}
-  
-.case-item:hover img {
-    transform: scale(1.2);
-}
-  
-.case-overlay {
-    position: absolute;
-    padding: 30px;
-    width: 100%;
-    height: 100%;
-    top: 0;
-    left: 0;
-    display: flex;
-    flex-direction: column;
-    align-items: flex-start;
-    justify-content: flex-end;
-    background: linear-gradient(rgba(20, 24, 62, 0), var(--dark));
-    z-index: 1;
-}
-
-.case-overlay small {
-    display: inline-block;
-    padding: 3px 15px;
-    color: #FFFFFF;
-    background: rgba(20, 24, 62, .7);
-    border-radius: 25px;
-    margin-bottom: 15px;
-}
-
-.case-overlay span.btn:hover {
-    color: var(--primary);
-    background: #FFFFFF;
-    border-color: #FFFFFF;
-}
-
-
 /*** FAQs ***/
 .accordion .accordion-item {
     border: none;
@@ -440,13 +371,11 @@ h6,
 
 /*** Team ***/
 .team-item {
-    transition: .5s;
+    transition: border-color .5s;
     border: 1px solid transparent;
-    transition: .5s;
 }
 
 .team-item:hover {
-
     border-color: var(--primary);
 }
 
