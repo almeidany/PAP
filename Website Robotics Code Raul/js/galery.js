@@ -1,162 +1,112 @@
-const albums = {
-    2021: {
-        roboparty: [
-            'img/2021/roboparty/photo1.jpg',
-            'img/2021/roboparty/photo2.jpg',
-            'img/2021/roboparty/photo3.jpg'
-        ],
-        festival: [
-            'img/2021/festival/photo1.jpg',
-            'img/2021/festival/photo2.jpg',
-            'img/2021/festival/photo3.jpg'
-        ],
-        botolympics: [
-            'img/2021/botolympics/photo1.jpg',
-            'img/2021/botolympics/photo2.jpg',
-            'img/2021/botolympics/photo3.jpg'
-        ],
-        olimpiadas: [
-            'img/2021/olimpiadas/photo1.jpg',
-            'img/2021/olimpiadas/photo2.jpg',
-            'img/2021/olimpiadas/photo3.jpg'
-        ],
-        workshops: [
-            'img/2021/workshops/photo1.jpg',
-            'img/2021/workshops/photo2.jpg',
-            'img/2021/workshops/photo3.jpg'
-        ]
-    },
-    2022: {
-        roboparty: [
-            'img/2022/roboparty/photo1.jpg',
-            'img/2022/roboparty/photo2.jpg',
-            'img/2022/roboparty/photo3.jpg'
-        ],
-        festival: [
-            'img/2022/festival/photo1.jpg',
-            'img/2022/festival/photo2.jpg',
-            'img/2022/festival/photo3.jpg'
-        ],
-        botolympics: [
-            'img/2022/botolympics/photo1.jpg',
-            'img/2022/botolympics/photo2.jpg',
-            'img/2022/botolympics/photo3.jpg'
-        ],
-        olimpiadas: [
-            'img/2022/olimpiadas/photo1.jpg',
-            'img/2022/olimpiadas/photo2.jpg',
-            'img/2022/olimpiadas/photo3.jpg'
-        ],
-        workshops: [
-            'img/2022/workshops/photo1.jpg',
-            'img/2022/workshops/photo2.jpg',
-            'img/2022/workshops/photo3.jpg'
-        ]
-    },
-    2023: {
-        roboparty: [
-            'img/2023/roboparty/photo1.jpg',
-            'img/2023/roboparty/photo2.jpg',
-            'img/2023/roboparty/photo3.jpg'
-        ],
-        festival: [
-            'img/2023/festival/photo1.jpg',
-            'img/2023/festival/photo2.jpg',
-            'img/2023/festival/photo3.jpg'
-        ],
-        botolympics: [
-            'img/2023/botolympics/photo1.jpg',
-            'img/2023/botolympics/photo2.jpg',
-            'img/2023/botolympics/photo3.jpg'
-        ],
-        olimpiadas: [
-            'img/2023/olimpiadas/photo1.jpg',
-            'img/2023/olimpiadas/photo2.jpg',
-            'img/2023/olimpiadas/photo3.jpg'
-        ],
-        workshops: [
-            'img/2023/workshops/photo1.jpg',
-            'img/2023/workshops/photo2.jpg',
-            'img/2023/workshops/photo3.jpg'
-        ]
-    },
-    2024: {
-        roboparty: [
-            'img/2024/roboparty/photo1.jpg',
-            'img/2024/roboparty/photo2.jpg',
-            'img/2024/roboparty/photo3.jpg'
-        ],
-        festival: [
-            'img/2024/festival/photo1.jpg',
-            'img/2024/festival/photo2.jpg',
-            'img/2024/festival/photo3.jpg'
-        ],
-        botolympics: [
-            'img/2024/botolympics/photo1.jpg',
-            'img/2024/botolympics/photo2.jpg',
-            'img/2024/botolympics/photo3.jpg'
-        ],
-        olimpiadas: [
-            'img/2024/olimpiadas/photo1.jpg',
-            'img/2024/olimpiadas/photo2.jpg',
-            'img/2024/olimpiadas/photo3.jpg'
-        ],
-        workshops: [
-            'img/2024/workshops/photo1.jpg',
-            'img/2024/workshops/photo2.jpg',
-            'img/2024/workshops/photo3.jpg'
-        ]
-    }
-};
-
-const currentYear = new Date().getFullYear();
-const years = [2021, 2022, 2023, 2024];
-
-function loadYearButtons() {
+document.addEventListener('DOMContentLoaded', function() {
     const yearButtons = document.getElementById('yearButtons');
-    yearButtons.innerHTML = '';
+    const mainContent = document.getElementById('mainContent');
+    const carouselInner = document.getElementById('carouselInner');
 
+    // Anos disponíveis
+    const years = [2021, 2022, 2023, 2024];
+    const recentYear = Math.max(...years);
+
+    // Subtítulos e imagens específicas para cada ano
+    const data = {
+        2021: {
+            'Botlompyics': ['img/2021/botlompyics1.jpg', 'img/2021/botlompyics2.jpg'],
+            'Festival Nacional da Robótica': ['img/2021/festival1.jpg', 'img/2021/festival2.jpg'],
+            'Olimpiadas da Robótica': ['img/2021/olimpiadas1.jpg', 'img/2021/olimpiadas2.jpg'],
+            'Roboparty': ['img/2021/roboparty1.jpg', 'img/2021/roboparty2.jpg'],
+            'Atividades': ['img/2021/atividades1.jpg', 'img/2021/atividades2.jpg'],
+            'Workshops': ['img/2021/workshops1.jpg', 'img/2021/workshops2.jpg']
+        },
+        2022: {
+            'Botlompyics': ['img/2022/botlompyics1.jpg', 'img/2022/botlompyics2.jpg'],
+            'Festival Nacional da Robótica': ['img/2022/festival1.jpg', 'img/2022/festival2.jpg'],
+            'Olimpiadas da Robótica': ['img/2022/olimpiadas1.jpg', 'img/2022/olimpiadas2.jpg'],
+            'Roboparty': ['img/2022/roboparty1.jpg', 'img/2022/roboparty2.jpg'],
+            'Atividades': ['img/2022/atividades1.jpg', 'img/2022/atividades2.jpg'],
+            'Workshops': ['img/2022/workshops1.jpg', 'img/2022/workshops2.jpg']
+        },
+        2023: {
+            'Botlompyics': ['img/2023/botlompyics1.jpg', 'img/2023/botlompyics2.jpg'],
+            'Festival Nacional da Robótica': ['img/2023/festival1.jpg', 'img/2023/festival2.jpg'],
+            'Olimpiadas da Robótica': ['img/2023/olimpiadas1.jpg', 'img/2023/olimpiadas2.jpg'],
+            'Roboparty': ['img/2023/roboparty1.jpg', 'img/2023/roboparty2.jpg'],
+            'Atividades': ['img/2023/atividades1.jpg', 'img/2023/atividades2.jpg'],
+            'Workshops': ['img/2023/workshops1.jpg', 'img/2023/workshops2.jpg']
+        },
+        2024: {
+            'Botlompyics': ['img/TESTE1GA.png', 'img/TESTE2GA.png'],
+            'Festival Nacional da Robótica': ['img/2024/festival1.jpg', 'img/2024/festival2.jpg'],
+            'Olimpiadas da Robótica': ['img/2024/olimpiadas1.jpg', 'img/2024/olimpiadas2.jpg'],
+            'Roboparty': ['img/2024/roboparty1.jpg', 'img/2024/roboparty2.jpg'],
+            'Atividades': ['img/2024/atividades1.jpg', 'img/2024/atividades2.jpg'],
+            'Workshops': ['img/2024/workshops1.jpg', 'img/2024/workshops2.jpg']
+        }
+    };
+
+    // Função para carregar subtítulos e imagens
+    function loadContent(year) {
+        mainContent.innerHTML = '';
+        const yearData = data[year];
+        for (const subtitle in yearData) {
+            const subtitleElement = document.createElement('div');
+            subtitleElement.className = 'subtitle';
+
+            const imageElement = document.createElement('img');
+            imageElement.src = yearData[subtitle][0]; // Usar a primeira imagem como capa
+            imageElement.alt = subtitle;
+            imageElement.addEventListener('click', () => {
+                openAlbumModal(year, subtitle);
+            });
+
+            const subtitleText = document.createElement('h5');
+            subtitleText.textContent = subtitle;
+
+            subtitleElement.appendChild(imageElement);
+            subtitleElement.appendChild(subtitleText);
+            mainContent.appendChild(subtitleElement);
+        }
+
+        // Atualizar botão ativo
+        document.querySelectorAll('#yearButtons .btn').forEach(btn => {
+            btn.classList.remove('active');
+        });
+        document.querySelector(`#yearButtons .btn[data-year="${year}"]`).classList.add('active');
+    }
+
+    // Função para abrir o modal do álbum
+    function openAlbumModal(year, subtitle) {
+        carouselInner.innerHTML = '';
+        const albumImages = data[year][subtitle];
+        albumImages.forEach((image, index) => {
+            const carouselItem = document.createElement('div');
+            carouselItem.className = 'carousel-item' + (index === 0 ? ' active' : '');
+
+            const imgElement = document.createElement('img');
+            imgElement.src = image;
+            imgElement.className = 'd-block w-100';
+            imgElement.alt = subtitle;
+
+            carouselItem.appendChild(imgElement);
+            carouselInner.appendChild(carouselItem);
+        });
+
+        const modal = new bootstrap.Modal(document.getElementById('albumModal'));
+        document.getElementById('albumModalLabel').textContent = subtitle;
+        modal.show();
+    }
+
+    // Injetar botões de ano
     years.forEach(year => {
-        const yearButton = document.createElement('div');
-        yearButton.className = 'col-md-3 mb-4';
-        yearButton.innerHTML = `<button class="btn btn-outline-light w-100 h-100" onclick="loadAlbums(${year})">${year}</button>`;
-        yearButtons.appendChild(yearButton);
+        const button = document.createElement('button');
+        button.className = 'btn btn-primary m-1';
+        button.textContent = year;
+        button.setAttribute('data-year', year);
+        button.addEventListener('click', () => {
+            loadContent(year);
+        });
+        yearButtons.appendChild(button);
     });
 
-    // Pre-load the most recent year
-    loadAlbums(currentYear);
-}
-
-function loadAlbums(year) {
-    const albumButtons = document.getElementById('albumButtons');
-    albumButtons.innerHTML = '';
-
-    Object.keys(albums[year]).forEach(album => {
-        const albumButton = document.createElement('div');
-        albumButton.className = 'col-md-4 mb-4';
-        albumButton.innerHTML = `
-            <button class="btn btn-outline-light w-100 h-100" onclick="openAlbum('${year}', '${album}')">
-                <img src="img/generic_album_cover.jpg" alt="${album}" class="img-fluid mb-2">
-                ${album.replace(/_/g, ' ')}
-            </button>`;
-        albumButtons.appendChild(albumButton);
-    });
-}
-
-function openAlbum(year, albumName) {
-    const albumPhotos = document.getElementById('albumPhotos');
-    albumPhotos.innerHTML = '';
-
-    albums[year][albumName].forEach((photo, index) => {
-        const photoDiv = document.createElement('div');
-        photoDiv.className = `carousel-item ${index === 0 ? 'active' : ''}`;
-        photoDiv.innerHTML = `<img src="${photo}" class="d-block w-100" alt="Photo">`;
-        albumPhotos.appendChild(photoDiv);
-    });
-
-    const albumModal = new bootstrap.Modal(document.getElementById('albumModal'));
-    albumModal.show();
-}
-
-// Load year buttons on page load
-document.addEventListener('DOMContentLoaded', loadYearButtons);
+    // Carregar automaticamente o ano mais recente
+    loadContent(recentYear);
+});

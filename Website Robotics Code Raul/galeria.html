@@ -72,23 +72,19 @@
     </div>
     <!-- Navbar End -->
 
-
-    <!-- Hero Start -->
-    <div class="container-fluid pt-5 bg-primary hero-header mb-5">
+  <!-- Hero Start -->
+  <div class="container-fluid pt-5 bg-primary hero-header mb-5">
     <div class="container pt-5">
+        <div class="row justify-content-center" id="yearButtons">
+            <!-- Year buttons will be injected here by JavaScript -->
+        </div>
     </div>
-    <!-- Hero End -->
-     
+</div>
+<!-- Hero End -->
+
 <!-- Main Content Start -->
-<div class="container my-5">
-    <!-- Gallery Start -->
-    <div class="row" id="yearButtons">
-        <!-- Year buttons will be injected here by JavaScript -->
-    </div>
-    <div class="row" id="albumButtons">
-        <!-- Album buttons will be injected here by JavaScript -->
-    </div>
-    <!-- Gallery End -->
+<div class="container my-5" id="mainContent">
+    <!-- Subtitles and images will be injected here by JavaScript -->
 </div>
 <!-- Main Content End -->
 
@@ -97,19 +93,19 @@
     <div class="modal-dialog modal-lg">
         <div class="modal-content">
             <div class="modal-header">
-                <h5 class="modal-title" id="albumModalLabel">Álbum</h5>
+                <h5 class="modal-title" id="albumModalLabel">Album</h5>
                 <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
             </div>
             <div class="modal-body">
-                <div id="albumCarousel" class="carousel slide" data-bs-ride="carousel">
-                    <div class="carousel-inner" id="albumPhotos">
-                        <!-- Photos will be injected here by JavaScript -->
+                <div id="carouselExampleControls" class="carousel slide" data-bs-ride="carousel">
+                    <div class="carousel-inner" id="carouselInner">
+                        <!-- Carousel items will be injected here by JavaScript -->
                     </div>
-                    <button class="carousel-control-prev" type="button" data-bs-target="#albumCarousel" data-bs-slide="prev">
+                    <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleControls" data-bs-slide="prev">
                         <span class="carousel-control-prev-icon" aria-hidden="true"></span>
                         <span class="visually-hidden">Previous</span>
                     </button>
-                    <button class="carousel-control-next" type="button" data-bs-target="#albumCarousel" data-bs-slide="next">
+                    <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleControls" data-bs-slide="next">
                         <span class="carousel-control-next-icon" aria-hidden="true"></span>
                         <span class="visually-hidden">Next</span>
                     </button>
