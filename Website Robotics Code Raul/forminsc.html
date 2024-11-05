@@ -31,6 +31,7 @@
     <!-- Template Stylesheet -->
     <link href="css/style.css" rel="stylesheet">
     <link href="css/form.css" rel="stylesheet">
+    <link href="css/forminsc.css" rel="stylesheet">
 </head>
 
 <body>
@@ -47,20 +48,12 @@
                 </button>
                 <div class="collapse navbar-collapse" id="navbarCollapse">
                     <div class="navbar-nav ms-auto">
-                        <a href="index.html" class="nav-item nav-link">Página Inicial</a>
+                        <a href="index.html" class="nav-item nav-link active">Página Inicial</a>
                         <a href="Concursos.html" class="nav-item nav-link">Concursos</a>
-                        <a href="projetos.html" class="nav-item nav-link">Projetos</a>
+                        <!--<a href="projetos.html" class="nav-item nav-link">Projetos</a>-->
                         <a href="galeria.html" class="nav-item nav-link">Galeria</a>
                         <a href="sobrenos.html" class="nav-item nav-link">Sobre Nós</a>
-                        <a href="forminsc.html" class="nav-item nav-link active">Formulário de Inscrição</a>
-                        <div class="nav-item dropdown">
-                            <a href="#" class="nav-link dropdown-toggle" data-bs-toggle="dropdown">Mais</a>
-                            <div class="dropdown-menu bg-light mt-2">
-                                <a href="feature.html" class="dropdown-item">Features</a>
-                                <a href="team.html" class="dropdown-item">Our Team</a>
-                                <a href="faq.html" class="dropdown-item">FAQs</a>
-                            </div>
-                        </div>
+                        <a href="forminsc.html" class="nav-item nav-link">Formulário de Inscrição</a>
                     </div>
                     <butaton type="button" class="btn text-white p-0 d-none d-lg-block" data-bs-toggle="modal"
                         data-bs-target="#searchModal"><i class="fa fa-search"></i></butaton>
@@ -309,10 +302,16 @@
                 <textarea class="form-control" id="ambiente" rows="3" required></textarea>
             </div>
 
-            <button type="submit" class="btn btn-primary">Submeter</button>
+            <div class="row mb-3">
+                <div class="col-12 text-center">
+                    <button type="reset" class="btn btn-secondary">Limpar</button>
+                    <button type="submit" class="btn btn-primary">Submeter</button>
+                </div>
+            </div>
         </form>
     </div>
     <!-- Formulário de Inscrição End -->
+    <!-- Footer Start -->
     <!-- Footer Start -->
     <div class="container-fluid bg-dark text-white-50 footer pt-5">
         <div class="container py-5">
@@ -323,8 +322,8 @@
                             <img src="img/logo.png" alt="Logo" class="img-fluid" style="max-height: 100px;">
                         </h1>
                     </a>
-                    <p class="mb-0">Robotics Code Raul: Incentivando a inovação e o aprendizado através da
-                        tecnologia e da robótica.</p>
+                    <p class="mb-0">Robotics Code Raul: Incentivando a inovação e o aprendizado através da tecnologia e
+                        da robótica.</p>
                 </div>
                 <div class="col-md-6 col-lg-3 wow fadeIn" data-wow-delay="0.3s">
                     <h5 class="text-white mb-4">Entre em Contacto Conosco</h5>
@@ -360,7 +359,6 @@
                     <div class="col-md-6 text-center text-md-end">
                         <div class="footer-menu">
                             <a href="">Home</a>
-                            <a href="">Questões Frequentes</a>
                         </div>
                     </div>
                 </div>

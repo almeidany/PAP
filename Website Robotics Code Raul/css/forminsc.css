@@ -1,0 +1,16 @@
+.h2 {
+    font-size: 2em;
+    font-weight: 700;
+    margin-bottom: 0.5em;
+    color: #333;
+    font-family: 'Roboto', sans-serif;
+    text-align: center;
+    margin: auto;
+}
+
+.btn {
+    padding: 0.5em 1em;
+    margin-right: 1em;
+    margin-bottom: 0.5em;
+    text-align: center;
+}
