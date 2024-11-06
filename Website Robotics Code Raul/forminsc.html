@@ -42,21 +42,15 @@
                 <a href="index.html" class="navbar-brand">
                     <img src="img/logo.png" alt="Logo" class="img-fluid">
                 </a>
-                <button type="button" class="navbar-toggler ms-auto me-0" data-bs-toggle="collapse"
-                    data-bs-target="#navbarCollapse">
-                    <span class="navbar-toggler-icon"></span>
-                </button>
                 <div class="collapse navbar-collapse" id="navbarCollapse">
                     <div class="navbar-nav ms-auto">
-                        <a href="index.html" class="nav-item nav-link active">Página Inicial</a>
+                        <a href="index.html" class="nav-item nav-link">Página Inicial</a>
                         <a href="Concursos.html" class="nav-item nav-link">Concursos</a>
                         <!--<a href="projetos.html" class="nav-item nav-link">Projetos</a>-->
                         <a href="galeria.html" class="nav-item nav-link">Galeria</a>
                         <a href="sobrenos.html" class="nav-item nav-link">Sobre Nós</a>
-                        <a href="forminsc.html" class="nav-item nav-link">Formulário de Inscrição</a>
+                        <a href="forminsc.html" class="nav-item nav-link active">Formulário de Inscrição</a>
                     </div>
-                    <butaton type="button" class="btn text-white p-0 d-none d-lg-block" data-bs-toggle="modal"
-                        data-bs-target="#searchModal"><i class="fa fa-search"></i></butaton>
                 </div>
             </nav>
         </div>
@@ -75,7 +69,7 @@
     <!-- Formulário de Inscrição Start -->
     <div class="container">
         <form method="post" action="">
-            <h2>Dados Pessoais</h2>
+            <h2 class="my-4">Dados Pessoais</h2>
             <div class="row mb-3">
                 <div class="col-5">
                     <label for="nome" class="form-label">Primeiro Nome</label>
@@ -174,7 +168,16 @@
                 </div>
             </div>
 
-            <h2>Experiência e Conhecimentos</h2>
+            <div class="row mb-3">
+                <div class="col-12">
+                    <label for="FotodePerfil">Selecione uma foto</label>
+                    <div class="form-group">
+                        <input type="file" class="form-control-file" id="FotodePerfil">
+                    </div>
+                </div>
+            </div>
+
+            <h2 class="my-4">Experiência e Conhecimentos</h2>
             <div class="row mb-3">
                 <div class="col-6">
                     <label>Já participaste de um clube de robótica?</label>
@@ -280,7 +283,7 @@
                 </div>
             </div>
 
-            <h2>Parte Social Emocional</h2>
+            <h2 class="my-4">Parte Social Emocional</h2>
             <div class="mb-3">
                 <label for="comunicacao" class="form-label">Qual a importância da comunicação aberta num
                     clube?</label>
@@ -305,7 +308,7 @@
             <div class="row mb-3">
                 <div class="col-12 text-center">
                     <button type="reset" class="btn btn-secondary">Limpar</button>
-                    <button type="submit" class="btn btn-primary">Submeter</button>
+                    <button type="submit" class="btn btn-primary" id="subbtn">Submeter</button>
                 </div>
             </div>
         </form>
@@ -358,7 +361,7 @@
                     </div>
                     <div class="col-md-6 text-center text-md-end">
                         <div class="footer-menu">
-                            <a href="">Home</a>
+                            <a href="index.html">Página Inicial</a>
                         </div>
                     </div>
                 </div>
@@ -381,6 +384,7 @@
 
     <!-- Template Javascript -->
     <script src="js/main.js"></script>
+    <script src="js/forminsc.js"></script>
 </body>
 
 </html>
