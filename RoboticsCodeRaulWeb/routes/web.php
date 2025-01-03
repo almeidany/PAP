@@ -1,6 +1,7 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
+use Illuminate\Support\Facades\Auth;
 
 Route::get('/', function () {
     return view('index');
@@ -29,3 +30,7 @@ Route::get('/formulario-inscricao', function () {
 Route::get('/login', function () {
     return view('auth.login_registo');
 })->name('login');
+
+Route::get('/dashboard', function () {
+    return view('dashboard_Prof');
+})->name('dashboard');
