@@ -44,3 +44,5 @@ CREATE TABLE utilizador (
     FOREIGN KEY (email) REFERENCES formInsc(email) -- Relaciona o email com os dados do formulário
 );
 
+use biblioteca;
+

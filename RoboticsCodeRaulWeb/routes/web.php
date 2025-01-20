@@ -3,6 +3,8 @@
 use Illuminate\Support\Facades\Route;
 use Illuminate\Support\Facades\Auth;
 
+Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
+
 Route::get('/', function () {
     return view('index');
 })->name('index');
@@ -27,10 +29,12 @@ Route::get('/formulario-inscricao', function () {
     return view('forminsc');
 })->name('formulario-inscricao');
 
-Route::get('/login', function () {
-    return view('auth.login_registo');
-})->name('login');
-
 Route::get('/dashboard', function () {
     return view('dashboard_Prof');
 })->name('dashboard');
+
+/* Route::get('/login', function () {
+    return view('auth.login_registo');
+})->name('login'); */
+
+Auth::routes();
