@@ -285,7 +285,7 @@
                             <div class="row g-4">
                                 <div class="col-12 wow fadeIn" data-wow-delay="0.3s">
                                     <div class="team-item bg-white text-center rounded p-4 pt-0">
-                                        <img class="img-fluid rounded-circle p-4" src="/assets//img/Tempimg1.jpg"
+                                        <img class="img-fluid rounded-circle p-4" src="/assets/img/fotoperfil_L.jpg"
                                             alt="">
                                         <h5 class="mb-0">Prof. Luís Fernandes</h5>
                                         <small>Fundador do Clube</small>
@@ -306,7 +306,7 @@
                             <div class="row g-4">
                                 <div class="col-12 wow fadeIn" data-wow-delay="0.3s">
                                     <div class="team-item bg-white text-center rounded p-4 pt-0">
-                                        <img class="img-fluid rounded-circle p-4" src="/assets/img/TEMPIMG2.jpg"
+                                        <img class="img-fluid rounded-circle p-4" src="/assets/img/fotoperfil_S.jpeg"
                                             alt="">
                                         <h5 class="mb-0">Prof.ª Sónia Rodrigues</h5>
                                         <small>Coordenadora</small>

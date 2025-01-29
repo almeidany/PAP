@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers\Auth;
 
+use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use Illuminate\Foundation\Auth\AuthenticatesUsers;
 
@@ -36,5 +37,15 @@ class LoginController extends Controller
     {
         $this->middleware('guest')->except('logout');
         $this->middleware('auth')->only('logout');
+    }
+
+    protected function validateLogin(Request $request)
+    {
+        $request->validate([
+            'email' => 'required|string|email|regex:/^[a-zA-Z0-9._%+-]+@aerp\.pt$/',
+            'password' => 'required|string|min:8',
+        ], [
+            'email.regex' => 'O email deve ser um endereço @aerp.pt',
+        ]);
     }
 }

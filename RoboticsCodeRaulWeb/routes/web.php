@@ -5,6 +5,13 @@ use Illuminate\Support\Facades\Auth;
 
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
 
+Route::get('/register', [App\Http\Controllers\Auth\RegisterController::class, 'showRegistrationForm'])->name('register');
+Route::post('/register', [App\Http\Controllers\Auth\RegisterController::class, 'register']);
+
+Route::get('/login', [App\Http\Controllers\Auth\LoginController::class, 'showLoginForm'])->name('login');
+Route::post('/login', [App\Http\Controllers\Auth\LoginController::class, 'login']);
+Route::post('/logout', [App\Http\Controllers\Auth\LoginController::class, 'logout'])->name('logout');
+
 Route::get('/', function () {
     return view('index');
 })->name('index');
@@ -29,12 +36,10 @@ Route::get('/formulario-inscricao', function () {
     return view('forminsc');
 })->name('formulario-inscricao');
 
-Route::get('/dashboard', function () {
-    return view('dashboard_Prof');
-})->name('dashboard');
 
-/* Route::get('/login', function () {
-    return view('auth.login_registo');
-})->name('login'); */
+Route::post('/logout', function () {
+    Auth::logout();
+    return redirect('/register');
+})->name('logout');
 
 Auth::routes();
