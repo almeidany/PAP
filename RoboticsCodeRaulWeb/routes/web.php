@@ -5,6 +5,7 @@ use Illuminate\Support\Facades\Auth;
 
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
 
+
 Route::get('/register', [App\Http\Controllers\Auth\RegisterController::class, 'showRegistrationForm'])->name('register');
 Route::post('/register', [App\Http\Controllers\Auth\RegisterController::class, 'register']);
 
@@ -41,5 +42,9 @@ Route::post('/logout', function () {
     Auth::logout();
     return redirect('/register');
 })->name('logout');
+
+Route::get('/projetos', function () {
+    return view('home-projetos');
+})->name('home-projetos');
 
 Auth::routes();
