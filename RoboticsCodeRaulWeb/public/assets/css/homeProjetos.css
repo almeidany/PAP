@@ -1,0 +1,67 @@
+/* Estiliza a "caixa do form" */
+#modal form {
+    max-height: 550px;
+    /* Altura máxima para a área do formulário */
+    overflow-y: auto;
+    /* Habilita a rolagem vertical */
+    padding: 20px;
+    /* Espaçamento interno */
+    box-sizing: border-box;
+    /* Inclui o padding no cálculo do tamanho */
+}
+
+/* Estiliza o modal */
+#modal {
+    display: none;
+    /* Modal inicialmente oculto */
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.5);
+    /* Fundo semitransparente */
+    justify-content: center;
+    align-items: center;
+}
+
+/* Estiliza o conteúdo do modal */
+#modal>div {
+    background: white;
+    border-radius: 8px;
+    width: 90%;
+    max-width: 500px;
+    padding: 20px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    /* Sombra suave */
+}
+
+/* Estilo adicional para o formulário */
+form {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+    /* Espaçamento entre os campos */
+}
+
+/* Adiciona rolagem ao modal no mobile (opcional) */
+@media (max-height: 600px) {
+    #modal>div {
+        max-height: 90%;
+        overflow-y: auto;
+    }
+}
+
+/* Barra de scroll personalizada */
+::-webkit-scrollbar {
+    width: 8px;
+}
+
+::-webkit-scrollbar-thumb {
+    background-color: #6c757d;
+    border-radius: 4px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+    background-color: #495057;
+}
