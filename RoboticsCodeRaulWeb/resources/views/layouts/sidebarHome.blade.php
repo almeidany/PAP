@@ -1,101 +1,85 @@
-<!-- Sidebar -->
-<ul class="navbar-nav bg-gradient-primary sidebar sidebar-dark accordion" id="accordionSidebar">
-
-    <!-- Sidebar - Brand -->
-    <a class="sidebar-brand d-flex align-items-center justify-content-center" href="{{ route('home') }}">
-        <div class="sidebar-brand-icon">
-            <img src="/assets/img/logo.png" alt="Logo" class="img-fluid" style="max-height: 100px;">
+<aside class="left-sidebar with-vertical">
+    <div><!-- ---------------------------------- -->
+        <!-- Start Vertical Layout Sidebar -->
+        <!-- ---------------------------------- -->
+        <div class="brand-logo d-flex align-items-center justify-content-between">
+            <a href="{{ route('home') }}" class="text-nowrap logo-img">
+                <img src="./assets/img/logo.png" class="dark-logo d-block" alt="Logo-Dark" style="max-width: 150px;">
+                <img src="./assets/img/logo-light.png" class="light-logo d-none" alt="Logo-light"
+                    style="max-width: 150px;">
+            </a>
+            <a href="javascript:void(0)" class="sidebartoggler ms-auto text-decoration-none fs-5 d-block d-xl-none">
+                <i class="ti ti-cross"></i>
+            </a>
         </div>
-    </a>
 
-    <!-- Divider -->
-    <hr class="sidebar-divider my-0">
-
-    <!-- User Info -->
-    <li class="nav-item d-flex align-items-center">
-        <a class="nav-link" href="#">
-            <i class="fas fa-user"></i>
-            <span>User</span>
-        </a>
-        <form method="POST" action="{{ route('logout') }}" style="margin-left: auto; margin-right: 10px;">
-            @csrf
-            <button type="submit" class="btn btn-danger btn-sm">Terminar Sessão</button>
-        </form>
-    </li>
-
-    <!-- Divider -->
-    <hr class="sidebar-divider">
-
-    <!-- Nav Item - Notícias -->
-    <li class="nav-item">
-        <a class="nav-link" href="#">
-            <i class="fas fa-newspaper"></i>
-            <span>Notícias</span>
-        </a>
-    </li>
-
-    <!-- Nav Item - Eventos -->
-    <li class="nav-item">
-        <a class="nav-link" href="#">
-            <i class="fas fa-clock"></i>
-            <span>Eventos</span>
-        </a>
-    </li>
-
-    <!-- Nav Item - Equipa -->
-    <li class="nav-item">
-        <a class="nav-link" href="#">
-            <i class="fas fa-users"></i>
-            <span>Equipa</span>
-        </a>
-    </li>
-
-    <!-- Nav Item - Projetos -->
-    <li class="nav-item">
-        <a class="nav-link" href="{{ route('home-projetos') }}">
-            <i class="fas fa-book"></i>
-            <span>Projetos</span>
-        </a>
-    </li>
-
-    <!-- Nav Item - Presenças -->
-    <li class="nav-item">
-        <a class="nav-link" href="#">
-            <i class="fas fa-user-check"></i>
-            <span>Presenças</span>
-        </a>
-    </li>
-
-    <!-- Divider -->
-    <hr class="sidebar-divider">
-
-    <!-- Heading -->
-    <div class="sidebar-heading">
-        Ferramentas de Administrador
+        <!-- Sidebar Start -->
+        <nav class="sidebar-nav scroll-sidebar" data-simplebar="">
+            <ul id="sidebarnav">
+                <li class="sidebar-item">
+                    <a class="sidebar-link" href="{{ route('index') }}" aria-expanded="false" target="_blank">
+                        <span class="d-flex">
+                            <i class="bi bi-house-door"></i>
+                        </span>
+                        <span class="hide-menu">Página Inicial</span>
+                    </a>
+                    <a class="sidebar-link" href="{{ route('index') }}" aria-expanded="false" span class="d-flex">
+                        <i class="bi bi-house-door"></i>
+                        </span>
+                        <span class="hide-menu">Homepage</span>
+                    </a>
+                    <!-- ---------------------------------- -->
+                    <!-- PAGES -->
+                    <!-- ---------------------------------- -->
+                    {{-- <li class="sidebar-item">
+                    <a class="sidebar-link" href="page-account-settings.html" aria-expanded="false">
+                        <span>
+                            <i class="ti ti-user-circle"></i>
+                        </span>
+                        <span class="hide-menu">Account Setting</span>
+                    </a>
+                </li> --}}
+                    <a class="sidebar-link" href="{{ route('home-criarProjeto') }}" aria-expanded="false">
+                        <span class="d-flex">
+                            <i class="bi bi-house-door"></i>
+                        </span>
+                        <span class="hide-menu">Projetos</span>
+                    </a>
+                    <a class="sidebar-link" href="{{ route('index') }}" aria-expanded="false">
+                        <span class="d-flex">
+                            <i class="bi bi-house-door"></i>
+                        </span>
+                        <span class="hide-menu">Alunos</span>
+                    </a>
+                    <a class="sidebar-link" href="{{ route('index') }}" aria-expanded="false">
+                        <span class="d-flex">
+                            <i class="bi bi-house-door"></i>
+                        </span>
+                        <span class="hide-menu">Acessos</span>
+                    </a>
+                    <a class="sidebar-link" href="{{ route('index') }}" aria-expanded="false">
+                        <span class="d-flex">
+                            <i class="bi bi-house-door"></i>
+                        </span>
+                        <span class="hide-menu">Noticias</span>
+                    </a>
+        </nav>
+        <div class="fixed-profile p-3 mx-4 mb-2 bg-secondary-subtle rounded mt-3">
+            <div class="hstack gap-3">
+                <div class="john-img">
+                    <img src="../assets/images/profile/user-1.jpg" class="rounded-circle" width="40" height="40"
+                        alt="modernize-img">
+                </div>
+                <div class="john-title">
+                    <h6 class="mb-0 fs-4 fw-semibold">Mathew</h6>
+                    <span class="fs-2">Designer</span>
+                </div>
+                <button class="border-0 bg-transparent text-primary ms-auto" tabindex="0" type="button"
+                    aria-label="logout" data-bs-toggle="tooltip" data-bs-placement="top" data-bs-title="logout">
+                    <i class="ti ti-power fs-6"></i>
+                </button>
+            </div>
+        </div>
     </div>
-
-    <!-- Nav Item - Publicar Notícias -->
-    <li class="nav-item">
-        <a class="nav-link" href="#">
-            <i class="fas fa-plus"></i>
-            <span>Publicar Notícias</span>
-        </a>
-    </li>
-
-    <!-- Nav Item - Publicar Eventos -->
-    <li class="nav-item">
-        <a class="nav-link" href="#">
-            <i class="fas fa-plus"></i>
-            <span>Publicar Eventos</span>
-        </a>
-    </li>
-
-    <!-- Nav Item - Gestão de Equipas -->
-    <li class="nav-item">
-        <a class="nav-link" href="#">
-            <i class="fas fa-plus"></i>
-            <span>Gestão de Equipas</span>
-        </a>
-    </li>
-</ul>
-<!-- End of Sidebar -->
+</aside>
+<!--  Sidebar End -->

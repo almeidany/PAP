@@ -47,4 +47,8 @@ Route::get('/projetos', function () {
     return view('home-projetos');
 })->name('home-projetos');
 
+Route::get('/criar-projeto', function () {
+    return view('home-criarProjeto');
+})->name('home-criarProjeto');
+
 Auth::routes();
