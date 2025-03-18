@@ -37,7 +37,6 @@ Route::get('/inscricao', function () {
     return view('forminsc');
 })->name('formulario-inscricao');
 
-
 Route::post('/logout', function () {
     Auth::logout();
     return redirect('/register');

@@ -94,10 +94,8 @@
                                         <!-- Centralizar botões -->
                                         <div class="form-actions text-center">
                                             <button type="submit" class="btn btn-primary">Submeter</button>
-                                            <button type="button"
-                                                class="btn bg-danger-subtle text-danger ms-2">Cancelar</button>
+                                            <button type="button" class="btn bg-danger-subtle text-danger ms-2" onclick="window.location.href='{{ route('home-projetos') }}'">Cancelar</button>
                                         </div>
-
                                     </div>
                                 </div>
                         </form>

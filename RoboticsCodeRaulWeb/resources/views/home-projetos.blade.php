@@ -20,11 +20,10 @@
             </div>
             <!-- Div para o botão no canto inferior esquerdo -->
             <div class="fixed-bottom-left">
-                    <button class="btn btn-primary p-3 rounded-circle d-flex align-items-center justify-content-center"
-                    type="button">
+                <button class="btn btn-primary p-3 rounded-circle d-flex align-items-center justify-content-center" type="button"
+                    onclick="window.location.href='{{ route('home-criarProjeto') }}'">
                     <i class="bi bi-plus fs-7"></i>
-                    <a href="{{ route('home-criarProjeto') }}"></a>
-            </button>
+                </button>
             </div>
             @include('layouts.Settings&Script')
         </div>
