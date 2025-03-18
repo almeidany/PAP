@@ -3,9 +3,9 @@
         document.documentElement.setAttribute("data-color-theme", e);
     }
 </script>
-<button class="btn btn-primary p-3 rounded-circle d-flex align-items-center justify-content-center customizer-btn"
+<button class="btn btn-primary p-3 rounded-circle d-flex align-items-center justify-content-center position-fixed bottom-0 end-0 m-3"
     type="button" data-bs-toggle="offcanvas" data-bs-target="#offcanvasExample" aria-controls="offcanvasExample">
-    <i class="icon ti ti-settings fs-7"></i>
+    <i class="bi bi-gear fs-7"></i>
 </button>
 
 <div class="offcanvas customizer offcanvas-end" tabindex="-1" id="offcanvasExample"

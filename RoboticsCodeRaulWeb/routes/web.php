@@ -33,7 +33,7 @@ Route::get('/sobre-nos', function () {
 })->name('sobrenos');
 
 // Formulário de Inscrição
-Route::get('/formulario-inscricao', function () {
+Route::get('/inscricao', function () {
     return view('forminsc');
 })->name('formulario-inscricao');
 
@@ -50,5 +50,4 @@ Route::get('/projetos', function () {
 Route::get('/criar-projeto', function () {
     return view('home-criarProjeto');
 })->name('home-criarProjeto');
-
 Auth::routes();
