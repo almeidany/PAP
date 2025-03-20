@@ -49,4 +49,12 @@ Route::get('/projetos', function () {
 Route::get('/criar-projeto', function () {
     return view('home-criarProjeto');
 })->name('home-criarProjeto');
+
+route::get('/noticias', function () {
+    return view('home-noticias');
+})->name('home-noticias');
+
+route::get('/criar-noticia', function () {
+    return view('home-criarNoticia');
+})->name('home-criarNoticia');
 Auth::routes();

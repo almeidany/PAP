@@ -62,9 +62,9 @@
                         </span>
                         <span class="hide-menu">Acessos</span>
                     </a>
-                    <a class="sidebar-link" href="{{ route('index') }}" aria-expanded="false">
+                    <a class="sidebar-link" href="{{ route('home-noticias') }}" aria-expanded="false">
                         <span class="d-flex">
-                            <i class="bi bi-house-door"></i>
+                            <i class="bi bi-newspaper"></i>
                         </span>
                         <span class="hide-menu">Noticias</span>
                     </a>
