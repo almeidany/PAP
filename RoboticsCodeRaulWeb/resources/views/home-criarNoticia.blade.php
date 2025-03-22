@@ -20,19 +20,11 @@
                     <div class="card-body px-4 py-3">
                       <div class="row align-items-center">
                         <div class="col-9">
-                          <h4 class="fw-semibold mb-8">Quill Editor</h4>
-                          <nav aria-label="breadcrumb">
-                            <ol class="breadcrumb">
-                              <li class="breadcrumb-item">
-                                <a class="text-muted text-decoration-none" href="index.html">Home</a>
-                              </li>
-                              <li class="breadcrumb-item" aria-current="page">Quill Editor</li>
-                            </ol>
-                          </nav>
+                          <h4 class="fw-semibold mb-8">Criar Noticia</h4>
                         </div>
                         <div class="col-3">
                           <div class="text-center mb-n5">
-                            <img src="../assets/images/breadcrumb/ChatBc.png" alt="modernize-img" class="img-fluid mb-n4">
+                            <img src="./assets/images/breadcrumb/ChatBc.png" alt="modernize-img" class="img-fluid mb-n4">
                           </div>
                         </div>
                       </div>
@@ -42,12 +34,15 @@
                     <div class="card-body">
                       <!-- Create the editor container -->
                       <div id="editor">
-                        <p>Hello World!</p>
-                        <p>Some initial <strong>bold</strong> text</p>
                         <p>
                           <br>
                         </p>
                       </div>
+                    </div>
+                    <!-- Centralizar botões -->
+                    <div class="form-actions text-center">
+                      <button type="submit" class="btn btn-primary" style="margin-bottom: 25px;">Submeter</button>
+                      <button type="button" class="btn bg-danger-subtle text-danger ms-2" style="margin-bottom: 25px;" onclick="window.location.href='{{ route('home-noticias') }}'">Cancelar</button>
                     </div>
                   </div>
                 </div>

@@ -57,4 +57,12 @@ route::get('/noticias', function () {
 route::get('/criar-noticia', function () {
     return view('home-criarNoticia');
 })->name('home-criarNoticia');
+
+route::get('/alunos', function () {
+    return view('home-alunos');
+})->name('home-alunos');
+
+route::get('/criar-aluno', function () {
+    return view('home-adicionarAluno');
+})->name('home-adicionarAluno');
 Auth::routes();

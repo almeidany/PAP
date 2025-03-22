@@ -50,7 +50,7 @@
                         </span>
                         <span class="hide-menu">Projetos</span>
                     </a>
-                    <a class="sidebar-link" href="{{ route('index') }}" aria-expanded="false">
+                    <a class="sidebar-link" href="{{ route('home-alunos') }}" aria-expanded="false">
                         <span class="d-flex">
                             <i class="bi bi-people"></i>
                         </span>
@@ -58,7 +58,7 @@
                     </a>
                     <a class="sidebar-link" href="{{ route('index') }}" aria-expanded="false">
                         <span class="d-flex">
-                            <i class="bi bi-house-door"></i>
+                            <i class="bi bi-info"></i>
                         </span>
                         <span class="hide-menu">Acessos</span>
                     </a>
