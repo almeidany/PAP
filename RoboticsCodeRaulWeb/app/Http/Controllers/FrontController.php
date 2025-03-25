@@ -8,18 +8,6 @@ use PhpParser\Node\Stmt\Return_;
 
 class FrontController extends Controller
 {
-    public function index()
-    {
-        //
-        return view('home.index');
-    }
-
-    public function about_us()
-    {
-        //
-        return view('home.about_us');
-    }
-
     public function about_us()
     {
         //
@@ -30,5 +18,11 @@ class FrontController extends Controller
     {
         //
         return view('home.contest');
+    }
+
+    public function gallery()
+    {
+        //
+        return view('');
     }
 }

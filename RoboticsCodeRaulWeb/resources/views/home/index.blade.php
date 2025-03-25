@@ -1,10 +1,10 @@
 <!DOCTYPE html>
 <html lang="pt-PT">
 
-@include('layouts.head')
+@include('layouts.frontoffice.head')
 
 <body>
-    @include('layouts.nav')
+    @include('layouts.frontoffice.nav')
     <!-- Hero Start -->
     <div class="container-fluid pt-5 bg-primary hero-header mb-5">
         <div class="container pt-5">
@@ -330,7 +330,7 @@
     <!-- Team End -->
 
     <!-- Footer Start -->
-    @include('layouts.footer')
+    @include('layouts.frontoffice.footer')
     <!-- Footer End -->
 
 

@@ -1,11 +1,11 @@
 <!DOCTYPE html>
 <html lang="pt-PT">
 
-@include('layouts.head')
+@include('layouts.frontoffice.head')
 
 <body>
     <!-- Navbar Start -->
-    @include('layouts.nav')
+    @include('layouts.frontoffice.nav')
     <!-- Navbar End -->
 
 
@@ -109,7 +109,7 @@
     <!-- Service End -->
 
     <!-- Footer Start -->
-    @include('layouts.footer')
+    @include('layouts.frontoffice.footer')
     <!-- Footer End -->
 
     <!-- Back to Top -->
