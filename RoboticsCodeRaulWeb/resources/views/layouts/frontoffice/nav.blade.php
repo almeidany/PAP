@@ -11,7 +11,7 @@
                     {{-- <a href="{{ route('projetos') }}" class="nav-item nav-link">Projetos</a> --}}
                     <a href="{{ route('galeria') }}" class="nav-item nav-link">Galeria</a>
                     <a href="{{ route('sobrenos') }}" class="nav-item nav-link">Sobre Nós</a>
-                    <a href="{{ route('formulario-inscricao') }}" class="nav-item nav-link">Inscrição</a>
+                    {{-- <a href="{{ route('formulario-inscricao') }}" class="nav-item nav-link">Inscrição</a> --}}
                 </div>
             </div>
         </nav>

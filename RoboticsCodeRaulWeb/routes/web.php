@@ -13,6 +13,10 @@ Route::get('/login', [App\Http\Controllers\Auth\LoginController::class, 'showLog
 Route::post('/login', [App\Http\Controllers\Auth\LoginController::class, 'login']);
 Route::post('/logout', [App\Http\Controllers\Auth\LoginController::class, 'logout'])->name('logout');
 
+// Homepage
+Route::get('/', [App\Http\Controllers\FrontController::class, 'index'])->name('index');
+Route::get('/concursos', [App\Http\Controllers\FrontController::class, 'contest'])->name('contest');
+
 Route::get('/', function () {
     return view('index');
 })->name('index');
