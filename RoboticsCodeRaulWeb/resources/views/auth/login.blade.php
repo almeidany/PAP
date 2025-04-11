@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
 
-@include('layouts.head_login')
+@include('layouts.login.head')
 
 <body>
     <div class="main">

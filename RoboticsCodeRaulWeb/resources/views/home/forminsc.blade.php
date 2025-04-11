@@ -1,11 +1,11 @@
 <!DOCTYPE html>
 <html lang="pt-PT">
 
-@include('layouts.head')
+{{-- @include('layouts.head') --}}
 
 <body>
     <!-- Navbar Start -->
-    @include('layouts.nav')
+    {{-- @include('layouts.nav') --}}
     <!-- Navbar End -->
 
 
@@ -141,7 +141,7 @@
     </div>
 
     <!-- Formulário de Inscrição End -->
-    @include('layouts.footer')
+    {{-- @include('layouts.footer') --}}
     <!-- Back to Top -->
     <a href="#" class="btn btn-lg btn-primary btn-lg-square back-to-top pt-2"><i
             class="bi bi-arrow-up"></i></a>

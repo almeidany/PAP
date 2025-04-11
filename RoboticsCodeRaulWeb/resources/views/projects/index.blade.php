@@ -1,16 +1,16 @@
 ﻿<!DOCTYPE html>
 <html lang="en" dir="ltr" data-bs-theme="light" data-color-theme="Blue_Theme" data-layout="vertical">
 
-@include('layouts.headProjetos')
+@include('layouts.backoffice.head')
 
 <body>
     <div id="main-wrapper">
-        @include('layouts.sidebarHome')
+        @include('layouts.backoffice.sidebar')
         <div class="page-wrapper">
             <!--  Header Start -->
             <header class="topbar">
                 <div class="with-vertical">
-                    @include('layouts.nav_Home')
+                    @include('layouts.backoffice.nav')
                 </div>
             </header>
             <!--  Header End -->
@@ -25,7 +25,7 @@
                     <i class="bi bi-plus fs-7"></i>
                 </button>
             </div>
-            @include('layouts.Settings&Script')
+            @include('layouts.backoffice.Settings_Script')
         </div>
     </div>
     <div class="dark-transparent sidebartoggler"></div>

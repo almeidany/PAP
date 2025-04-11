@@ -19,10 +19,4 @@ class FrontController extends Controller
         //
         return view('home.contest');
     }
-
-    public function gallery()
-    {
-        //
-        return view('');
-    }
 }

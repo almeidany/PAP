@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
 
-@include('layouts.head_registo')
+@include('layouts.register.head')
 
 <body>
     <div class="main">
