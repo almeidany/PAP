@@ -51,7 +51,7 @@
                     <p class="mb-4">Pedimos desculpa, mas a página que tentou procurar não existe no nosso site,
                         pondere
                         em usar a barra de pesquisa para encontrar uma existente.</p>
-                    <a class="btn btn-primary rounded-pill py-3 px-5" href="{{ route('index') }}">Voltar à página
+                    <a class="btn btn-primary rounded-pill py-3 px-5" href="{{ route('home') }}">Voltar à página
                         inicial</a>
                 </div>
             </div>

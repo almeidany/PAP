@@ -2,10 +2,6 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\cr;
-use Illuminate\Http\Request;
-use PhpParser\Node\Stmt\Return_;
-
 class FrontController extends Controller
 {
     public function about_us()
@@ -14,9 +10,9 @@ class FrontController extends Controller
         return view('home.about_us');
     }
 
-    public function contest()
+    public function contests()
     {
         //
-        return view('home.contest');
+        return view('home.contests');
     }
 }

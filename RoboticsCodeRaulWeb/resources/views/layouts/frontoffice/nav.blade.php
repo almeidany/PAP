@@ -7,11 +7,10 @@
             <div class="collapse navbar-collapse" id="navbarCollapse">
                 <div class="navbar-nav ms-auto">
                     <a href="{{ route('home') }}" class="nav-item nav-link">Página Inicial</a>
-                    <a href="{{ route('contest') }}" class="nav-item nav-link">Concursos</a>
+                    <a href="{{ route('contests') }}" class="nav-item nav-link">Concursos</a>
                     {{-- <a href="{{ route('projetos') }}" class="nav-item nav-link">Projetos</a> --}}
-                    {{-- <a href="{{ route('galeria') }}" class="nav-item nav-link">Galeria</a> --}}
+                    {{-- <a href="{{ route('gallery') }}" class="nav-item nav-link">Galeria</a> --}}
                     <a href="{{ route('about_us') }}" class="nav-item nav-link">Sobre Nós</a>
-                    {{-- <a href="{{ route('formulario-inscricao') }}" class="nav-item nav-link">Inscrição</a> --}}
                 </div>
             </div>
         </nav>

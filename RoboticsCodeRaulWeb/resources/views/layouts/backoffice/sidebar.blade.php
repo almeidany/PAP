@@ -22,13 +22,13 @@
         <nav class="sidebar-nav scroll-sidebar" data-simplebar="">
             <ul id="sidebarnav">
                 <li class="sidebar-item">
-                    <a class="sidebar-link" href="{{ route('index') }}" aria-expanded="false" target="_blank">
+                    <a class="sidebar-link" href="{{ route('dashboard') }}" aria-expanded="false">
                         <span class="d-flex">
                             <i class="bi bi-house-door"></i>
                         </span>
                         <span class="hide-menu">Página Inicial</span>
                     </a>
-                    <a class="sidebar-link" href="{{ route('index') }}" aria-expanded="false" span class="d-flex">
+                    <a class="sidebar-link" href="{{ route('home') }}" aria-expanded="false" span class="d-flex">
                         <i class="bi bi-house-door"></i>
                         </span>
                         <span class="hide-menu">Homepage</span>
@@ -44,25 +44,25 @@
                         <span class="hide-menu">Account Setting</span>
                     </a>
                 </li> --}}
-                    <a class="sidebar-link" href="{{ route('home-projetos') }}" aria-expanded="false">
+                    <a class="sidebar-link" href="{{ route('home') }}" aria-expanded="false">
                         <span class="d-flex">
                             <i class="bi bi-box-seam"></i>
                         </span>
                         <span class="hide-menu">Projetos</span>
                     </a>
-                    <a class="sidebar-link" href="{{ route('home-alunos') }}" aria-expanded="false">
+                    <a class="sidebar-link" href="{{ route('home') }}" aria-expanded="false">
                         <span class="d-flex">
                             <i class="bi bi-people"></i>
                         </span>
                         <span class="hide-menu">Alunos</span>
                     </a>
-                    <a class="sidebar-link" href="{{ route('index') }}" aria-expanded="false">
+                    <a class="sidebar-link" href="{{ route('home') }}" aria-expanded="false">
                         <span class="d-flex">
                             <i class="bi bi-info"></i>
                         </span>
                         <span class="hide-menu">Acessos</span>
                     </a>
-                    <a class="sidebar-link" href="{{ route('home-noticias') }}" aria-expanded="false">
+                    <a class="sidebar-link" href="{{ route('home') }}" aria-expanded="false">
                         <span class="d-flex">
                             <i class="bi bi-newspaper"></i>
                         </span>
@@ -76,12 +76,12 @@
                         alt="modernize-img">
                 </div>
                 <div class="john-title">
-                    <h6 class="mb-0 fs-4 fw-semibold">Mathew</h6>
-                    <span class="fs-2">Designer</span>
+                    <h6 class="mb-0 fs-4 fw-semibold">{{ Auth::user()->name }}</h6>
+                    <span class="fs-2">Dev/Designer</span>
                 </div>
                 <button class="border-0 bg-transparent text-primary ms-auto" tabindex="0" type="button"
                     aria-label="logout" data-bs-toggle="tooltip" data-bs-placement="top" data-bs-title="logout">
-                    <i class="ti ti-power fs-6"></i>
+                    <i class="bi bi-power"></i>
                 </button>
             </div>
         </div>
