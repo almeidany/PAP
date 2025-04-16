@@ -3,6 +3,9 @@
 use Illuminate\Support\Facades\Route;
 use Illuminate\Support\Facades\Auth;
 
+// Redireciona a raiz para /home
+Route::redirect('/', '/home');
+
 //Index Front
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
 
@@ -23,5 +26,8 @@ Route::get('/concursos', [App\Http\Controllers\FrontController::class, 'contests
 
 //Backoffice
 Route::get('/membros', [App\Http\Controllers\MemberController::class, 'index'])->name('members');
+
+Route::get('/projetos', [App\Http\Controllers\ProjectController::class, 'index'])->name('projects');
+Route::get('/projetos/criar', [App\Http\Controllers\ProjectController::class, 'create'])->name('projects.create');
 
 Auth::routes();

@@ -31,7 +31,7 @@
                             <a href="javascript:void(0)"
                                 class="d-flex align-items-center gap-2 py-3 px-4 dropdown-item">
                                 <div class="position-relative">
-                                    <img src="./assets/images/svgs/icon-flag-en.svg" alt="modernize-img" width="20px"
+                                    <img src="{{ asset('assets/images/svgs/icon-flag-en.svg') }}" alt="modernize-img" width="20px"
                                         height="20px" class="rounded-circle object-fit-cover round-20">
                                 </div>
                                 <p class="mb-0 fs-3">English (UK)</p>
@@ -39,10 +39,10 @@
                             <a href="javascript:void(0)"
                                 class="d-flex align-items-center gap-2 py-3 px-4 dropdown-item">
                                 <div class="position-relative">
-                                    <img src="./assets/images/svgs/icon-flag-pt.svg" alt="modernize-img" width="20px"
+                                    <img src="{{ asset('assets/images/svgs/icon-flag-pt.svg') }}" alt="modernize-img" width="20px"
                                         height="20px" class="rounded-circle object-fit-cover round-20">
                                 </div>
-                                <p class="mb-0 fs-3">Potuguês (Portugal)</p>
+                                <p class="mb-0 fs-3">Português (Portugal)</p>
                             </a>
                         </div>
                     </div>
@@ -52,14 +52,13 @@
                 <!-- ------------------------------- -->
 
                 <!-- ------------------------------- -->
-                <!-- ------------------------------- -->
                 <!-- start profile Dropdown -->
                 <!-- ------------------------------- -->
                 <li class="nav-item dropdown">
                     <a class="nav-link pe-0" href="javascript:void(0)" id="drop1" aria-expanded="false">
                         <div class="d-flex align-items-center">
                             <div class="user-profile-img">
-                                <img src="./assets/images/profile/user-1.jpg" class="rounded-circle" width="35"
+                                <img src="{{ asset('assets/images/profile/user-1.jpg') }}" class="rounded-circle" width="35"
                                     height="35" alt="modernize-img">
                             </div>
                         </div>
@@ -71,21 +70,21 @@
                                 <h5 class="mb-0 fs-5 fw-semibold">User Profile</h5>
                             </div>
                             <div class="d-flex align-items-center py-9 mx-7 border-bottom">
-                                <img src="./assets/images/profile/user-1.jpg" class="rounded-circle" width="80"
+                                <img src="{{ asset('assets/images/profile/user-1.jpg') }}" class="rounded-circle" width="80"
                                     height="80" alt="modernize-img">
-                                    <div class="ms-3">
-                                        <h5 class="mb-1 fs-3">{{ Auth::user()->name }}</h5>
-                                        <span class="mb-1 d-block">Dev/Designer</span>
-                                        <p class="mb-0 d-flex align-items-center gap-2">
-                                            <i class="bi bi-envelope"></i> {{ Auth::user()->email }}
-                                        </p>
-                                    </div>                                    
+                                <div class="ms-3">
+                                    <h5 class="mb-1 fs-3">{{ Auth::user()->name }}</h5>
+                                    <span class="mb-1 d-block">Dev/Designer</span>
+                                    <p class="mb-0 d-flex align-items-center gap-2">
+                                        <i class="bi bi-envelope"></i> {{ Auth::user()->email }}
+                                    </p>
+                                </div>                                    
                             </div>
                             <div class="message-body">
                                 <a href="page-user-profile.html" class="py-8 px-7 mt-8 d-flex align-items-center">
                                     <span
                                         class="d-flex align-items-center justify-content-center text-bg-light rounded-1 p-6">
-                                        <img src="./assets/images/svgs/icon-account.svg" alt="modernize-img"
+                                        <img src="{{ asset('assets/images/svgs/icon-account.svg') }}" alt="modernize-img"
                                             width="24" height="24">
                                     </span>
                                     <div class="w-100 ps-3">

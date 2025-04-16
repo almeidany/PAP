@@ -2,7 +2,7 @@
     <div class="container">
         <nav class="navbar navbar-expand-lg navbar-dark p-0">
             <a href="{{ route('home') }}" class="navbar-brand">
-                <img src="/assets/img/logo.png" alt="Logo" class="img-fluid">
+                <img src="{{ asset('/assets/img/logo.png') }}" alt="Logo" class="img-fluid">
             </a>
             <div class="collapse navbar-collapse" id="navbarCollapse">
                 <div class="navbar-nav ms-auto">

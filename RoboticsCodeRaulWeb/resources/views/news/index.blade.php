@@ -38,9 +38,6 @@
     <script src="./assets/js/theme/app.min.js"></script>
     <script src="./assets/js/theme/sidebarmenu.js"></script>
 
-    <!-- solar icons -->
-    <script src="./././npm/iconify-icon%401.0.8/dist/iconify-icon.min.js"></script>
-
     <!-- highlight.js (code view) -->
     <script src="./assets/js/highlights/highlight.min.js"></script>
     <script>
