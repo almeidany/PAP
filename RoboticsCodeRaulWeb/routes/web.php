@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\BackController;
 use Illuminate\Support\Facades\Route;
 use Illuminate\Support\Facades\Auth;
 
@@ -10,8 +11,9 @@ Route::redirect('/', '/home');
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
 
 //Index Back
-Route::get('/dashboard', [App\Http\Controllers\BackController::class, 'index'])->name('dashboard');
+Route::get('/dashboard', [BackController::class, 'index'])->name('dashboard');
 
+//Auth
 Route::get('/register', [App\Http\Controllers\Auth\RegisterController::class, 'showRegistrationForm'])->name('register');
 Route::post('/register', [App\Http\Controllers\Auth\RegisterController::class, 'register']);
 
