@@ -35,19 +35,19 @@
                         </span>
                         <span class="hide-menu">Projetos</span>
                     </a>
-                    <a class="sidebar-link" href="{{ route('home') }}" aria-expanded="false">
+                    <a class="sidebar-link" href="{{ route('members') }}" aria-expanded="false">
                         <span class="d-flex">
                             <i class="bi bi-people"></i>
                         </span>
                         <span class="hide-menu">Alunos</span>
                     </a>
-                    <a class="sidebar-link" href="{{ route('home') }}" aria-expanded="false">
+                    <a class="sidebar-link" href="{{ route('access') }}" aria-expanded="false">
                         <span class="d-flex">
                             <i class="bi bi-info"></i>
                         </span>
                         <span class="hide-menu">Acessos</span>
                     </a>
-                    <a class="sidebar-link" href="{{ route('home') }}" aria-expanded="false">
+                    <a class="sidebar-link" href="{{ route('news') }}" aria-expanded="false">
                         <span class="d-flex">
                             <i class="bi bi-newspaper"></i>
                         </span>

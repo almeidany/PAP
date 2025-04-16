@@ -15,5 +15,5 @@
     
     <link href="{{ asset('assets/img/favpng.png') }}" rel="icon">
 
-    <link rel="stylesheet" href="{{ asset('assets/css/createProject.css') }}">
+    <link rel="stylesheet" href="{{ asset('assets/css/create.css') }}">
 </head>

@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+﻿<!DOCTYPE html>
 <html lang="en" dir="ltr" data-bs-theme="light" data-color-theme="Blue_Theme" data-layout="vertical">
 
 @include('layouts.backoffice.projects.head')
@@ -18,13 +18,6 @@
 
 
             </div>
-            <!-- Div para o botão no canto inferior esquerdo -->
-            <div class="fixed-bottom-left">
-                <button class="btn btn-primary p-3 rounded-circle d-flex align-items-center justify-content-center" type="button"
-                    onclick="window.location.href='{{ route('members.create') }}'">
-                    <i class="bi bi-plus fs-7"></i>
-                </button>
-            </div>
             @include('layouts.backoffice.Settings_Script')
         </div>
     </div>
@@ -37,9 +30,6 @@
     <script src="{{ asset('assets/js/theme/theme.js') }}"></script>
     <script src="{{ asset('assets/js/theme/app.min.js') }}"></script>
     <script src="{{ asset('assets/js/theme/sidebarmenu.js') }}"></script>
-    
-    <!-- Solar Icons -->
-    <script src="{{ asset('npm/iconify-icon%401.0.8/dist/iconify-icon.min.js') }}"></script>
     
     <!-- highlight.js (code view) -->
     <script src="{{ asset('assets/js/highlights/highlight.min.js') }}"></script>

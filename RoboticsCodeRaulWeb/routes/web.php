@@ -11,7 +11,7 @@ Route::redirect('/', '/home');
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
 
 //Index Back
-Route::get('/dashboard', [BackController::class, 'index'])->name('dashboard');
+Route::get('/dashboard', [App\Http\Controllers\BackController::class, 'index'])->name('dashboard');
 
 //Auth
 Route::get('/register', [App\Http\Controllers\Auth\RegisterController::class, 'showRegistrationForm'])->name('register');
@@ -27,9 +27,22 @@ Route::get('/sobre-nos', [App\Http\Controllers\FrontController::class, 'about_us
 Route::get('/concursos', [App\Http\Controllers\FrontController::class, 'contests'])->name('contests');
 
 //Backoffice
+Route::get('/acessos', [App\Http\Controllers\AccessController::class, 'index'])->name('access');
+
 Route::get('/membros', [App\Http\Controllers\MemberController::class, 'index'])->name('members');
+Route::get('/membros/criar', [App\Http\Controllers\MemberController::class, 'create'])->name('members.create');
+Route::post('/membros', [App\Http\Controllers\MemberController::class, 'store'])->name('members.store');
+Route::get('/membros/{members}', [App\Http\Controllers\MemberController::class, 'show'])->name('members.show');
+
+Route::get('noticias', [App\Http\Controllers\NewsController::class, 'index'])->name('news');
+Route::get('noticias/criar', [App\Http\Controllers\NewsController::class, 'create'])->name('news.create');
+Route::post('noticias', [App\Http\Controllers\NewsController::class, 'store'])->name('news.store');
+Route::get('noticias/{news}', [App\Http\Controllers\NewsController::class, 'show'])->name('news.show');
 
 Route::get('/projetos', [App\Http\Controllers\ProjectController::class, 'index'])->name('projects');
 Route::get('/projetos/criar', [App\Http\Controllers\ProjectController::class, 'create'])->name('projects.create');
+Route::post('/projetos', [App\Http\Controllers\ProjectController::class, 'store'])->name('projects.store');
+Route::get('/projetos/{projects}', [App\Http\Controllers\ProjectController::class, 'show'])->name('projects.show');
+
 
 Auth::routes();

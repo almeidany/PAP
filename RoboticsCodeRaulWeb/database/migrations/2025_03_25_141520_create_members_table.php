@@ -13,10 +13,22 @@ return new class extends Migration
     {
         Schema::create('members', function (Blueprint $table) {
             $table->id();
+            $table->string('first_name');
+            $table->string('last_name');
+            $table->numeric('schoolnumber')->unique();
+            $table->date('birth_date');
+            $table->string('email')->unique();
+            $table->unsignedBigInteger('phonenumber')->unique();
+            $table->string('class');
+            $table->string('tshirt_size');
+            $table->string('food_allergies');
+            $table->string('image_authorization');
+            $table->string('food_allergies')->nullable();
+            $table->string('allergies_description')->nullable();
+            $table->string('profile_photo')->nullable();
             $table->timestamps();
         });
     }
-
     /**
      * Reverse the migrations.
      */

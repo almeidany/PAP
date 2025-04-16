@@ -1,16 +1,16 @@
 ﻿<!DOCTYPE html>
 <html lang="en" dir="ltr" data-bs-theme="light" data-color-theme="Blue_Theme" data-layout="vertical">
 
-@include('layouts.head_CriarNoticias')
+@include('layouts.backoffice.head')
 
 <body>
     <div id="main-wrapper">
-        @include('layouts.sidebarHome')
+        @include('layouts.backoffice.sidebar')
         <div class="page-wrapper">
             <!--  Header Start -->
             <header class="topbar">
                 <div class="with-vertical">
-                    @include('layouts.nav_Home')
+                    @include('layouts.backoffice.nav')
                 </div>
             </header>
             <!--  Header End -->
@@ -42,13 +42,13 @@
                     <!-- Centralizar botões -->
                     <div class="form-actions text-center">
                       <button type="submit" class="btn btn-primary" style="margin-bottom: 25px;">Submeter</button>
-                      <button type="button" class="btn bg-danger-subtle text-danger ms-2" style="margin-bottom: 25px;" onclick="window.location.href='{{ route('home-noticias') }}'">Cancelar</button>
+                      <button type="button" class="btn bg-danger-subtle text-danger ms-2" style="margin-bottom: 25px;" onclick="window.location.href='{{ route('news') }}'">Cancelar</button>
                     </div>
                   </div>
                 </div>
               </div>
             </div>
-            @include('layouts.Settings&Script')
+            @include('layouts.backoffice.Settings_Script')
         </div>
     </div>
     <div class="dark-transparent sidebartoggler"></div>
