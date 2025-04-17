@@ -14,9 +14,8 @@
                 </div>
             </header>
             <!--  Header End -->
-            <div class="body-wrapper">
-
-
+            <div class="body-wrapper" style="display: flex; justify-content: center; align-items: center; height: 100vh; margin: 0; background-color: #f8f9fa;">
+                <img src="{{ asset('assets/images/access/qrcode.png') }}" style="max-width: 100%; height: auto;">
             </div>
             @include('layouts.backoffice.Settings_Script')
         </div>

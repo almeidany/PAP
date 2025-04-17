@@ -19,6 +19,7 @@ return new class extends Migration
             $table->date('birth_date');
             $table->string('email')->unique();
             $table->unsignedBigInteger('phonenumber')->unique();
+            $table->string('class');
             $table->string('tshirt_size');
             $table->string('food_allergies');
             $table->string('image_authorization');
@@ -27,6 +28,7 @@ return new class extends Migration
             $table->timestamps();
         });
     }
+
     /**
      * Reverse the migrations.
      */

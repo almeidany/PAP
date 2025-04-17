@@ -77,7 +77,7 @@
                                         <div class="mb-3">
                                             <label class="form-label">Github</label>
                                             <input type="url" name="github_url" class="form-control @error('github_url') is-invalid @enderror" 
-                                                   placeholder="https://github.com/usuario/projeto"
+                                                   placeholder="https://github.com/utilizador/projeto"
                                                    value="{{ old('github_url') }}"
                                                    pattern="https:\/\/github\.com\/.+" required>
                                             @error('github_url')
