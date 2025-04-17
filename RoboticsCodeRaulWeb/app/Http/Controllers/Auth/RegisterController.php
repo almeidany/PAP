@@ -29,10 +29,7 @@ class RegisterController extends Controller
             'name' => ['required', 'string', 'max:255', 'regex:/^[a-zA-Z\s]+$/'],
             'email' => ['required', 'string', 'email', 'max:255', 'unique:users', 'regex:/^[a-zA-Z0-9._%+-]+@aerp\.pt$/'],
             'password' => ['required', 'string', 'min:8', 'confirmed'],
-        ], [
-            'name.regex' => 'O nome não pode conter números.',
-            'email.regex' => 'O email deve ser um endereço @aerp.pt.',
-        ]);
+        ],);
     }
 
     protected function create(array $data)

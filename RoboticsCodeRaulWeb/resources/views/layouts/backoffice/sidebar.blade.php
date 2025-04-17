@@ -17,23 +17,11 @@
         <nav class="sidebar-nav scroll-sidebar" data-simplebar="">
             <ul id="sidebarnav">
                 <li class="sidebar-item">
-                    <a class="sidebar-link" href="{{ route('dashboard') }}" aria-expanded="false">
+                    <a class="sidebar-link" href="{{ route('access') }}" aria-expanded="false">
                         <span class="d-flex">
-                            <i class="bi bi-house-door"></i>
+                            <i class="bi bi-info"></i>
                         </span>
-                        <span class="hide-menu">Página Inicial</span>
-                    </a>
-                    <a class="sidebar-link" href="{{ route('home') }}" aria-expanded="false">
-                        <span class="d-flex">
-                            <i class="bi bi-house-door"></i>
-                        </span>
-                        <span class="hide-menu">Homepage</span>
-                    </a>
-                    <a class="sidebar-link" href="{{ route('projects') }}" aria-expanded="false">
-                        <span class="d-flex">
-                            <i class="bi bi-box-seam"></i>
-                        </span>
-                        <span class="hide-menu">Projetos</span>
+                        <span class="hide-menu">Acessos</span>
                     </a>
                     <a class="sidebar-link" href="{{ route('members') }}" aria-expanded="false">
                         <span class="d-flex">
@@ -41,17 +29,29 @@
                         </span>
                         <span class="hide-menu">Alunos</span>
                     </a>
-                    <a class="sidebar-link" href="{{ route('access') }}" aria-expanded="false">
+                    <a class="sidebar-link" href="{{ route('home') }}" aria-expanded="false" target="_blank">
                         <span class="d-flex">
-                            <i class="bi bi-info"></i>
+                            <i class="bi bi-house-door"></i>
                         </span>
-                        <span class="hide-menu">Acessos</span>
+                        <span class="hide-menu">Homepage</span>
                     </a>
                     <a class="sidebar-link" href="{{ route('news') }}" aria-expanded="false">
                         <span class="d-flex">
                             <i class="bi bi-newspaper"></i>
                         </span>
                         <span class="hide-menu">Noticias</span>
+                    </a>
+                    <a class="sidebar-link" href="{{ route('dashboard') }}" aria-expanded="false">
+                        <span class="d-flex">
+                            <i class="bi bi-pin-angle"></i>
+                        </span>
+                        <span class="hide-menu">Página Inicial</span>
+                    </a>
+                    <a class="sidebar-link" href="{{ route('projects') }}" aria-expanded="false">
+                        <span class="d-flex">
+                            <i class="bi bi-box-seam"></i>
+                        </span>
+                        <span class="hide-menu">Projetos</span>
                     </a>
                 </li>
             </ul>

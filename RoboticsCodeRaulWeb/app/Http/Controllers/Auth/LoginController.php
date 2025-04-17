@@ -39,9 +39,7 @@ class LoginController extends Controller
         $request->validate([
             'email' => 'required|string|email|regex:/^[a-zA-Z0-9._%+-]+@aerp\.pt$/',
             'password' => 'required|string|min:8',
-        ], [
-            'email.regex' => 'O email deve ser um endereço @aerp.pt',
-        ]);
+        ],);
     }
 
     /**

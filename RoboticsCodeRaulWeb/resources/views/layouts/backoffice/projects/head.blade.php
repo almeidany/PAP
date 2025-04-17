@@ -16,4 +16,7 @@
     <link href="{{ asset('assets/img/favpng.png') }}" rel="icon">
 
     <link rel="stylesheet" href="{{ asset('assets/css/create.css') }}">
+
+    <link rel="stylesheet" href="{{ asset('/assets/libs/datatables.net-bs5/css/dataTables.bootstrap5.min.css') }}">
+    <link rel="stylesheet" href="{{ asset('/assets/libs/datatables.net-buttons-bs5/css/buttons.bootstrap5.min.css') }}">
 </head>

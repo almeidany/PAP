@@ -13,9 +13,11 @@
                     @include('layouts.backoffice.nav')
                 </div>
             </header>
-            <!--  Header End -->
             <div class="body-wrapper" style="display: flex; justify-content: center; align-items: center; height: 100vh; margin: 0; background-color: #f8f9fa;">
-                <img src="{{ asset('assets/images/access/qrcode.png') }}" style="max-width: 100%; height: auto;">
+                <img src="{{ asset('assets/images/access/qrcode.png') }}" style="max-width: 100%; height: auto;" class="d-none d-md-block">
+                <a href="https://linktr.ee/RoboticsCodeRaul_Acessos/" class="btn btn-primary form-control d-md-none" style="max-width: 300px; text-align: center;">
+                    Ir para os Acessos
+                </a>
             </div>
             @include('layouts.backoffice.Settings_Script')
         </div>

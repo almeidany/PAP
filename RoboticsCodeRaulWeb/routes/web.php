@@ -29,10 +29,16 @@ Route::get('/concursos', [App\Http\Controllers\FrontController::class, 'contests
 //Backoffice
 Route::get('/acessos', [App\Http\Controllers\AccessController::class, 'index'])->name('access');
 
+Route::get('/conta', [App\Http\Controllers\AccountController::class, 'index'])->name('account');
+
+// web.php
 Route::get('/membros', [App\Http\Controllers\MemberController::class, 'index'])->name('members');
 Route::get('/membros/criar', [App\Http\Controllers\MemberController::class, 'create'])->name('members.create');
 Route::post('/membros', [App\Http\Controllers\MemberController::class, 'store'])->name('members.store');
-Route::get('/membros/{members}', [App\Http\Controllers\MemberController::class, 'show'])->name('members.show');
+Route::get('/membros/{member}', [App\Http\Controllers\MemberController::class, 'show'])->name('members.show');
+Route::get('/membros/{member}/editar', [App\Http\Controllers\MemberController::class, 'edit'])->name('members.edit');
+Route::put('/membros/{member}', [App\Http\Controllers\MemberController::class, 'update'])->name('members.update');
+Route::delete('/membros/{member}', [App\Http\Controllers\MemberController::class, 'destroy'])->name('members.destroy');
 
 Route::get('noticias', [App\Http\Controllers\NewsController::class, 'index'])->name('news');
 Route::get('noticias/criar', [App\Http\Controllers\NewsController::class, 'create'])->name('news.create');

@@ -61,9 +61,6 @@
     <script src="{{ asset('assets/js/theme/app.min.js') }}"></script>
     <script src="{{ asset('assets/js/theme/sidebarmenu.js') }}"></script>
     
-    <!-- Solar Icons -->
-    <script src="{{ asset('npm/iconify-icon%401.0.8/dist/iconify-icon.min.js') }}"></script>
-    
     <!-- highlight.js (code view) -->
     <script src="{{ asset('assets/js/highlights/highlight.min.js') }}"></script>
     <script>
