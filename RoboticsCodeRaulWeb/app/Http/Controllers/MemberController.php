@@ -131,17 +131,16 @@ class MemberController extends Controller
         $request->validate([
             'first_name' => 'required|string|max:25',
             'last_name' => 'required|string|max:25',
-            'schoolnumber' => 'required|numeric|digits_between:5,6|unique:members,schoolnumber',
+            'schoolnumber' => 'required|numeric|digits_between:5,6|',
             'birth_date' => 'required|date',
-            'email' => ['required', 'email', 'regex:/^[a-zA-Z0-9._%+-]+@aerp\.pt$/', 'max:100', 'unique:member,email'],
-            'phonenumber' => 'required|numeric|digits:9|unique:members,phonenumber',
+            'email' => 'required|email|regex:/^[a-zA-Z0-9._%+-]+@aerp\.pt$/|max:100',
+            'phonenumber' => 'required|numeric|digits:9',
             'class' => 'required',
             'tshirt_size' => 'required',
             'food_allergies' => 'required',
             'image_authorization' => 'required',
             'allergies_description' => 'nullable|string|max:400',
-            'otheralergies' => 'nullable|string',
-            'profile_photo' => 'nullable|image|mimes:jpeg,png,jpg|max:10920',
+            'profile_photo' => 'nullable|image|mimes:jpeg,png,jpg|max:11920',
         ]);
         $member = new Member();
         $member->first_name = $request->input('first_name');
@@ -155,7 +154,7 @@ class MemberController extends Controller
         $member->food_allergies = $request->input('food_allergies');
         $member->image_authorization = $request->input('image_authorization');
         $member->allergies_description = $request->input('allergies_description');
-        $member->otheralergies = $request->input('otheralergies');
+
         if ($request->hasFile('profile_photo')) {
             $file = $request->file('profile_photo');
             $originalName = $file->getClientOriginalName();
