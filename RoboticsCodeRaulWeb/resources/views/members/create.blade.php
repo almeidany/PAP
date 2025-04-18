@@ -19,7 +19,7 @@
                 <div class="container-fluid">
                     <div class="card">
                         <div class="card-header text-bg-primary">
-                            <h4 class="mb-0 text-white text-center">Adicionar Aluno</h4>
+                            <h4 class="mb-0 text-white text-center">Adicionar Membro</h4>
                         </div>
                         
                         <div class="card-body">
@@ -177,11 +177,12 @@
                                     <div class="col-md-6">
                                         <div class="mb-3">
                                             <label class="form-label">Foto de Perfil</label>
-                                            <input type="file" class="form-control @error('profile_photo') is-invalid @enderror" name="profile_photo">
+                                            <div class="custom-file">
+                                                <input type="file" class="form-control @error('profile_photo') is-invalid @enderror" name="profile_photo">
+                                            </div>
                                             @error('profile_photo')
                                                 <div class="invalid-feedback">{{ $message }}</div>
                                             @enderror
-                                        </div>
                                     </div>
                                 </div>
                         

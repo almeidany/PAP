@@ -160,12 +160,38 @@ class MemberController extends Controller
         if ($request->hasFile('profile_photo')) {
             $file = $request->file('profile_photo');
             $originalName = $file->getClientOriginalName();
-            $extension = pathinfo($originalName, PATHINFO_EXTENSION);
-            $designation = preg_replace(array("/(á|à|ã|â|ä)/", "/(Á|À|Ã|Â|Ä)/", "/(é|è|ê|ë)/", "/(É|È|Ê|Ë)/", "/(í|ì|î|ï)/", "/(Í|Ì|Î|Ï)/", "/(ó|ò|õ|ô|ö)/", "/(Ó|Ò|Õ|Ô|Ö)/", "/(ú|ù|û|ü)/", "/(Ú|Ù|Û|Ü)/", "/(ñ)/", "/(Ñ)/"), explode(" ", "a A e E i I o O u U n N"), $member->name);
-            $designation = str_replace(' ', '', $designation);
-            $name = $designation . "." . $extension;
-            $member->photo = $name;
+            $extension = $file->getClientOriginalExtension();
+
+            // Normaliza o nome removendo acentos, espaços e caracteres especiais
+            $designation = preg_replace(
+                array(
+                    "/(á|à|ã|â|ä)/",
+                    "/(Á|À|Ã|Â|Ä)/",
+                    "/(é|è|ê|ë)/",
+                    "/(É|È|Ê|Ë)/",
+                    "/(í|ì|î|ï)/",
+                    "/(Í|Ì|Î|Ï)/",
+                    "/(ó|ò|õ|ô|ö)/",
+                    "/(Ó|Ò|Õ|Ô|Ö)/",
+                    "/(ú|ù|û|ü)/",
+                    "/(Ú|Ù|Û|Ü)/",
+                    "/(ñ)/",
+                    "/(Ñ)/",
+                    "/(ç)/",
+                    "/(Ç)/"
+                ),
+                explode(" ", "a A e E i I o O u U n N c C"),
+                pathinfo($originalName, PATHINFO_FILENAME)
+            );
+
+            $designation = preg_replace('/[^A-Za-z0-9\-]/', '', $designation); // Remove caracteres especiais
+            $name = $designation . '_' . time() . '.' . $extension; // Adiciona timestamp para evitar conflitos
+
+            // Armazena o arquivo no local correto
             $file->storeAs('public/images/members', $name);
+
+            // Salva o nome do arquivo no banco de dados
+            $member->profile_photo = $name;
         }
         $member->save();
         return redirect()->route('members')->with('Sucesso', 'Membro criado com sucesso!');
@@ -176,6 +202,106 @@ class MemberController extends Controller
     public function show(Member $member)
     {
         //
+        $classes = array(
+            // 7º Ano
+            '7ºA' => '7ºA',
+            '7ºB' => '7ºB',
+            '7ºC' => '7ºC',
+            '7ºD' => '7ºD',
+            '7ºE' => '7ºE',
+            '7ºF' => '7ºF',
+            '7ºG' => '7ºG',
+            '7ºH' => '7ºH',
+
+            // 8º Ano
+            '8ºA' => '8ºA',
+            '8ºB' => '8ºB',
+            '8ºC' => '8ºC',
+            '8ºD' => '8ºD',
+            '8ºE' => '8ºE',
+            '8ºF' => '8ºF',
+            '8ºG' => '8ºG',
+            '8ºH' => '8ºH',
+
+            // 9º Ano
+            '9ºA' => '9ºA',
+            '9ºB' => '9ºB',
+            '9ºC' => '9ºC',
+            '9ºD' => '9ºD',
+            '9ºE' => '9ºE',
+            '9ºF' => '9ºF',
+            '9ºG' => '9ºG',
+            '9ºH' => '9ºH',
+
+            // 10º Ano
+            '10ºAV1' => '10ºAV1',
+            '10ºAV2' => '10ºAV2',
+            '10ºAV3' => '10ºAV3',
+            '10ºAV4' => '10ºAV4',
+            '10ºCS1' => '10ºCS1',
+            '10ºCS2' => '10ºCS2',
+            '10ºCS3' => '10ºCS3',
+            '10ºCS4' => '10ºCS4',
+            '10ºCT1' => '10ºCT1',
+            '10ºCT2' => '10ºCT2',
+            '10ºCT3' => '10ºCT3',
+            '10ºCT4' => '10ºCT4',
+            '10ºLH1' => '10ºLH1',
+            '10ºLH2' => '10ºLH2',
+            '10ºLH3' => '10ºLH3',
+            '10ºLH4' => '10ºLH4',
+
+            // 11º Ano
+            '11ºAV1' => '11ºAV1',
+            '11ºAV2' => '11ºAV2',
+            '11ºAV3' => '11ºAV3',
+            '11ºAV4' => '11ºAV4',
+            '11ºCS1' => '11ºCS1',
+            '11ºCS2' => '11ºCS2',
+            '11ºCS3' => '11ºCS3',
+            '11ºCS4' => '11ºCS4',
+            '11ºCT1' => '11ºCT1',
+            '11ºCT2' => '11ºCT2',
+            '11ºCT3' => '11ºCT3',
+            '11ºCT4' => '11ºCT4',
+            '11ºLH1' => '11ºLH1',
+            '11ºLH2' => '11ºLH2',
+            '11ºLH3' => '11ºLH3',
+            '11ºLH4' => '11ºLH4',
+
+            // 12º Ano
+            '12ºAV1' => '12ºAV1',
+            '12ºAV2' => '12ºAV2',
+            '12ºAV3' => '12ºAV3',
+            '12ºAV4' => '12ºAV4',
+            '12ºCS1' => '12ºCS1',
+            '12ºCS2' => '12ºCS2',
+            '12ºCS3' => '12ºCS3',
+            '12ºCS4' => '12ºCS4',
+            '12ºCT1' => '12ºCT1',
+            '12ºCT2' => '12ºCT2',
+            '12ºCT3' => '12ºCT3',
+            '12ºCT4' => '12ºCT4',
+            '12ºLH1' => '12ºLH1',
+            '12ºLH2' => '12ºLH2',
+            '12ºLH3' => '12ºLH3',
+            '12ºLH4' => '12ºLH4',
+
+            // PSI
+            '1PSI' => '1PSI',
+            '2PSI' => '2PSI',
+            '3PSI' => '3PSI'
+        );
+
+        $sizes = array(
+            "XS" => "XS",
+            "S" => "S",
+            "M" => "M",
+            "L" => "L",
+            "XL" => "XL",
+            "XXL" => "XXL"
+        );
+        return view('members.show', compact('member', 'classes', 'sizes'))->with(['readonly' => true, 'disabled' => true]);
     }
 
     /**
@@ -320,8 +446,8 @@ class MemberController extends Controller
         if ($request->hasFile('profile_photo')) {
             $file = $request->file('profile_photo');
             $name = time() . '_' . $file->getClientOriginalName();
-            $file->storeAs('public/images/members', $name);
-            $member->photo = $name;
+            $file->storeAs('public/storage/images/members', $name); // Salva o arquivo no local correto
+            $member->profile_photo = $name;  // Alterado de 'photo' para 'profile_photo'
         }
         $member->save();
         return redirect()->route('members', $member->id)->with('message', 'Membro atualizado com sucesso!');

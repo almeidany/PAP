@@ -23,17 +23,17 @@
                         </span>
                         <span class="hide-menu">Acessos</span>
                     </a>
-                    <a class="sidebar-link" href="{{ route('members') }}" aria-expanded="false">
-                        <span class="d-flex">
-                            <i class="bi bi-people"></i>
-                        </span>
-                        <span class="hide-menu">Alunos</span>
-                    </a>
                     <a class="sidebar-link" href="{{ route('home') }}" aria-expanded="false" target="_blank">
                         <span class="d-flex">
                             <i class="bi bi-house-door"></i>
                         </span>
                         <span class="hide-menu">Homepage</span>
+                    </a>
+                    <a class="sidebar-link" href="{{ route('members') }}" aria-expanded="false">
+                        <span class="d-flex">
+                            <i class="bi bi-people"></i>
+                        </span>
+                        <span class="hide-menu">Membros</span>
                     </a>
                     <a class="sidebar-link" href="{{ route('news') }}" aria-expanded="false">
                         <span class="d-flex">

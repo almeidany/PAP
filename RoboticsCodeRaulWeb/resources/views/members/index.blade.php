@@ -26,6 +26,7 @@
                             @endif
                             <div class="table-responsive">
                                 <table id="zero_config" class="table table-striped table-bordered text-center">
+                                    <h4 class="card-title">Lista de Membros</h4>
                                     <thead>
                                         <tr>
                                             <th scope="col" class="px-0 text-muted text-center">Nome</th>
@@ -72,14 +73,12 @@
                                                 <form id="deleteMember{{ $member->id }}" action="{{route('members.destroy', $member->id)}}" method="POST">
                                                     @csrf
                                                     @method('DELETE')
-                                                    <button type="submit" class="btn btn-danger"><i class="ri-delete-bin-line"></i></button>
-                
+                                                    <button type="submit" class="btn btn-danger"><i class="bi bi-person-x"></i></button>
                                                     <a href="{{ route('members.edit', $member->id) }}" class="btn btn-warning">
-                                                        <i class="ri-pencil-line"></i>
+                                                        <i class="bi bi-pencil"></i>
                                                     </a>
-                
                                                     <a href="{{ route('members.show', $member->id) }}" class="btn btn-info">
-                                                        <i class="ri-eye-line"></i>
+                                                        <i class="bi bi-eye"></i>
                                                     </a>
                                                 </form>
                                             </td>
