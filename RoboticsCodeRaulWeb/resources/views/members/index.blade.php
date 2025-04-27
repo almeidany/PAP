@@ -73,7 +73,9 @@
                                                 <form id="deleteMember{{ $member->id }}" action="{{route('members.destroy', $member->id)}}" method="POST">
                                                     @csrf
                                                     @method('DELETE')
-                                                    <button type="submit" class="btn btn-danger"><i class="bi bi-person-x"></i></button>
+                                                    <button type="submit" class="btn btn-danger" onclick="return confirm('Tem certeza que deseja excluir este membro?')">
+                                                        <i class="bi bi-person-x"></i>
+                                                    </button>
                                                     <a href="{{ route('members.edit', $member->id) }}" class="btn btn-warning">
                                                         <i class="bi bi-pencil"></i>
                                                     </a>

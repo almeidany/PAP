@@ -63,13 +63,13 @@
                 </div>
                 <div class="john-title">
                     <h6 class="mb-0 fs-4 fw-semibold">
-                        @if (Auth::check())
+                        {{-- @if (Auth::check())
                             {{ Auth::user()->name }}
                         @else
                             <script>
                                 window.location.href = "{{ route('login') }}";
                             </script>
-                        @endif
+                        @endif --}}
                     </h6>
                     <span class="fs-2">Dev/Designer</span>
                 </div>

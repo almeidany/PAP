@@ -74,24 +74,24 @@
                                     height="80" alt="modernize-img">
                                 <div class="ms-3">
                                     <h5 class="mb-1 fs-3">
-                                        @if (Auth::check())
+                                        {{-- @if (Auth::check())
                                             {{ Auth::user()->name }}
                                         @else
                                             <script>
                                                 window.location.href = "{{ route('login') }}";
                                             </script>
-                                        @endif
+                                        @endif --}}
                                     </h5>
                                     <span class="mb-1 d-block">Dev/Designer</span>
                                     <p class="mb-0 d-flex align-items-center gap-2">
                                         <i class="bi bi-envelope"></i>
-                                        @if (Auth::check())
+                                        {{-- @if (Auth::check())
                                             {{ Auth::user()->email }}
                                         @else
                                             <script>
                                                 window.location.href = "{{ route('login') }}";
                                             </script>
-                                        @endif
+                                        @endif --}}
                                     </p>
                                 </div>                                    
                             </div>
