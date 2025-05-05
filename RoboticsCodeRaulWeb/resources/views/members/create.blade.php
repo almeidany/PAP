@@ -220,5 +220,6 @@
     <script src="{{ asset('assets/libs/owl.carousel/dist/owl.carousel.min.js') }}"></script>
     <script src="{{ asset('assets/libs/apexcharts/dist/apexcharts.min.js') }}"></script>
     <script src="{{ asset('assets/js/dashboards/dashboard.js') }}"></script>
+    <script src="{{ asset('assets/js/fp_members.js') }}"></script>
 </body>
 </html>

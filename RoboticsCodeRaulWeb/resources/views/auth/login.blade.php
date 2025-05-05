@@ -26,10 +26,11 @@
                 @endif
                 <button type="submit" class="mt-3">Entrar</button>
             </form>
-            <form window.location.href='{{ route('register') }}'>
-                @csrf
-                <button type="submit" class="btn btn-outline-primary">Ir para o registo</button>
-            </form> 
+            <div class="mt-4 text-center">
+                <button type="button" class="mt-3 btn btn-outline-primary" onclick="window.location.href='{{ route('register') }}'">
+                    Criar Nova Conta
+                </button>
+            </div>
         </div>
     </div>
 </body>

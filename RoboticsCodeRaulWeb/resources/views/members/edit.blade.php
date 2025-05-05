@@ -136,6 +136,26 @@
                                         <div class="row">
                                             <div class="col-md-6">
                                                 <div class="mb-3">
+                                                    <label class="form-label">Alergias Alimentares <span class="text-danger"></span></label>
+                                                    <div class="d-flex align-items-center">
+                                                        <div class="form-check me-3">
+                                                            <input class="form-check-input" type="radio" name="food_allergies" id="alergiasSim" 
+                                                                   value="sim" {{ old('food_allergies', $member->food_allergies) === 'sim' ? 'checked' : '' }} required>
+                                                            <label class="form-check-label" for="alergiasSim">Sim</label>
+                                                        </div>
+                                                        <div class="form-check me-3">
+                                                            <input class="form-check-input" type="radio" name="food_allergies" id="alergiasNao" 
+                                                                   value="nao" {{ old('food_allergies', $member->food_allergies) === 'nao' ? 'checked' : '' }} required>
+                                                            <label class="form-check-label" for="alergiasNao">Não</label>
+                                                        </div>
+                                                    </div>
+                                                    @error('food_allergies')
+                                                        <div class="invalid-feedback d-block">{{ $message }}</div>
+                                                    @enderror
+                                                </div>
+                                            </div>
+                                            <div class="col-md-6">
+                                                <div class="mb-3">
                                                     <label class="form-label">Tenho autorização de imagem? <span class="text-danger"></span></label>
                                                     <div class="d-flex align-items-center">
                                                         <div class="form-check me-3">
@@ -152,26 +172,6 @@
                                                         </div>
                                                     </div>
                                                     @error('image_authorization')
-                                                        <div class="invalid-feedback d-block">{{ $message }}</div>
-                                                    @enderror
-                                                </div>
-                                            </div>
-                                            <div class="col-md-6">
-                                                <div class="mb-3">
-                                                    <label class="form-label">Alergias Alimentares <span class="text-danger"></span></label>
-                                                    <div class="d-flex align-items-center">
-                                                        <div class="form-check me-3">
-                                                            <input class="form-check-input" type="radio" name="food_allergies" id="alergiasSim" 
-                                                                   value="sim" {{ old('food_allergies', $member->food_allergies) === 'sim' ? 'checked' : '' }} required>
-                                                            <label class="form-check-label" for="alergiasSim">Sim</label>
-                                                        </div>
-                                                        <div class="form-check me-3">
-                                                            <input class="form-check-input" type="radio" name="food_allergies" id="alergiasNao" 
-                                                                   value="nao" {{ old('food_allergies', $member->food_allergies) === 'nao' ? 'checked' : '' }} required>
-                                                            <label class="form-check-label" for="alergiasNao">Não</label>
-                                                        </div>
-                                                    </div>
-                                                    @error('food_allergies')
                                                         <div class="invalid-feedback d-block">{{ $message }}</div>
                                                     @enderror
                                                 </div>
@@ -238,5 +238,6 @@
     <script src="{{ asset('assets/libs/owl.carousel/dist/owl.carousel.min.js') }}"></script>
     <script src="{{ asset('assets/libs/apexcharts/dist/apexcharts.min.js') }}"></script>
     <script src="{{ asset('assets/js/dashboards/dashboard.js') }}"></script>
+    <script src="{{ asset('assets/js/fp_members.js') }}"></script>
 </body>
 </html>
