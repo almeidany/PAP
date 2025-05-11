@@ -20,7 +20,7 @@
                 @enderror
             
                 <!-- Último Nome -->
-                <input type="text" name="last_name" id="last_name" {{ old('last_name') }}" placeholder="Último Nome" required class="mb-3 form-field">
+                <input type="text" name="last_name" id="last_name" value="{{ old('last_name') }}" placeholder="Último Nome" required class="mb-3 form-field">
                 @error('last_name')
                     <p class="label-error" style="margin-left: 10px; color: red;">{{ $message }}</p>
                 @enderror
