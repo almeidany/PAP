@@ -19,33 +19,32 @@
                     <div class="card">
                         <div class="card-body">
                             @if(session()->has('message'))
-                                        <div class="alert alert-success alert-dismissible fade show" role="alert">
-                                            <strong>{{ session('message') }}</strong>
-                                            <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
-                                        </div>
+                                <div class="alert alert-success alert-dismissible fade show" role="alert">
+                                    <strong>{{ session('message') }}</strong>
+                                    <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+                                </div>
                             @endif
                             <div class="table-responsive">
                                 <table id="zero_config" class="table table-striped table-bordered text-center">
-                                    <h4 class="card-title">Lista de Membros</h4>
+                                    <h4 class="card-title">Lista de Utilizadores</h4>
                                     <thead>
                                         <tr>
                                             <th scope="col" class="px-0 text-muted text-center">Nome</th>
-                                            <th scope="col" class="px-0 text-muted text-center">Nº Processo</th>
-                                            <th scope="col" class="px-0 text-muted text-center">Turma</th>
-                                            <th scope="col" class="px-0 text-muted text-center">Alergias</th>
+                                            <th scope="col" class="px-0 text-muted text-center">Email</th>
+                                            <th scope="col" class="px-0 text-muted text-center">Nº de Processo</th>
                                             <th scope="col" class="px-0 text-muted text-center">Ações</th>
                                         </tr>
                                     </thead>
                                     <tbody>
-                                        @foreach ($members as $member)
+                                        @foreach ($users as $user)
                                         <tr>
                                             <td class="px-0">
                                                 <div class="d-flex align-items-center justify-content-center">
-                                                    @if($member->photo)  <!-- Verifique se o campo se chama 'photo' ou 'foto' -->
-                                                    <img src="{{ asset('storage/images/members/'.$member->photo) }}" 
+                                                    @if($user->photo)
+                                                    <img src="{{ asset('storage/images/users/'.$user->photo) }}" 
                                                          class="rounded-circle" 
                                                          width="35"
-                                                         alt="{{ $member->first_name }}"/>
+                                                         alt="{{ $user->name }}"/>
                                                     @else
                                                     <img src="{{ asset('assets/images/profile/user-4.jpg') }}" 
                                                          class="rounded-circle" 
@@ -53,33 +52,26 @@
                                                          alt="Default"/>
                                                     @endif
                                                     <div class="ms-3">
-                                                        <h6 class="mb-0 fw-bold">{{ $member->first_name }} {{ $member->last_name }}</h6>
-                                                        <small class="text-muted">{{ \Carbon\Carbon::parse($member->birth_date)->format('d/m/Y') }}</small>
+                                                        <h6 class="mb-0 fw-bold">{{ $user->first_name }} {{ $user->last_name }}</h6>
+                                                        <small class="text-muted">{{ \Carbon\Carbon::parse($user->birth_date)->format('d/m/Y') }}</small>
                                                     </div>
                                                 </div>
                                             </td>
-                                            <td class="px-0">{{ $member->schoolnumber }}</td>
+                                            <td class="px-0">{{ $user->email }}</td>
                                             <td class="px-0">
-                                                <span class="badge bg-info">{{ $member->class }}</span>
-                                            </td>
-                                            <td class="px-0 text-dark font-weight-medium">
-                                                @if($member->food_allergies == 'sim')
-                                                    <span class="badge bg-danger">Sim</span>
-                                                @else
-                                                    <span class="badge bg-success">Não</span>
-                                                @endif
+                                                <small class="text-muted">{{ ($user->schoolnumber) }}</small>
                                             </td>
                                             <td class="px-0">
-                                                <form id="deleteMember{{ $member->id }}" action="{{route('members.destroy', $member->id)}}" method="POST">
+                                                <form id="deleteUser{{ $user->id }}" action="{{route('users.destroy', $user->id)}}" method="POST">
                                                     @csrf
                                                     @method('DELETE')
-                                                    <button type="submit" class="btn btn-danger" onclick="return confirm('Tem certeza que deseja excluir este membro?')">
+                                                    <button type="submit" class="btn btn-danger" onclick="return confirm('Tem certeza que deseja excluir este utilizador?')">
                                                         <i class="bi bi-person-x"></i>
                                                     </button>
-                                                    <a href="{{ route('members.edit', $member->id) }}" class="btn btn-warning">
+                                                    <a href="{{ route('users.edit', $user->id) }}" class="btn btn-warning">
                                                         <i class="bi bi-pencil"></i>
                                                     </a>
-                                                    <a href="{{ route('members.show', $member->id) }}" class="btn btn-info">
+                                                    <a href="{{ route('users.show', $user->id) }}" class="btn btn-info">
                                                         <i class="bi bi-eye"></i>
                                                     </a>
                                                 </form>
@@ -92,13 +84,6 @@
                         </div>
                     </div>
                 </div>
-            </div>
-            <!-- end datatable -->  
-            <div class="fixed-bottom-left">
-                <button class="btn btn-primary p-3 rounded-circle d-flex align-items-center justify-content-center" type="button"
-                    onclick="window.location.href='{{ route('members.create') }}'">
-                    <i class="bi bi-plus fs-7"></i>
-                </button>
             </div>
             @include('layouts.backoffice.Settings_Script')
         </div>

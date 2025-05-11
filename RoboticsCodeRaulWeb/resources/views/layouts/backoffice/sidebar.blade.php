@@ -29,7 +29,7 @@
                         </span>
                         <span class="hide-menu">Homepage</span>
                     </a>
-                    <a class="sidebar-link" href="{{ route('members') }}" aria-expanded="false">
+                     <a class="sidebar-link" href="{{ route('users') }}" aria-expanded="false">
                         <span class="d-flex">
                             <i class="bi bi-people"></i>
                         </span>

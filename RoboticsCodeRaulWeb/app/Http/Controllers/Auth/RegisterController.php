@@ -18,7 +18,7 @@ class RegisterController extends Controller
             'last_name' => 'required|string|max:35',
             'schoolnumber' => 'required|numeric|unique:users',
             'birth_date' => 'required|date',
-            'phonenumber' => 'required|numeric|unique:users',
+            'phonenumber' => 'required|max:9|numeric|unique:users',
             'class' => 'required|string|max:10',
             'tshirt_size' => 'required|string|max:3',
             'food_allergies' => 'required|in:sim,nao',

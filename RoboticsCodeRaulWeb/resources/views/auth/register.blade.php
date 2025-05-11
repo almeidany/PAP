@@ -14,49 +14,49 @@
                 <label for="chk" aria-hidden="true">Registar</label>
             
                 <!-- Primeiro Nome -->
-                <input type="text" name="first_name" value="{{ old('first_name') }}" placeholder="Primeiro Nome" required class="mb-3 form-field">
+                <input type="text" name="first_name" id="first_name" value="{{ old('first_name') }}" placeholder="Primeiro Nome" required class="mb-3 form-field">
                 @error('first_name')
                     <p class="label-error" style="margin-left: 10px; color: red;">{{ $message }}</p>
                 @enderror
             
                 <!-- Último Nome -->
-                <input type="text" name="last_name" value="{{ old('last_name') }}" placeholder="Último Nome" required class="mb-3 form-field">
+                <input type="text" name="last_name" id="last_name" {{ old('last_name') }}" placeholder="Último Nome" required class="mb-3 form-field">
                 @error('last_name')
                     <p class="label-error" style="margin-left: 10px; color: red;">{{ $message }}</p>
                 @enderror
             
                 <!-- Número de Aluno -->
-                <input type="text" name="schoolnumber" value="{{ old('schoolnumber') }}" placeholder="Número de Aluno" required class="mb-3 form-field">
+                <input type="text" name="schoolnumber" id="schoolnumber" value="{{ old('schoolnumber') }}" placeholder="Número de Aluno" required class="mb-3 form-field">
                 @error('schoolnumber')
                     <p class="label-error" style="margin-left: 10px; color: red;">{{ $message }}</p>
                 @enderror
             
                 <!-- Data de Nascimento -->
-                <input type="date" name="birth_date" value="{{ old('birth_date') }}" placeholder="Data de Nascimento" required class="mb-3 form-field">
+                <input type="date" name="birth_date" id="birth_date" value="{{ old('birth_date') }}" placeholder="Data de Nascimento" required class="mb-3 form-field">
                 @error('birth_date')
                     <p class="label-error" style="margin-left: 10px; color: red;">{{ $message }}</p>
                 @enderror
             
                 <!-- Email -->
-                <input type="email" name="email" placeholder="Email" value="{{ old('email') }}" required class="mb-3 form-field">
+                <input type="email" name="email" id="email" placeholder="Email" value="{{ old('email') }}" required class="mb-3 form-field">
                 @error('email')
                     <p class="label-error" style="margin-left: 10px; color: red;">{{ $message }}</p>
                 @enderror
             
                 <!-- Telefone -->
-                <input type="text" name="phonenumber" value="{{ old('phonenumber') }}" placeholder="Telefone" required class="mb-3 form-field">
+                <input type="text" name="phonenumber" id="phonenumber" value="{{ old('phonenumber') }}" placeholder="Telefone" required class="mb-3 form-field">
                 @error('phonenumber')
                     <p class="label-error" style="margin-left: 10px; color: red;">{{ $message }}</p>
                 @enderror
             
                 <!-- Turma / Classe -->
-                <input type="text" name="class" value="{{ old('class') }}" placeholder="Turma" required class="mb-3 form-field">
+                <input type="text" name="class" id="class" value="{{ old('class') }}" placeholder="Turma" required class="mb-3 form-field">
                 @error('class')
                     <p class="label-error" style="margin-left: 10px; color: red;">{{ $message }}</p>
                 @enderror
             
                 <!-- Tamanho da T-shirt -->
-                <input type="text" name="tshirt_size" value="{{ old('tshirt_size') }}" placeholder="Tamanho da T-shirt" required class="mb-3 form-field">
+                <input type="text" name="tshirt_size" id="tshirt_size" value="{{ old('tshirt_size') }}" placeholder="Tamanho da T-shirt" required class="mb-3 form-field">
                 @error('tshirt_size')
                     <p class="label-error" style="margin-left: 10px; color: red;">{{ $message }}</p>
                 @enderror
@@ -108,7 +108,7 @@
                 @enderror
             
                 <!-- Palavra-passe -->
-                <input type="password" name="password" placeholder="Password" required class="mb-3 form-field">
+                <input type="password" name="password" id="password" placeholder="Password" required class="mb-3 form-field">
                 @error('password')
                     <p class="label-error" style="margin-left: 10px; color: red;">{{ $message }}</p>
                 @enderror
@@ -121,6 +121,8 @@
             </form>            
         </div>
     </div>
+
+    <script src="{{ asset('/assets/js/fp_users.js') }}"></script>
 </body>
 
 </html>

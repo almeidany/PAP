@@ -37,6 +37,15 @@ Route::get('/acessos', [App\Http\Controllers\AccessController::class, 'index'])-
 
 Route::get('/conta', [App\Http\Controllers\AccountController::class, 'index'])->name('account')->middleware('auth');
 
+//user
+Route::get('/utilizadores', [App\Http\Controllers\UserController::class, 'index'])->name('users')->middleware('auth');
+Route::get('/utilizadores/criar', [App\Http\Controllers\UserController::class, 'create'])->name('users.create')->middleware('auth');
+Route::post('/utilizadores', [App\Http\Controllers\UserController::class, 'store'])->name('users.store')->middleware('auth');
+Route::get('/utilizadores/{user}/visualizacao', [App\Http\Controllers\UserController::class, 'show'])->name('users.show')->middleware('auth');
+Route::get('/utilizadores/{user}/editar', [App\Http\Controllers\UserController::class, 'edit'])->name('users.edit')->middleware('auth');
+Route::put('/utilizadores/{user}', [App\Http\Controllers\UserController::class, 'update'])->name('users.update')->middleware('auth');
+Route::delete('/utilizadores/{user}', [App\Http\Controllers\UserController::class, 'destroy'])->name('users.destroy')->middleware('auth');
+
 Route::get('noticias', [App\Http\Controllers\NewsController::class, 'index'])->name('news')->middleware('auth');
 Route::get('noticias/criar', [App\Http\Controllers\NewsController::class, 'create'])->name('news.create')->middleware('auth');
 Route::post('noticias', [App\Http\Controllers\NewsController::class, 'store'])->name('news.store')->middleware('auth');
