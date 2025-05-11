@@ -12,11 +12,20 @@ return new class extends Migration
     public function up(): void
     {
         Schema::create('users', function (Blueprint $table) {
-            $table->id();
-            $table->string('name');
-            $table->string('email')->unique();
-            $table->timestamp('email_verified_at')->nullable();
+            $table->id(); // This automatically creates an auto-incrementing primary key 'id'
+            $table->string('first_name', 35);
+            $table->string('last_name', 35);
+            $table->unsignedBigInteger('schoolnumber')->unique();
+            $table->date('birth_date');
+            $table->unsignedBigInteger('phonenumber')->unique(); // Removed auto_increment and primary key
+            $table->string('class', 10);
+            $table->string('tshirt_size', 3);
+            $table->enum('food_allergies', ['sim', 'nao']);
+            $table->enum('image_authorization', ['sim', 'nao']);
+            $table->string('allergies_description', 400)->nullable();
+            $table->string('email', 75)->unique();
             $table->string('password');
+            $table->timestamp('email_verified_at')->nullable();
             $table->rememberToken();
             $table->timestamps();
         });

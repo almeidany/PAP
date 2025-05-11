@@ -6,45 +6,121 @@
 <body>
     <div class="main">
         <input type="checkbox" id="chk" aria-hidden="true">
-
+    
         <!-- Formulário de Registro -->
         <div class="signup">
-            <form method="POST" action="{{ route('register') }}" onsubmit="return handleFormSubmit(event)">
+            <form method="POST" action="{{ route('register') }}">
                 @csrf
                 <label for="chk" aria-hidden="true">Registar</label>
+            
+                <!-- Primeiro Nome -->
+                <input type="text" name="first_name" value="{{ old('first_name') }}" placeholder="Primeiro Nome" required class="mb-3 form-field">
+                @error('first_name')
+                    <p class="label-error" style="margin-left: 10px; color: red;">{{ $message }}</p>
+                @enderror
+            
+                <!-- Último Nome -->
+                <input type="text" name="last_name" value="{{ old('last_name') }}" placeholder="Último Nome" required class="mb-3 form-field">
+                @error('last_name')
+                    <p class="label-error" style="margin-left: 10px; color: red;">{{ $message }}</p>
+                @enderror
+            
+                <!-- Número de Aluno -->
+                <input type="text" name="schoolnumber" value="{{ old('schoolnumber') }}" placeholder="Número de Aluno" required class="mb-3 form-field">
+                @error('schoolnumber')
+                    <p class="label-error" style="margin-left: 10px; color: red;">{{ $message }}</p>
+                @enderror
+            
+                <!-- Data de Nascimento -->
+                <input type="date" name="birth_date" value="{{ old('birth_date') }}" placeholder="Data de Nascimento" required class="mb-3 form-field">
+                @error('birth_date')
+                    <p class="label-error" style="margin-left: 10px; color: red;">{{ $message }}</p>
+                @enderror
+            
+                <!-- Email -->
+                <input type="email" name="email" placeholder="Email" value="{{ old('email') }}" required class="mb-3 form-field">
+                @error('email')
+                    <p class="label-error" style="margin-left: 10px; color: red;">{{ $message }}</p>
+                @enderror
+            
+                <!-- Telefone -->
+                <input type="text" name="phonenumber" value="{{ old('phonenumber') }}" placeholder="Telefone" required class="mb-3 form-field">
+                @error('phonenumber')
+                    <p class="label-error" style="margin-left: 10px; color: red;">{{ $message }}</p>
+                @enderror
+            
+                <!-- Turma / Classe -->
+                <input type="text" name="class" value="{{ old('class') }}" placeholder="Turma" required class="mb-3 form-field">
+                @error('class')
+                    <p class="label-error" style="margin-left: 10px; color: red;">{{ $message }}</p>
+                @enderror
+            
+                <!-- Tamanho da T-shirt -->
+                <input type="text" name="tshirt_size" value="{{ old('tshirt_size') }}" placeholder="Tamanho da T-shirt" required class="mb-3 form-field">
+                @error('tshirt_size')
+                    <p class="label-error" style="margin-left: 10px; color: red;">{{ $message }}</p>
+                @enderror
 
-                <!-- Campo para Nome -->
-                <input id="name" type="text" name="name" value="{{ old('name') }}" required
-                    placeholder="Primeiro e Último Nome" class="mb-3">
-                @if ($errors->has('name'))
-                    <p class="label-error" style="margin-left: 10px; color: red;">
-                        {{ $errors->first('name') }}
-                    </p>
-                @endif
+                <label class="form-label">Tem Alergias Alimentares?</label>
 
-                <!-- Campo para Email -->
-                <input type="email" name="email" placeholder="Email" value="{{ old('email') }}" required
-                    class="mb-3">
-                @if ($errors->has('email'))
-                    <p class="label-error" style="margin-left: 30px; color: rgb(0, 0, 0);">
-                        {{ $errors->first('email') }}
-                    </p>
-                @endif
+                <div class="radio-group">
+                  <label class="radio-option">
+                    <input type="radio" name="food_allergies" value="sim" class="radio-input" 
+                      @if(old('food_allergies') === 'sim') checked @endif>
+                    <span class="radio-text">Sim</span>
+                  </label>
+                  
+                  <label class="radio-option">
+                    <input type="radio" name="food_allergies" value="nao" class="radio-input"
+                      @if(old('food_allergies') === 'nao') checked @endif>
+                    <span class="radio-text">Não</span>
+                  </label>
+                </div>
 
-                <!-- Campo para Senha -->
-                <input type="password" name="password" placeholder="Password" required class="mb-3">
-                @if ($errors->has('password'))
-                    <p class="label-error" style="margin-left: 30px; color: rgb(0, 0, 0);">
-                        {{ $errors->first('password') }}
-                    </p>
-                @endif
-                <!-- Campo para Confirmar Senha -->
-                <input type="password" name="password_confirmation" placeholder="Confirme sua Password" required class="mb-3">
-                <button type="submit" class="mt-3">Concluir Registo</button>
-            </form>
+                @error('food_allergies')
+                    <div class="error-message">{{ $message }}</div>
+                @enderror
+            
+                <!-- Descrição das Alergias (opcional) -->
+                <input type="text" name="allergies_description" value="{{ old('allergies_description') }}" placeholder="Descrição das Alergias" class="mb-3 form-field">
+                @error('allergies_description')
+                    <p class="label-error" style="margin-left: 10px; color: red;">{{ $message }}</p>
+                @enderror
+
+                <label class="form-label">Autorização de imagem?</label>
+
+                <div class="radio-group">
+                  <label class="radio-option">
+                    <input type="radio" name="image_authorization" value="sim" class="radio-input" 
+                      @if(old('image_authorization') === 'sim') checked @endif>
+                    <span class="radio-text">Sim</span>
+                  </label>
+                  
+                  <label class="radio-option">
+                    <input type="radio" name="image_authorization" value="nao" class="radio-input"
+                      @if(old('image_authorization') === 'nao') checked @endif>
+                    <span class="radio-text">Não</span>
+                  </label>
+                </div>
+
+                @error('image_authorization')
+                    <div class="error-message">{{ $message }}</div>
+                @enderror
+            
+                <!-- Palavra-passe -->
+                <input type="password" name="password" placeholder="Password" required class="mb-3 form-field">
+                @error('password')
+                    <p class="label-error" style="margin-left: 10px; color: red;">{{ $message }}</p>
+                @enderror
+            
+                <!-- Confirmar Palavra-passe -->
+                <input type="password" name="password_confirmation" placeholder="Confirmar Password" required class="mb-3 form-field">
+            
+                <!-- Submeter -->
+                <button type="submit" class="mt-3">Concluir</button>
+            </form>            
         </div>
     </div>
-    </script>
 </body>
 
 </html>

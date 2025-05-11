@@ -1,3 +1,30 @@
+.signup {
+    max-height: 500px;
+    /* Altura padrÃĢo para telas maiores */
+    overflow-y: auto;
+    /* Habilita o scroll quando o conteÃšdo excede a altura */
+    padding-right: 10px;
+    /* Para garantir que o scroll nÃĢo sobreponha o conteÃšdo */
+    margin: 0 auto;
+    /* Para garantir que o formulÃĄrio fique centralizado */
+}
+
+/* Para telas menores, como em dispositivos mÃģveis */
+@media (max-width: 768px) {
+    .signup {
+        max-height: 350px;
+        /* Altura reduzida para telas menores */
+    }
+}
+
+/* Para telas grandes (Desktop), podemos usar uma altura maior ou outras adaptaÃ§Ãĩes */
+@media (min-width: 1024px) {
+    .signup {
+        max-height: 600px;
+        /* Altura maior para desktops */
+    }
+}
+
 body {
     margin: 0;
     padding: 0;
@@ -76,4 +103,110 @@ button {
 button:hover {
     background: #1f5a9e;
     /* Azul um pouco mais escuro */
+}
+
+/* Estilos especÃ­ficos para a seÃ§ÃĢo de autorizaÃ§ÃĢo de imagem */
+.form-label {
+    color: #fff;
+    display: block;
+    text-align: center;
+    margin-bottom: 15px;
+    font-size: 1.1em;
+}
+
+.d-flex.align-items-center {
+    justify-content: center;
+    margin-bottom: 15px;
+}
+
+.form-check {
+    display: flex;
+    align-items: center;
+}
+
+.form-check-input {
+    width: 18px;
+    height: 18px;
+    margin-right: 8px;
+    background-color: transparent;
+    border: 2px solid #fff;
+    appearance: none;
+    -webkit-appearance: none;
+    border-radius: 50%;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+.form-check-input:checked {
+    background-color: #fff;
+}
+
+.form-check-label {
+    color: #fff;
+    cursor: pointer;
+}
+
+/* Estilo para mensagem de erro */
+.label-error {
+    display: block;
+    text-align: center;
+    font-size: 0.9em;
+    margin-top: -10px;
+    margin-bottom: 15px;
+}
+
+/* VersÃĢo super compacta - ediÃ§ÃĢo do existente */
+.radio-group {
+    display: flex;
+    justify-content: center;
+    gap: 6px;
+    /* Reduzido de 12px para 6px (50% menos espaÃ§o) */
+    margin: 8px 0;
+    /* Margens verticais reduzidas */
+}
+
+.radio-option {
+    display: inline-flex;
+    align-items: center;
+    cursor: pointer;
+    padding: 4px 8px;
+    /* Padding reduzido (era 6px 10px) */
+}
+
+.radio-input {
+    width: 14px;
+    /* Reduzido de 16px */
+    height: 14px;
+    /* Reduzido de 16px */
+    margin: 0 3px 0 0;
+    /* Margem direita reduzida (era 5px) */
+    background: transparent;
+    border: 1.5px solid #fff;
+    /* Borda mais fina (era 2px) */
+    border-radius: 50%;
+    appearance: none;
+    cursor: pointer;
+    transform: scale(0.9);
+    /* Escala ligeiramente reduzida */
+}
+
+.radio-input:checked {
+    background: #fff;
+}
+
+.radio-text {
+    color: #fff;
+    font-size: 0.85rem;
+    /* Texto menor */
+}
+
+/* Ajustes para telas maiores */
+@media (min-width: 768px) {
+    .radio-group {
+        gap: 20px;
+    }
+
+    .radio-text {
+        font-size: 0.9rem;
+    }
 }
