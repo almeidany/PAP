@@ -57,6 +57,14 @@ class RegisterController extends Controller
 
     public function showRegistrationForm()
     {
-        return view('auth.register');
+        $tshirt_sizes = array(
+            'XS' => 'XS',
+            'S' => 'S',
+            'M' => 'M',
+            'L' => 'L',
+            'XL' => 'XL',
+            'XXL ' => 'XXL'
+        );;
+        return view('auth.register', compact('tshirt_sizes'));
     }
 }
