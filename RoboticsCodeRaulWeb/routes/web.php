@@ -35,8 +35,6 @@ Route::get('/concursos', [App\Http\Controllers\FrontController::class, 'contests
 //Backoffice
 Route::get('/acessos', [App\Http\Controllers\AccessController::class, 'index'])->name('access')->middleware('auth');
 
-Route::get('/conta', [App\Http\Controllers\AccountController::class, 'index'])->name('account')->middleware('auth');
-
 //user
 Route::get('/utilizadores', [App\Http\Controllers\UserController::class, 'index'])->name('users')->middleware('auth');
 Route::get('/utilizadores/criar', [App\Http\Controllers\UserController::class, 'create'])->name('users.create')->middleware('auth');

@@ -56,9 +56,14 @@
                 @enderror
             
                 <!-- Tamanho da T-shirt -->
-                <input type="text" name="tshirt_size" id="tshirt_size" value="{{ old('tshirt_size') }}" placeholder="Tamanho da T-shirt" required class="mb-3 form-field">
+                <select name="tshirt_size" id="tshirt_size" required class="mb-3 form-field">
+                  <option value="" disabled selected>Tamanho da T-shirt</option>
+                  @foreach($tshirt_sizes as $size)
+                    <option value="{{ $size }}" @if(old('tshirt_size') == $size) selected @endif>{{ $size }}</option>
+                  @endforeach
+                </select>
                 @error('tshirt_size')
-                    <p class="label-error" style="margin-left: 10px; color: red;">{{ $message }}</p>
+                  <p class="label-error" style="margin-left: 10px; color: red;">{{ $message }}</p>
                 @enderror
 
                 <label class="form-label">Tem Alergias Alimentares?</label>
