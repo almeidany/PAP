@@ -1,23 +1,28 @@
+* {
+    box-sizing: border-box;
+}
+
 body {
     margin: 0;
-    padding: 0;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    min-height: 100vh;
+    padding: 20px 0;
     font-family: 'Jost', sans-serif;
     background: linear-gradient(to bottom, #0f0c29, #3a7cae, #5a5a8e);
+    min-height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: flex-start;
+    overflow-y: auto;
 }
 
 .main {
-    width: 350px;
-    height: 550px;
-    background: #4a9abf;
-    /* Azul ciano um pouco mais escuro */
-    overflow: hidden;
-    background: url("https://doc-08-2c-docs.googleusercontent.com/docs/securesc/68c90smiglihng9534mvqmq1946dmis5/fo0picsp1nhiucmc0l25s29respgpr4j/1631524275000/03522360960922298374/03522360960922298374/1Sx0jhdpEpnNIydS4rnN4kHSJtU1EyWka?e=view&authuser=0&nonce=gcrocepgbb17m&user=03522360960922298374&hash=tfhgbs86ka6divo3llbvp93mg4csvb38") no-repeat center/ cover;
+    width: 100%;
+    max-width: 700px;
+    /* ou 800px, ajuste conforme preferir */
+    margin: 40px auto;
+    background: url("https://doc-08-2c-docs.googleusercontent.com/docs/securesc/68c90smiglihng9534mvqmq1946dmis5/fo0picsp1nhiucmc0l25s29respgpr4j/1631524275000/03522360960922298374/03522360960922298374/1Sx0jhdpEpnNIydS4rnN4kHSJtU1EyWka?e=view&authuser=0&nonce=gcrocepgbb17m&user=03522360960922298374&hash=tfhgbs86ka6divo3llbvp93mg4csvb38") no-repeat center/cover;
     border-radius: 10px;
     box-shadow: 5px 20px 50px #000;
+    padding: 20px;
 }
 
 #chk {
@@ -27,119 +32,147 @@ body {
 .signup {
     position: relative;
     width: 100%;
-    height: 100%;
-    overflow-y: auto;
-    /* Adiciona rolagem vertical */
-    scrollbar-width: thin;
-    /* Estiliza a barra de rolagem (para navegadores compatíveis) */
-    scrollbar-color: #ccc #f9f9f9;
-    /* Cor da barra de rolagem e do fundo */
+    padding: 20px;
 }
 
-label {
+.signup form {
+    width: 100%;
+    max-width: 100%;
+    box-sizing: border-box;
+}
+
+.signup label[for="chk"] {
     color: #fff;
     font-size: 2.3em;
-    justify-content: center;
-    display: flex;
-    margin: 60px;
+    display: block;
+    text-align: center;
+    margin: 20px 0 40px;
     font-weight: bold;
-    cursor: pointer;
-    transition: .5s ease-in-out;
 }
 
-input {
-    width: 60%;
-    height: 20px;
+.form-group {
+    margin-bottom: 20px;
+    width: 100%;
+}
+
+.form-field,
+select.form-field {
+    width: 100%;
+    height: 45px;
+    min-width: none;
     background: #e0dede;
-    justify-content: center;
-    display: flex;
-    margin: 20px auto;
-    padding: 10px;
+    margin: 5px 0;
+    padding: 10px 15px;
     border: none;
     outline: none;
     border-radius: 5px;
+    box-sizing: border-box;
+    font-family: 'Jost', sans-serif;
+    font-size: 1em;
+    appearance: none;
+    -webkit-appearance: none;
+    -moz-appearance: none;
 }
 
 button {
-    width: 60%;
-    height: 40px;
-    margin: 10px auto;
-    justify-content: center;
-    display: block;
+    width: 100%;
+    height: 50px;
+    margin: 20px 0;
     color: #fff;
     background: #3a8fbf;
-    /* Azul ciano um pouco mais escuro */
-    font-size: 1em;
+    font-size: 1.1em;
     font-weight: bold;
-    margin-top: 20px;
-    outline: none;
     border: none;
     border-radius: 5px;
     transition: .2s ease-in;
     cursor: pointer;
+    font-family: 'Jost', sans-serif;
 }
 
 button:hover {
     background: #1f5a9e;
-    /* Azul um pouco mais escuro */
 }
 
-/* Estiliza a barra de rolagem no Chrome */
-.signup::-webkit-scrollbar {
-    width: 8px;
-    /* Largura da barra de rolagem */
+.mb-3 {
+    margin-bottom: 1rem !important;
 }
 
-.signup::-webkit-scrollbar-thumb {
-    background-color: #ccc;
-    /* Cor da barra de rolagem */
-    border-radius: 10px;
-    /* Cantos arredondados */
+.mt-3 {
+    margin-top: 1rem !important;
 }
 
-.signup::-webkit-scrollbar-track {
-    background-color: #f9f9f9;
-    /* Cor do fundo da barra de rolagem */
-}
-
-/* Estilo para o título da pergunta */
 .form-label {
     font-size: 1.2em;
-    /* Reduz o tamanho da fonte */
-    margin-bottom: 10px;
-    /* Adiciona um pequeno espaçamento abaixo */
-    text-align: center;
-    /* Centraliza o texto */
+    margin: 20px 0 10px;
+    display: block;
     color: #fff;
-    /* Mantém a cor branca */
+    text-align: left;
 }
 
-/* Estilo para o grupo de botões de rádio */
 .radio-group {
     display: flex;
-    justify-content: center;
-    /* Centraliza os botões horizontalmente */
     gap: 20px;
-    /* Espaçamento entre os botões */
-    margin-bottom: 15px;
-    /* Espaçamento inferior */
+    margin: 15px 0;
 }
 
-/* Estilo para cada opção de rádio */
 .radio-option {
     display: flex;
     align-items: center;
-    /* Alinha o texto e o botão verticalmente */
     font-size: 1em;
-    /* Reduz o tamanho da fonte */
     color: #fff;
-    /* Cor do texto */
 }
 
-/* Estilo para o botão de rádio */
 .radio-input {
-    margin-right: 5px;
-    /* Espaçamento entre o botão e o texto */
-    transform: scale(0.9);
-    /* Reduz o tamanho do botão */
+    margin-right: 8px;
+    transform: scale(1.1);
+}
+
+.label-error {
+    margin: -10px 0 10px !important;
+    font-size: 0.9em;
+}
+
+.error-message {
+    color: red;
+    margin: -10px 0 15px;
+    font-size: 0.9em;
+}
+
+.row {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+    /* Menor gap para menos espaçamento */
+    width: 100%;
+    box-sizing: border-box;
+    margin-bottom: 10px;
+    /* Menor espaço entre linhas */
+}
+
+.col-md-6 {
+    flex: 1 1 0;
+    min-width: 0;
+    max-width: 100%;
+    box-sizing: border-box;
+}
+
+@media (min-width: 768px) {
+    .col-md-6 {
+        flex: 1 1 calc(50% - 10px);
+    }
+}
+
+/* Responsivo: em telas pequenas, inputs em coluna e centralizados */
+@media (max-width: 767.98px) {
+    .row {
+        flex-direction: column;
+        align-items: center;
+    }
+
+    .col-md-6 {
+        flex: 1 1 100%;
+        max-width: 100%;
+        min-width: 0;
+        margin-bottom: 10px;
+    }
 }

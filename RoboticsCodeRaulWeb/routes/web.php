@@ -7,8 +7,12 @@ use Illuminate\Support\Facades\Auth;
 // Redireciona a raiz para /home
 Route::redirect('/', '/home');
 
-//Index Front
-Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
+//Frontoffice
+Route::get('/home', [App\Http\Controllers\FrontController::class, 'index'])->name('home');
+Route::get('/sobre-nos', [App\Http\Controllers\FrontController::class, 'about_us'])->name('about_us');
+Route::get('/galeria', [App\Http\Controllers\FrontController::class, 'gallery'])->name('gallery');
+Route::get('/concursos', [App\Http\Controllers\FrontController::class, 'contests'])->name('contest');
+
 
 //Index Back
 Route::get('/dashboard', [App\Http\Controllers\BackController::class, 'index'])->name('dashboard')->middleware('auth');
@@ -27,10 +31,6 @@ Route::middleware('auth')->group(function () {
     // Alternativamente, se quiser manter o GET para logout também:
     // Route::match(['get', 'post'], '/logout', [App\Http\Controllers\Auth\LoginController::class, 'logout'])->name('logout');
 });
-
-// Homepage
-Route::get('/sobre-nos', [App\Http\Controllers\FrontController::class, 'about_us'])->name('about_us');
-Route::get('/concursos', [App\Http\Controllers\FrontController::class, 'contests'])->name('contests');
 
 //Backoffice
 Route::get('/acessos', [App\Http\Controllers\AccessController::class, 'index'])->name('access')->middleware('auth');

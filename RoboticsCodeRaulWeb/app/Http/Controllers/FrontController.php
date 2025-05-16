@@ -15,4 +15,16 @@ class FrontController extends Controller
         //
         return view('home.contests');
     }
+
+    public function index()
+    {
+        //
+        return view('home.index');
+    }
+
+    public function gallery()
+    {
+        //
+        return view('home.gallery');
+    }
 }

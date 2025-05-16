@@ -1,133 +1,234 @@
-<!DOCTYPE html>
-<html>
+  <!DOCTYPE html>
+  <html>
 
-@include('layouts.register.head')
+  @include('layouts.register.head')
 
-<body>
-    <div class="main">
-        <input type="checkbox" id="chk" aria-hidden="true">
-    
-        <!-- Formulário de Registro -->
-        <div class="signup">
-            <form method="POST" action="{{ route('register') }}">
-                @csrf
-                <label for="chk" aria-hidden="true">Registar</label>
-            
-                <!-- Primeiro Nome -->
-                <input type="text" name="first_name" id="first_name" value="{{ old('first_name') }}" placeholder="Primeiro Nome" required class="mb-3 form-field">
-                @error('first_name')
-                    <p class="label-error" style="margin-left: 10px; color: red;">{{ $message }}</p>
-                @enderror
-            
-                <!-- Último Nome -->
-                <input type="text" name="last_name" id="last_name" value="{{ old('last_name') }}" placeholder="Último Nome" required class="mb-3 form-field">
-                @error('last_name')
-                    <p class="label-error" style="margin-left: 10px; color: red;">{{ $message }}</p>
-                @enderror
-            
-                <!-- Número de Aluno -->
-                <input type="text" name="schoolnumber" id="schoolnumber" value="{{ old('schoolnumber') }}" placeholder="Número de Aluno" required class="mb-3 form-field">
-                @error('schoolnumber')
-                    <p class="label-error" style="margin-left: 10px; color: red;">{{ $message }}</p>
-                @enderror
-            
-                <!-- Data de Nascimento -->
-                <input type="date" name="birth_date" id="birth_date" value="{{ old('birth_date') }}" placeholder="Data de Nascimento" required class="mb-3 form-field">
-                @error('birth_date')
-                    <p class="label-error" style="margin-left: 10px; color: red;">{{ $message }}</p>
-                @enderror
-            
-                <!-- Email -->
-                <input type="email" name="email" id="email" placeholder="Email" value="{{ old('email') }}" required class="mb-3 form-field">
-                @error('email')
-                    <p class="label-error" style="margin-left: 10px; color: red;">{{ $message }}</p>
-                @enderror
-            
-                <!-- Telefone -->
-                <input type="text" name="phonenumber" id="phonenumber" value="{{ old('phonenumber') }}" placeholder="Telefone" required class="mb-3 form-field">
-                @error('phonenumber')
-                    <p class="label-error" style="margin-left: 10px; color: red;">{{ $message }}</p>
-                @enderror
-            
-                <!-- Turma / Classe -->
-                <input type="text" name="class" id="class" value="{{ old('class') }}" placeholder="Turma" required class="mb-3 form-field">
-                @error('class')
-                    <p class="label-error" style="margin-left: 10px; color: red;">{{ $message }}</p>
-                @enderror
-            
-                <!-- Tamanho da T-shirt -->
-                <select name="tshirt_size" id="tshirt_size" required class="mb-3 form-field">
-                  <option value="" disabled selected>Tamanho da T-shirt</option>
-                  @foreach($tshirt_sizes as $size)
-                    <option value="{{ $size }}" @if(old('tshirt_size') == $size) selected @endif>{{ $size }}</option>
-                  @endforeach
-                </select>
-                @error('tshirt_size')
-                  <p class="label-error" style="margin-left: 10px; color: red;">{{ $message }}</p>
-                @enderror
+  <body>
+      <div class="main">
+          <input type="checkbox" id="chk" aria-hidden="true">
 
-                <label class="form-label">Tem Alergias Alimentares?</label>
+          <div class="card-body">
+            @if(session()->has('message'))
+                <div class="alert alert-success alert-dismissible fade show" role="alert">
+                    <strong>{{ session('message') }}</strong>
+                    <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+                </div>
+            @endif
+          </div>
+          
+          <!-- Formulário de Registro -->
+          <div class="signup">
+              <form method="POST" action="{{ route('register') }}">
+                  @csrf
+                  <label for="chk" aria-hidden="true">Registar</label>
 
-                <div class="radio-group">
-                  <label class="radio-option">
-                    <input type="radio" name="food_allergies" value="sim" class="radio-input" 
-                      @if(old('food_allergies') === 'sim') checked @endif>
-                    <span class="radio-text">Sim</span>
-                  </label>
-                  
-                  <label class="radio-option">
-                    <input type="radio" name="food_allergies" value="nao" class="radio-input"
-                      @if(old('food_allergies') === 'nao') checked @endif>
-                    <span class="radio-text">Não</span>
-                  </label>
+                  <div class="row">
+                      <!-- Primeiro Nome -->
+                      <div class="form-group col-md-6">
+                          <div class="mb-3">
+                              <label class="form-label">Primeiro Nome</label>
+                              <input type="text" name="first_name" id="first_name" class="form-field @error('first_name') is-invalid @enderror" 
+                                    value="{{ old('first_name') }}" placeholder="Primeiro Nome" required>
+                              @error('first_name')
+                                  <div class="invalid-feedback">{{ $message }}</div>
+                              @enderror
+                          </div>
+                      </div>
+
+                      <!-- Último Nome -->
+                      <div class="form-group col-md-6">
+                          <div class="mb-3">
+                              <label class="form-label">Último Nome</label>
+                              <input type="text" name="last_name" id="last_name" class="form-field @error('last_name') is-invalid @enderror" 
+                                    value="{{ old('last_name') }}" placeholder="Último Nome" required>
+                              @error('last_name')
+                                  <div class="invalid-feedback">{{ $message }}</div>
+                              @enderror
+                          </div>
+                      </div>
+                  </div>
+                
+                  <div class="row">
+                      <!-- Número de Aluno -->
+                      <div class="form-group col-md-6">
+                          <div class="mb-3">
+                              <label class="form-label">Número de Aluno</label>
+                              <input type="text" name="schoolnumber" id="schoolnumber" class="form-field @error('schoolnumber') is-invalid @enderror" 
+                                    value="{{ old('schoolnumber') }}" placeholder="Número de Aluno" required>
+                              @error('schoolnumber')
+                                  <div class="invalid-feedback">{{ $message }}</div>
+                              @enderror
+                          </div>
+                      </div>
+
+                      <!-- Data de Nascimento -->
+                      <div class="form-group col-md-6">
+                          <div class="mb-3">
+                              <label class="form-label">Data de Nascimento</label>
+                              <input type="date" name="birth_date" id="birth_date" class="form-field @error('birth_date') is-invalid @enderror" 
+                                    value="{{ old('birth_date') }}" required>
+                              @error('birth_date')
+                                  <div class="invalid-feedback">{{ $message }}</div>
+                              @enderror
+                          </div>
+                      </div>
+                  </div>
+                
+                  <div class="row">
+                      <!-- Email -->
+                      <div class="form-group col-md-6">
+                          <div class="mb-3">
+                              <label class="form-label">Email</label>
+                              <input type="email" name="email" id="email" class="form-field @error('email') is-invalid @enderror" 
+                                    value="{{ old('email') }}" placeholder="Email" required>
+                              @error('email')
+                                  <div class="invalid-feedback">{{ $message }}</div>
+                              @enderror
+                          </div>
+                      </div>
+
+                      <!-- Telefone -->
+                      <div class="form-group col-md-6">
+                          <div class="mb-3">
+                              <label class="form-label">Telefone</label>
+                              <input type="text" name="phonenumber" id="phonenumber" class="form-field @error('phonenumber') is-invalid @enderror" 
+                                    value="{{ old('phonenumber') }}" placeholder="Telefone" required>
+                              @error('phonenumber')
+                                  <div class="invalid-feedback">{{ $message }}</div>
+                              @enderror
+                          </div>
+                      </div>
+                  </div>
+                
+                  <div class="row">
+                      <!-- Turma/Classe -->
+                      <div class="form-group col-md-6">
+                          <div class="mb-3">
+                              <label class="form-label">Turma/Classe</label>
+                              <input type="text" name="class" id="class" class="form-field @error('class') is-invalid @enderror" 
+                                    value="{{ old('class') }}" placeholder="Turma" required>
+                              @error('class')
+                                  <div class="invalid-feedback">{{ $message }}</div>
+                              @enderror
+                          </div>
+                      </div>
+
+                      <!-- Tamanho da T-shirt -->
+                      <div class="form-group col-md-6">
+                          <div class="mb-3">
+                              <label class="form-label">Tamanho da T-shirt</label>
+                              <select name="tshirt_size" id="tshirt_size" class="form-field @error('tshirt_size') is-invalid @enderror" required>
+                                  <option value="" disabled selected>Selecione o tamanho</option>
+                                  @foreach($tshirt_sizes as $size)
+                                      <option value="{{ $size }}" @if(old('tshirt_size') == $size) selected @endif>{{ $size }}</option>
+                                  @endforeach
+                              </select>
+                              @error('tshirt_size')
+                                  <div class="invalid-feedback">{{ $message }}</div>
+                              @enderror
+                          </div>
+                      </div>
+                  </div>
+                
+                  <!-- Alergias Alimentares (full width) -->
+                <div class="row">
+                  <div class="form-group col-md-6">
+                    <div class="mb-3">
+                      <label class="form-label">Tem Alergias Alimentares?</label>
+                      <div class="radio-group">
+                        <label class="radio-option">
+                          <input type="radio" name="food_allergies" value="sim" class="radio-input @error('food_allergies') is-invalid @enderror" 
+                              @if(old('food_allergies') === 'sim') checked @endif>
+                          <span class="radio-text">Sim</span>
+                        </label>
+
+                        <label class="radio-option">
+                          <input type="radio" name="food_allergies" value="nao" class="radio-input @error('food_allergies') is-invalid @enderror"
+                              @if(old('food_allergies') === 'nao') checked @endif>
+                          <span class="radio-text">Não</span>
+                        </label>
+                      </div>
+                      @error('food_allergies')
+                        <div class="invalid-feedback d-block">{{ $message }}</div>
+                      @enderror
+                    </div>
+                  </div>
+
+                  <!-- Descrição das Alergias (full width) -->
+                  <div class="form-group col-md-6">
+                    <div class="mb-3">
+                      <label class="form-label">Descrição das Alergias</label>
+                      <input type="text" name="allergies_description" class="form-field @error('allergies_description') is-invalid @enderror" 
+                          value="{{ old('allergies_description') }}" placeholder="Descrição das Alergias">
+                      @error('allergies_description')
+                        <div class="invalid-feedback">{{ $message }}</div>
+                      @enderror
+                    </div>
+                  </div>
                 </div>
 
-                @error('food_allergies')
-                    <div class="error-message">{{ $message }}</div>
-                @enderror
-            
-                <!-- Descrição das Alergias (opcional) -->
-                <input type="text" name="allergies_description" value="{{ old('allergies_description') }}" placeholder="Descrição das Alergias" class="mb-3 form-field">
-                @error('allergies_description')
-                    <p class="label-error" style="margin-left: 10px; color: red;">{{ $message }}</p>
-                @enderror
+                <div class="row"><!-- Autorização de Imagem -->
+                    <div class="form-group col-md-6">
+                      <div class="mb-3">
+                        <label class="form-label">Autorização de imagem?</label>
+                        <div class="radio-group">
+                          <label class="radio-option">
+                            <input type="radio" name="image_authorization" value="sim" class="radio-input @error('image_authorization') is-invalid @enderror" 
+                                @if(old('image_authorization') === 'sim') checked @endif>
+                            <span class="radio-text">Sim</span>
+                          </label>
 
-                <label class="form-label">Autorização de imagem?</label>
-
-                <div class="radio-group">
-                  <label class="radio-option">
-                    <input type="radio" name="image_authorization" value="sim" class="radio-input" 
-                      @if(old('image_authorization') === 'sim') checked @endif>
-                    <span class="radio-text">Sim</span>
-                  </label>
-                  
-                  <label class="radio-option">
-                    <input type="radio" name="image_authorization" value="nao" class="radio-input"
-                      @if(old('image_authorization') === 'nao') checked @endif>
-                    <span class="radio-text">Não</span>
-                  </label>
+                          <label class="radio-option">
+                            <input type="radio" name="image_authorization" value="nao" class="radio-input @error('image_authorization') is-invalid @enderror"
+                                @if(old('image_authorization') === 'nao') checked @endif>
+                            <span class="radio-text">Não</span>
+                          </label>
+                        </div>
+                        @error('image_authorization')
+                          <div class="invalid-feedback d-block">{{ $message }}</div>
+                        @enderror
+                      </div>
+                    </div>
+                    <div class="form-group col-md-6">
+                        <div class="mb-3">
+                          <label class="form-label">Foto</label>
+                          <input type="file" name="photo" id="photo" class="form-field @error('photo') is-invalid @enderror" accept="image/*">
+                          @error('photo')
+                            <div class="invalid-feedback">{{ $message }}</div>
+                          @enderror </div>
+                    </div>
                 </div>
 
-                @error('image_authorization')
-                    <div class="error-message">{{ $message }}</div>
-                @enderror
-            
-                <!-- Palavra-passe -->
-                <input type="password" name="password" id="password" placeholder="Password" required class="mb-3 form-field">
-                @error('password')
-                    <p class="label-error" style="margin-left: 10px; color: red;">{{ $message }}</p>
-                @enderror
-            
-                <!-- Confirmar Palavra-passe -->
-                <input type="password" name="password_confirmation" placeholder="Confirmar Password" required class="mb-3 form-field">
-            
-                <!-- Submeter -->
-                <button type="submit" class="mt-3">Concluir</button>
-            </form>            
-        </div>
+                <div class="row">
+                  <div class="form-group col-md-6">
+                    <div class="mb-3">
+                      <label class="form-label">Password</label>
+                      <input type="password" name="password" id="password" class="form-field @error('password') is-invalid @enderror" 
+                          placeholder="Password" required>
+                      @error('password')
+                        <div class="invalid-feedback">{{ $message }}</div>
+                      @enderror
+                    </div>
+                  </div>
+                  <!-- Confirmar Password -->
+                  <div class="form-group col-md-6">
+                    <div class="mb-3">
+                      <label class="form-label">Confirmar Password</label>
+                      <input type="password" name="password_confirmation" class="form-field" 
+                          placeholder="Confirmar Password" required>
+                    </div>
+                  </div>
+                </div>
+
+                <!-- Botão Submeter -->
+                <div class="d-grid">
+                  <button type="submit" class="mt-3">Concluir</button>
+                </div>  </div>
+            </div>
+          </div>   
+        </form>  
+      <script src="{{ asset('/assets/js/fp_users.js') }}"></script>
     </div>
+  </body>
 
-    <script src="{{ asset('/assets/js/fp_users.js') }}"></script>
-</body>
-
-</html>
+  </html>
