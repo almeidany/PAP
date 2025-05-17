@@ -9,7 +9,7 @@
                 <img src="{{ asset('assets/img/logo-light.png') }}" class="light-logo d-none" alt="Logo-light" style="max-width: 150px;">
             </a>
             <a href="javascript:void(0)" class="sidebartoggler ms-auto text-decoration-none fs-5 d-block d-xl-none">
-                <i class="ti ti-cross"></i>
+                <i class="bi bi-x"></i>
             </a>
         </div>
 
@@ -29,6 +29,14 @@
                         </span>
                         <span class="hide-menu">Homepage</span>
                     </a>
+
+                    <a class="sidebar-link" href="{{ route('attendance') }}" aria-expanded="false">
+                        <span class="d-flex">
+                            <i class="bi bi-clock"></i>
+                        </span>
+                        <span class="hide-menu">Marcar Presença</span>
+                    </a>
+
                      <a class="sidebar-link" href="{{ route('users') }}" aria-expanded="false">
                         <span class="d-flex">
                             <i class="bi bi-people"></i>
@@ -57,27 +65,20 @@
             </ul>
         </nav>
         <div class="fixed-profile p-3 mx-4 mb-2 bg-secondary-subtle rounded mt-3">
-            <div class="hstack gap-3">
-                <div class="john-img">
-                    <img src="{{ asset('assets/images/profile/user-1.jpg') }}" class="rounded-circle" width="40" height="40" alt="modernize-img">
-                </div>
-                <div class="john-title">
-                    <h6 class="mb-0 fs-4 fw-semibold">
-                        {{-- @if (Auth::check())
-                            {{ Auth::user()->name }}
-                        @else
-                            <script>
-                                window.location.href = "{{ route('login') }}";
-                            </script>
-                        @endif --}}
-                    </h6>
-                    <span class="fs-2">Dev/Designer</span>
-                </div>
-                <button class="border-0 bg-transparent text-primary ms-auto" tabindex="0" type="button" aria-label="logout" data-bs-toggle="tooltip" data-bs-placement="top" data-bs-title="logout">
-                    <i class="bi bi-power"></i>
-                </button>
+          <div class="hstack gap-3">
+            <div class="john-img">
+             <img src="{{ asset('assets/images/profile/user-1.jpg') }}" class="rounded-circle" width="40" height="40" alt="modernize-img">
             </div>
+            <div class="john-title">
+                    <h6 class="mb-0 fs-4 fw-semibold">
+                        <span class="fs-2">{{ auth()->user()->first_name }} {{ auth()->user()->last_name }}</span>
+                    </h6>
+                    <span class="fs-2">{{ auth()->user()->email }}</span>
+            </div>
+            <button class="border-0 bg-transparent text-primary ms-auto" tabindex="0" type="button" aria-label="logout" data-bs-toggle="tooltip" data-bs-placement="top" data-bs-title="logout">
+              <i class="bi bi-power"></i>
+            </button>
+          </div>
         </div>
     </div>
 </aside>
-<!--  Sidebar End -->

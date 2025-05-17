@@ -28,8 +28,6 @@ Route::middleware('guest')->group(function () {
 
 Route::middleware('auth')->group(function () {
     Route::post('/logout', [App\Http\Controllers\Auth\LoginController::class, 'logout'])->name('logout');
-    // Alternativamente, se quiser manter o GET para logout também:
-    // Route::match(['get', 'post'], '/logout', [App\Http\Controllers\Auth\LoginController::class, 'logout'])->name('logout');
 });
 
 //Backoffice
@@ -44,11 +42,13 @@ Route::get('/utilizadores/{user}/editar', [App\Http\Controllers\UserController::
 Route::put('/utilizadores/{user}', [App\Http\Controllers\UserController::class, 'update'])->name('users.update')->middleware('auth');
 Route::delete('/utilizadores/{user}', [App\Http\Controllers\UserController::class, 'destroy'])->name('users.destroy')->middleware('auth');
 
+//news
 Route::get('noticias', [App\Http\Controllers\NewsController::class, 'index'])->name('news')->middleware('auth');
 Route::get('noticias/criar', [App\Http\Controllers\NewsController::class, 'create'])->name('news.create')->middleware('auth');
 Route::post('noticias', [App\Http\Controllers\NewsController::class, 'store'])->name('news.store')->middleware('auth');
 Route::get('noticias/{news}', [App\Http\Controllers\NewsController::class, 'show'])->name('news.show')->middleware('auth');
 
+//projects
 Route::get('/projetos', [App\Http\Controllers\ProjectController::class, 'index'])->name('projects')->middleware('auth');
 Route::get('/projetos/criar', [App\Http\Controllers\ProjectController::class, 'create'])->name('projects.create')->middleware('auth');
 Route::post('/projetos', [App\Http\Controllers\ProjectController::class, 'store'])->name('projects.store')->middleware('auth');
@@ -56,5 +56,11 @@ Route::get('/projetos/{project}/visualizacao', [App\Http\Controllers\ProjectCont
 Route::get('/projetos/{project}/editar', [App\Http\Controllers\ProjectController::class, 'edit'])->name('projects.edit')->middleware('auth');
 Route::put('/projetos/{project}', [App\Http\Controllers\ProjectController::class, 'update'])->name('projects.update')->middleware('auth');
 Route::delete('/projetos/{project}', [App\Http\Controllers\ProjectController::class, 'destroy'])->name('projects.destroy')->middleware('auth');
+
+//attendance
+Route::get('/presencas', [App\Http\Controllers\AttendanceController::class, 'index'])->name('attendance')->middleware('auth');
+Route::get('/presencas/marcar', [App\Http\Controllers\AttendanceController::class, 'create'])->name('attendance.create')->middleware('auth');
+Route::post('/presencas', [App\Http\Controllers\AttendanceController::class, 'store'])->name('attendance.store')->middleware('auth');
+Route::delete('/presencas/{attendance}', [App\Http\Controllers\AttendanceController::class, 'destroy'])->name('attendance.destroy')->middleware('auth');
 
 Auth::routes();

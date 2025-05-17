@@ -104,7 +104,7 @@
                       <!-- Turma/Classe -->
                       <div class="form-group col-md-6">
                           <div class="mb-3">
-                              <label class="form-label">Turma/Classe</label>
+                              <label class="form-label">Turma</label>
                               <input type="text" name="class" id="class" class="form-field @error('class') is-invalid @enderror" 
                                     value="{{ old('class') }}" placeholder="Turma" required>
                               @error('class')

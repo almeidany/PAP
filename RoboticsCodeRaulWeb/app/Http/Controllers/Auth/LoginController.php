@@ -27,10 +27,6 @@ class LoginController extends Controller
         if (Auth::attempt($credenciais)) {
             return redirect()->intended('/dashboard');
         }
-
-        return back()->withErrors([
-            'email' => 'Credenciais inválidas.',
-        ]);
     }
 
     // Logout
