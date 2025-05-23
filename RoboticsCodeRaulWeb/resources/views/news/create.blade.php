@@ -1,7 +1,7 @@
 ﻿<!DOCTYPE html>
 <html lang="en" dir="ltr" data-bs-theme="light" data-color-theme="Blue_Theme" data-layout="vertical">
 
-@include('layouts.backoffice.head')
+@include('layouts.backoffice.news.head')
 
 <body>
     <div id="main-wrapper">
@@ -14,40 +14,51 @@
                 </div>
             </header>
             <!--  Header End -->
-            <div class="body-wrapper">
-                <div class="container-fluid">
-                  <div class="card bg-info-subtle shadow-none position-relative overflow-hidden mb-4">
-                    <div class="card-body px-4 py-3">
-                      <div class="row align-items-center">
-                        <div class="col-9">
-                          <h4 class="fw-semibold mb-8">Criar Noticia</h4>
-                        </div>
-                        <div class="col-3">
-                          <div class="text-center mb-n5">
-                            <img src="./assets/images/breadcrumb/ChatBc.png" alt="modernize-img" class="img-fluid mb-n4">
+                <div class="body-wrapper">
+                   <div class="container-fluid">
+
+                    <form action="{{ route('news.store') }}" enctype="multipart/form-data" method="POST">
+                      @csrf
+                     <div class="card">
+                       <div class="card-body">
+                         <div class="form-group">
+                          <label class="form-label">Título</label>
+                            <input type="text" name="title" class="form-control" style="width: 80%;">
                           </div>
-                        </div>
-                      </div>
-                    </div>
-                  </div>
-                  <div class="card">
-                    <div class="card-body">
-                      <!-- Create the editor container -->
-                      <div id="editor">
-                        <p>
                           <br>
-                        </p>
+                          <label class="form-label">Noticia</label>
+                         <div id="editor">
+                           <p>
+                              <input type="text" name="news">
+                           </p>
+                         </div>
+                         <br>
+                        <div class="row pt-3 justify-content-center" style="text-align: center;">
+                          <div class="col-md-4 d-flex flex-column align-items-center">
+                              <div class="mb-3 w-100">
+                                  <label class="form-label">Data da Publicação</label>
+                                  <div class="form-group w-100">
+                                      <input type="date" name="news_date" class="form-control" style="width: 100%; text-align: center;" value="{{ \Carbon\Carbon::now()->format('Y-m-d') }}">
+                                  </div>
+                              </div>  
+                          </div>  
+                          <div class="col-md-4 d-flex flex-column align-items-center">
+                              <div class="mb-3 w-100">
+                                  <label class="form-label">Publicado Por</label>
+                                  <div class="form-group w-100">
+                                      <input type="text" name="author_user" class="form-control" style="width: 100%; text-align: center;" value="{{ Auth::user()->first_name }} {{ Auth::user()->last_name }}" readonly>
+                                  </div>
+                              </div>
+                          </div>
                       </div>
-                    </div>
-                    <!-- Centralizar botões -->
-                    <div class="form-actions text-center">
-                      <button type="submit" class="btn btn-primary" style="margin-bottom: 25px;">Submeter</button>
-                      <button type="button" class="btn bg-danger-subtle text-danger ms-2" style="margin-bottom: 25px;" onclick="window.location.href='{{ route('news') }}'">Cancelar</button>
-                    </div>
-                  </div>
+                     </div>
+                      <div class="form-actions text-center mt-2" style="margin-bottom: 50px;">
+                        <button type="submit" class="btn btn-primary">Publicar Noticia</button>
+                        <a href="{{ route('news') }}" class="btn btn-danger ms-2">Cancelar</a>
+                      </div>
+                    </form>
+                   </div> 
                 </div>
-              </div>
-            </div>
             @include('layouts.backoffice.Settings_Script')
         </div>
     </div>
@@ -73,6 +84,8 @@
     <script src="{{ asset('assets/libs/owl.carousel/dist/owl.carousel.min.js') }}"></script>
     <script src="{{ asset('assets/libs/apexcharts/dist/apexcharts.min.js') }}"></script>
     <script src="{{ asset('assets/js/dashboards/dashboard.js') }}"></script>
+    <script src="{{ asset('assets/libs/quill/dist/quill.min.js') }}"></script>
+    <script src="{{ asset('assets/js/forms/quill-init.js') }}"></script>
 </body>
 
 </html>

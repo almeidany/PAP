@@ -17,10 +17,10 @@
         <nav class="sidebar-nav scroll-sidebar" data-simplebar="">
             <ul id="sidebarnav">
                 <li class="sidebar-item">
-                    <a class="sidebar-link" href="{{ route('access') }}" aria-expanded="false">
+                    <a class="sidebar-link" href="https://tr.ee/P7H9oI" aria-expanded="false" target="_blank">
                         <span class="d-flex">
                             <i class="bi bi-info"></i>
-                        </span>
+                        </span> 
                         <span class="hide-menu">Acessos</span>
                     </a>
                     <a class="sidebar-link" href="{{ route('home') }}" aria-expanded="false" target="_blank">

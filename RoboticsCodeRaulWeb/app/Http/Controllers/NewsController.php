@@ -31,6 +31,23 @@ class NewsController extends Controller
     public function store(Request $request)
     {
         //
+        $request->validate([
+            'photo' => 'nullable|image|mimes:jpeg,png,jpg|max:10920',
+            'title' => 'required|string',
+            'news' => 'required|string',
+            'news_date' => 'required|date',
+            'author_user' => 'required|string|disabled|readonly',
+        ]);
+
+        $news = new News();
+        $news->photo = $request->input('photo');
+        $news->title = $request->input('title');
+        $news->news = $request->input('news');
+        $news->news_date = $request->input('news_date');
+        $news->author_user = $request->input('author_user');
+
+        $news->save();
+        return redirect()->route('news')->with('message', 'Noticia Criada com Sucesso.');
     }
 
     /**
@@ -39,6 +56,7 @@ class NewsController extends Controller
     public function show(News $news)
     {
         //
+
     }
 
     /**

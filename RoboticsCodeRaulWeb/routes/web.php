@@ -31,7 +31,6 @@ Route::middleware('auth')->group(function () {
 });
 
 //Backoffice
-Route::get('/acessos', [App\Http\Controllers\AccessController::class, 'index'])->name('access')->middleware('auth');
 
 //user
 Route::get('/utilizadores', [App\Http\Controllers\UserController::class, 'index'])->name('users')->middleware('auth');
@@ -62,5 +61,10 @@ Route::get('/presencas', [App\Http\Controllers\AttendanceController::class, 'ind
 Route::get('/presencas/marcar', [App\Http\Controllers\AttendanceController::class, 'create'])->name('attendance.create')->middleware('auth');
 Route::post('/presencas', [App\Http\Controllers\AttendanceController::class, 'store'])->name('attendance.store')->middleware('auth');
 Route::delete('/presencas/{attendance}', [App\Http\Controllers\AttendanceController::class, 'destroy'])->name('attendance.destroy')->middleware('auth');
+
+//schedules
+Route::get('/horario/editar', [App\Http\Controllers\ScheduleController::class, 'edit'])->name('schedule.edit')->middleware('auth');
+Route::put('/horario/editar', [App\Http\Controllers\ScheduleController::class, 'update'])->name('schedule.update')->middleware('auth');
+Route::delete('/horario/editar', [App\Http\Controllers\ScheduleController::class, 'destroy'])->name('schedule.destroy')->middleware('auth');
 
 Auth::routes();

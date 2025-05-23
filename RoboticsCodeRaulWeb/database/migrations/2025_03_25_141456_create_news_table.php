@@ -13,10 +13,14 @@ return new class extends Migration
     {
         Schema::create('news', function (Blueprint $table) {
             $table->id();
+            $table->string('image')->nullable();
+            $table->string('title');
+            $table->string('news');
+            $table->date('news_date');
+            $table->string('author_user');
             $table->timestamps();
         });
     }
-
     /**
      * Reverse the migrations.
      */

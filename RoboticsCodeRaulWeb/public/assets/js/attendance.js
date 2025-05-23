@@ -34,7 +34,8 @@ document.addEventListener('DOMContentLoaded', function () {
                 messageDiv.classList.remove('d-none');
                 return false;
             }
-        } else {
+        }
+        else {
             messageDiv.textContent = 'Presenças só podem ser marcadas às Quartas ou Sextas';
             messageDiv.classList.remove('d-none');
             return false;

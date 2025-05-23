@@ -49,7 +49,7 @@
                                     <button type="submit" class="btn btn-primary" @if($userAlreadyMarked) disabled @endif>
                                         Marcar Presença
                                     </button>
-                                    <a href="{{ route('attendance') }}" class="btn btn-danger ms-2">Cancelar</a>
+                                        <a href="{{ route('attendance') }}" class="btn btn-danger ms-2">Voltar</a>                
                                 </div>
                               </form>
                             <div>

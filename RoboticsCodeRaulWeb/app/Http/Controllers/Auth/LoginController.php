@@ -27,6 +27,10 @@ class LoginController extends Controller
         if (Auth::attempt($credenciais)) {
             return redirect()->intended('/dashboard');
         }
+
+        if (!$user = \App\Models\User::where('email', $credenciais['email'])->first()) {
+            return back()->withInput($request->only('email'));
+        }
     }
 
     // Logout

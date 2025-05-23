@@ -76,7 +76,7 @@
                                         @endforelse
                                     </tbody>
                                 </table>
-</div>
+                            </div>
                          </div>
                     </div>
                 </div>
@@ -86,7 +86,7 @@
             <div class="fixed-bottom-left">
                 <button class="btn btn-primary p-3 rounded-circle d-flex align-items-center justify-content-center" type="button"
                     onclick="window.location.href='{{ route('attendance.create') }}'">
-                    <i class="bi bi-plus fs-7"></i>
+                    <i class="bi bi-clock"></i>
                 </button>
             </div>
             @include('layouts.backoffice.Settings_Script')

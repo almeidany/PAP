@@ -43,16 +43,16 @@ class AttendanceController extends Controller
 
         // Check if it's a valid day (Wednesday or Friday)
         if (!in_array($dayOfWeek, [3, 5])) {
-            return back()->with('Erro', 'Presença só pode ser marcada nas quartas e sextas feira.');
+            return back()->with('message', 'Presença só pode ser marcada nas quartas e sextas feira.');
         }
 
         // Check time restrictions
         if ($dayOfWeek == 3 && !($currentTime >= '11:50:00' && $currentTime <= '13:20:00')) {
-            return back()->with('Erro', 'Nas Quartas, A presença só pode ser marcada entre as 11:50 e 13:20.');
+            return back()->with('message', 'Nas Quartas, A presença só pode ser marcada entre as 11:50 e 13:20.');
         }
 
         if ($dayOfWeek == 5 && !($currentTime >= '13:35:00' && $currentTime <= '16:00:00')) {
-            return back()->with('Erro', 'Nas Sextas-feiras, A presença só pode ser marcada entre as 13:35 e 16:00.');
+            return back()->with('message', 'Nas Sextas-feiras, A presença só pode ser marcada entre as 13:35 e 16:00.');
         }
 
         // Check if user already marked attendance today
@@ -61,7 +61,7 @@ class AttendanceController extends Controller
             ->first();
 
         if ($existingAttendance) {
-            return back()->with('Erro', 'Já marcou a sua presença.');
+            return back()->with('message', 'Já marcou a sua presença.');
         }
 
         // Create new attendance record
@@ -70,7 +70,7 @@ class AttendanceController extends Controller
             'attendance_date' => $now,
         ]);
 
-        return back()->with('Sucesso', 'Presença marcada com sucesso!');
+        return view('attendance.index')->with('message', 'Presença marcada com sucesso!');
     }
 
     /**
@@ -87,6 +87,6 @@ class AttendanceController extends Controller
     public function destroy(Attendance $attendance)
     {
         $attendance->delete();
-        return redirect()->route('attendance')->with('Sucesso', 'Presença eliminada com sucesso!');
+        return redirect()->route('attendance')->with('message', 'Presença eliminada com sucesso!');
     }
 }

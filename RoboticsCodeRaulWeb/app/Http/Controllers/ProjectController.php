@@ -64,7 +64,7 @@ class ProjectController extends Controller
         }
 
         $project->save();
-        return redirect()->route('projects')->with('Sucesso', 'Projeto criado com sucesso.');
+        return redirect()->route('projects')->with('message', 'Projeto criado com sucesso.');
     }
 
     /**
@@ -131,7 +131,7 @@ class ProjectController extends Controller
         }
 
         $project->save();
-        return redirect()->route('projects')->with('Sucesso', 'Projeto atualizado com sucesso.');
+        return redirect()->route('projects')->with('message', 'Projeto atualizado com sucesso.');
     }
 
     /**
