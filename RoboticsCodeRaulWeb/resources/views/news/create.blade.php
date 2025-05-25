@@ -20,20 +20,42 @@
                     <form action="{{ route('news.store') }}" enctype="multipart/form-data" method="POST">
                       @csrf
                      <div class="card">
+                        <div class="card-header text-bg-primary">
+                            <h4 class="mb-0 text-white text-center">Publicar Noticia</h4>
+                        </div>
                        <div class="card-body">
                          <div class="form-group">
-                          <label class="form-label">Título</label>
-                            <input type="text" name="title" class="form-control" style="width: 80%;">
-                          </div>
-                          <br>
-                          <label class="form-label">Noticia</label>
-                         <div id="editor">
-                           <p>
-                              <input type="text" name="news">
-                           </p>
-                         </div>
-                         <br>
-                        <div class="row pt-3 justify-content-center" style="text-align: center;">
+                            <div class="row mb-3">
+                                <div class="col-md-6 mb-3">
+                                    <label class="form-label">Carregar Fotografia</label>
+                                    <input class="form-control" type="file" id="formFile" name="photo">
+                                    @if(isset($news) && $news->photo)
+                                        <img src="{{ asset('storage/images/news/' . $news->photo) }}" width="100" class="mt-2">
+                                    @endif
+                                </div>
+                                <div class="col-md-6 mb-3">
+                                    <label class="form-label">Título</label>
+                                    <input type="text" name="title" class="form-control" value="{{ old('title') }}">
+                                </div>
+                            </div>
+
+                            <label class="form-label">Notícia</label>
+                            <div class="editor-container">
+                                <script src="{{ asset('assets/js/news_toolbar.js') }}"></script>
+                                <div id="editorDiv" class="editor-content" contenteditable="true">
+                                    {!! old('news') !!} 
+                                </div>
+                                <textarea name="news" id="news" style="display:none;">{!! old('news') !!}</textarea>
+                            </div>
+                            <script>
+                                document.getElementById('editorDiv').addEventListener('input', function() {
+                                    document.getElementById('news').value = this.innerHTML;
+                                });
+                                document.addEventListener('DOMContentLoaded', function() {
+                                    document.getElementById('news').value = document.getElementById('editorDiv').innerHTML;
+                                });
+                            </script>
+                            <div class="row pt-3 justify-content-center" style="text-align: center;">
                           <div class="col-md-4 d-flex flex-column align-items-center">
                               <div class="mb-3 w-100">
                                   <label class="form-label">Data da Publicação</label>
@@ -56,6 +78,28 @@
                         <button type="submit" class="btn btn-primary">Publicar Noticia</button>
                         <a href="{{ route('news') }}" class="btn btn-danger ms-2">Cancelar</a>
                       </div>
+
+                      @if ($errors->any())
+                            <div class="alert alert-danger">
+                        <ul>
+                            @foreach ($errors->all() as $error)
+                                <li>{{ $error }}</li>
+                            @endforeach
+                        </ul>
+                            </div>
+                        @endif
+                        
+                        @if(session('success'))
+                            <div class="alert alert-success">
+                                {{ session('success') }}
+                            </div>
+                        @endif
+                        
+                        @if(session('error'))
+                            <div class="alert alert-danger">
+                                {{ session('error') }}
+                            </div>
+                        @endif
                     </form>
                    </div> 
                 </div>
@@ -84,8 +128,6 @@
     <script src="{{ asset('assets/libs/owl.carousel/dist/owl.carousel.min.js') }}"></script>
     <script src="{{ asset('assets/libs/apexcharts/dist/apexcharts.min.js') }}"></script>
     <script src="{{ asset('assets/js/dashboards/dashboard.js') }}"></script>
-    <script src="{{ asset('assets/libs/quill/dist/quill.min.js') }}"></script>
-    <script src="{{ asset('assets/js/forms/quill-init.js') }}"></script>
 </body>
 
 </html>

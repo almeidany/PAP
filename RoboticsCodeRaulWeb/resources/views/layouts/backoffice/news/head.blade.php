@@ -16,6 +16,5 @@
     <link href="{{ asset('assets/img/favpng.png') }}" rel="icon">
 
     <link rel="stylesheet" href="{{ asset('assets/css/create.css') }}">
-    <script src="https://cdn.jsdelivr.net/npm/quill@2.0.3/dist/quill.js"></script>
-    <link href="https://cdn.jsdelivr.net/npm/quill@2.0.3/dist/quill.snow.css" rel="stylesheet">
+    <link rel="stylesheet" href="{{ asset('assets/css/news.css') }}">
 </head>

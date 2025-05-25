@@ -46,6 +46,9 @@ Route::get('noticias', [App\Http\Controllers\NewsController::class, 'index'])->n
 Route::get('noticias/criar', [App\Http\Controllers\NewsController::class, 'create'])->name('news.create')->middleware('auth');
 Route::post('noticias', [App\Http\Controllers\NewsController::class, 'store'])->name('news.store')->middleware('auth');
 Route::get('noticias/{news}', [App\Http\Controllers\NewsController::class, 'show'])->name('news.show')->middleware('auth');
+Route::get('noticias/{news}/editar', [App\Http\Controllers\NewsController::class, 'edit'])->name('news.edit')->middleware('auth');
+Route::put('noticias/{news}', [App\Http\Controllers\NewsController::class, 'update'])->name('news.update')->middleware('auth');
+Route::delete('noticias/{news}', [App\Http\Controllers\NewsController::class, 'destroy'])->name('news.destroy')->middleware('auth');
 
 //projects
 Route::get('/projetos', [App\Http\Controllers\ProjectController::class, 'index'])->name('projects')->middleware('auth');

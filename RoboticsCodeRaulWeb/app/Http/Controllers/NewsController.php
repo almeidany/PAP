@@ -13,7 +13,8 @@ class NewsController extends Controller
     public function index()
     {
         //
-        return view('news.index');
+        $news = News::orderBy('created_at', 'desc')->paginate(10); // Paginação de 10 itens por página
+        return view('news.index', compact('news'));
     }
 
     /**
@@ -30,24 +31,37 @@ class NewsController extends Controller
      */
     public function store(Request $request)
     {
-        //
         $request->validate([
-            'photo' => 'nullable|image|mimes:jpeg,png,jpg|max:10920',
-            'title' => 'required|string',
+            'photo' => 'nullable|image|mimes:jpeg,png,jpg|max:10240', // 10MB max size in KB
+            'title' => 'required|string|max:255',
             'news' => 'required|string',
             'news_date' => 'required|date',
-            'author_user' => 'required|string|disabled|readonly',
+            'author_user' => 'required|string|max:255',
         ]);
 
-        $news = new News();
-        $news->photo = $request->input('photo');
-        $news->title = $request->input('title');
-        $news->news = $request->input('news');
-        $news->news_date = $request->input('news_date');
-        $news->author_user = $request->input('author_user');
+        try {
+            $news = new News();
 
-        $news->save();
-        return redirect()->route('news')->with('message', 'Noticia Criada com Sucesso.');
+            if ($request->hasFile('photo')) {
+                $file = $request->file('photo');
+                $extension = $file->getClientOriginalExtension();
+                $title = preg_replace('/[^A-Za-z0-9\-]/', '', $request->input('title'));
+                $name = $title . '_' . time() . '.' . $extension;
+                $path = $file->storeAs('public/images/news', $name);
+                $news->photo = $name;
+            }
+
+            $news->title = $request->input('title');
+            $news->news = $request->input('news'); // Considerar usar Purifier
+            $news->news_date = $request->input('news_date');
+            $news->author_user = $request->input('author_user');
+
+            $news->save();
+
+            return redirect()->route('news')->with('success', 'Notícia criada com sucesso!');
+        } catch (\Exception $e) {
+            return back()->withInput()->with('error', 'Erro ao criar notícia: ' . $e->getMessage());
+        }
     }
 
     /**

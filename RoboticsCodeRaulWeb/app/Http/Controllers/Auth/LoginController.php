@@ -24,13 +24,27 @@ class LoginController extends Controller
     {
         $credenciais = $request->only('email', 'password');
 
+        if (strlen($credenciais['password']) < 8) {
+            return back()
+                ->withErrors(['password' => 'A senha deve ter pelo menos 8 caracteres.'])
+                ->withInput($request->only('email'));
+        }
+
         if (Auth::attempt($credenciais)) {
             return redirect()->intended('/dashboard');
         }
 
+        // Aqui verifica se o e-mail existe (opcional)
         if (!$user = \App\Models\User::where('email', $credenciais['email'])->first()) {
-            return back()->withInput($request->only('email'));
+            return back()
+                ->withErrors(['email' => 'E-mail não encontrado.'])
+                ->withInput($request->only('email'));
         }
+
+        // Se o e-mail existe, mas a senha está errada
+        return back()
+            ->withErrors(['password' => 'Senha incorreta.'])
+            ->withInput($request->only('email'));
     }
 
     // Logout
