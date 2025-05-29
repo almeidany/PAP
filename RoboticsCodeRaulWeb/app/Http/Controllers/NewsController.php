@@ -58,7 +58,7 @@ class NewsController extends Controller
 
             $news->save();
 
-            return redirect()->route('news')->with('success', 'Notícia criada com sucesso!');
+            return redirect()->route('news')->with('message', 'Notícia criada com sucesso!');
         } catch (\Exception $e) {
             return back()->withInput()->with('error', 'Erro ao criar notícia: ' . $e->getMessage());
         }
