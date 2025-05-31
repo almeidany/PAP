@@ -126,10 +126,11 @@
                                             <select class="select2 form-control" id="projectcolleagues"
                                                 name="projectcolleagues[]" multiple="multiple">
                                                 <option disabled>Selecione o colega de trabalho</option>
-                                                @foreach ($project_users as $users)
-                                                    <option value="{{ $users->id }}" selected>
-                                                        {{ $users->first_name }}
-                                                        {{ $users->last_name }}</option>
+                                                @foreach ($users as $user)
+                                                    <option value="{{ $user->id }}"
+                                                        @if ($project->users->contains($user)) selected @endif>
+                                                        {{ $user->first_name }} {{ $user->last_name }}
+                                                    </option>
                                                 @endforeach
                                             </select>
                                         </div>
@@ -156,7 +157,6 @@
                     </div>
                 </div>
             </div>
-
             @include('layouts.backoffice.Settings_Script')
         </div>
     </div>
@@ -184,7 +184,7 @@
     <script src="{{ asset('assets/js/dashboards/dashboard.js') }}"></script>
     <script src="{{ asset('/assets/libs/select2/dist//js/select2.min.js') }}"></script>
     <script src="{{ asset('/assets/libs/jquery/js/jquery.min.js') }}"></script>
-    <script src="{{ asset('/assets/js/select2_projects_config.js') }}"></script>
+    <script src="{{ asset('/assets/js/select2_config.js') }}"></script>
 </body>
 
 </html>

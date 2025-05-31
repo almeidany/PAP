@@ -17,4 +17,11 @@
 
     <link rel="stylesheet" href="{{ asset('assets/css/create.css') }}">
     <link rel="stylesheet" href="{{ asset('assets/css/news.css') }}">
+
+    <script src="{{ asset('assets/js/jquery/jquery.min.js') }}"></script>
+
+    <link rel="stylesheet" href="{{ asset('assets/css/summernote.min.css') }}">
+    <script src="{{ asset('assets/js/summernote/summernote.min.js') }}"></script>
+    <script src="{{ asset('assets/js/summernote/bootstrap.min.js') }}"></script>
+
 </head>

@@ -25,35 +25,6 @@
                         <i class="bi bi-sun"></i>
                     </a>
                 </li>
-                <li class="bi bi-translate nav-item nav-icon-hover-bg rounded-circle dropdown">
-                    <div class="dropdown-menu dropdown-menu-end dropdown-menu-animate-up" aria-labelledby="drop2">
-                        <div class="message-body">
-                            <a href="javascript:void(0)"
-                                class="d-flex align-items-center gap-2 py-3 px-4 dropdown-item">
-                                <div class="position-relative">
-                                    <img src="{{ asset('assets/images/svgs/icon-flag-en.svg') }}" alt="modernize-img"
-                                        width="20px" height="20px" class="rounded-circle object-fit-cover round-20">
-                                </div>
-                                <p class="mb-0 fs-3">English (UK)</p>
-                            </a>
-                            <a href="javascript:void(0)"
-                                class="d-flex align-items-center gap-2 py-3 px-4 dropdown-item">
-                                <div class="position-relative">
-                                    <img src="{{ asset('assets/images/svgs/icon-flag-pt.svg') }}" alt="modernize-img"
-                                        width="20px" height="20px" class="rounded-circle object-fit-cover round-20">
-                                </div>
-                                <p class="mb-0 fs-3">Português (Portugal)</p>
-                            </a>
-                        </div>
-                    </div>
-                </li>
-                <!-- ------------------------------- -->
-                <!-- end language Dropdown -->
-                <!-- ------------------------------- -->
-
-                <!-- ------------------------------- -->
-                <!-- start profile Dropdown -->
-                <!-- ------------------------------- -->
                 <li class="nav-item dropdown">
                     <a class="nav-link pe-0" href="javascript:void(0)" id="drop1" aria-expanded="false">
                         <div class="d-flex align-items-center">

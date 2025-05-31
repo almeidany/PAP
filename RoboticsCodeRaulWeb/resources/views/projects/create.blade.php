@@ -194,7 +194,7 @@
     <script src="{{ asset('assets/js/dashboards/dashboard.js') }}"></script>
     <script src="{{ asset('/assets/libs/select2/dist//js/select2.min.js') }}"></script>
     <script src="{{ asset('/assets/libs/jquery/js/jquery.min.js') }}"></script>
-    <script src="{{ asset('/assets/js/select2_projects_config.js') }}"></script>
+    <script src="{{ asset('/assets/js/select2_config.js') }}"></script>
 </body>
 
 </html>

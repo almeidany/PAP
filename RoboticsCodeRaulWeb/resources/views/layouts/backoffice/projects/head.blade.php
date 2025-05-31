@@ -21,5 +21,4 @@
     <link rel="stylesheet" href="{{ asset('/assets/libs/datatables.net-buttons-bs5/css/buttons.bootstrap5.min.css') }}">
 
     <link rel="stylesheet" href="{{ asset('/assets/libs/select2/dist/css/select2.min.css') }}">
-    {{-- <link rel="stylesheet" href="{{ asset('/assets/libs/select2/dist/css/select2.css') }}"> --}}
 </head>

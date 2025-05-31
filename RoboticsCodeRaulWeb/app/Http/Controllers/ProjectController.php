@@ -85,7 +85,15 @@ class ProjectController extends Controller
             "TRL" => "Tema Livre",
             "VR" => "Veículos Robóticos",
         );
-        return view('projects.show', compact('categories', 'project'))->with(['readonly' => true, 'disabled' => true]);
+
+        $project_users = user::select('users.*')
+            ->join('project_users', 'project_users.user_id', '=', 'users.id')
+            ->where('project_users.project_id', $project->id)
+            ->get();
+
+        $users = User::all();
+
+        return view('projects.show', compact('categories', 'project', 'project_users', 'users'));
     }
 
     /**
@@ -100,15 +108,14 @@ class ProjectController extends Controller
             "VR" => "Veículos Robóticos",
         );
 
-        //select users.* from project_users, users where project_users.project_id = $project->id and project_users.user_id = users.id
-
         $project_users = user::select('users.*')
             ->join('project_users', 'project_users.user_id', '=', 'users.id')
             ->where('project_users.project_id', $project->id)
             ->get();
-        return view('projects.edit', compact('categories', 'project', 'project_users'));
-    }
 
+        $users = User::all();
+        return view('projects.edit', compact('categories', 'project', 'project_users', 'users'));
+    }
     /**
      * Update the specified resource in storage.
      */
@@ -120,7 +127,7 @@ class ProjectController extends Controller
             'designation' => 'required|string|max:50',
             'category' => 'required',
             'start_date' => 'required|date',
-            'end_date' => 'date|after_or_equal:start_date',
+            'end_date' => 'date|after_or_equal:start_date|nullable',
             'github_url' => 'required|url|regex:/^(https?:\/\/)?(www\.)?github\.com\/[a-zA-Z0-9_.-]+\/[a-zA-Z0-9_.-]+$/',
             'photo' => 'nullable|image|mimes:jpeg,png,jpg|max:10920',
             'projectcolleagues' => 'nullable|array',
@@ -145,12 +152,31 @@ class ProjectController extends Controller
         };
 
         $project->description = $request->description;
-        if ($request->has('projectcolleague')) {
-            $project->colleagues()->sync($request->input('projectcolleague'));
-        } else {
-            $project->colleagues()->detach();
-        }
+
         $project->save();
+        // Attach new users from the request
+        $users = $request->input('projectcolleagues', []);
+
+        $project_users = project_user::where('project_id', $project->id)->get();
+
+        foreach ($project_users as $existingUser) {
+            if (!in_array($existingUser->user_id, $users)) {
+                // If the user is not in the request, delete the association
+                //delete user from project_users where project_id and user_id match
+                project_user::where('project_id', $project->id)
+                    ->where('user_id', $existingUser->user_id)
+                    ->delete();
+            }
+        }
+        foreach ($users as $userId) {
+            if (!$project_users->contains('user_id', $userId)) {
+                // If the user is not already associated, create a new association
+                $project_user = new project_user();
+                $project_user->project_id = $project->id;
+                $project_user->user_id = $userId;
+                $project_user->save();
+            }
+        }
         return redirect()->route('projects')->with('message', 'Projeto atualizado com sucesso.');
     }
 
