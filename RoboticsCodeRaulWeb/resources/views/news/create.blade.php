@@ -43,7 +43,7 @@
 
                                     <label class="form-label">Notícia</label>
                                     <textarea id="summernote" name="news"></textarea>
-                                    <script src="{{ asset('assets/js/summernote_config.js') }}"></script>
+                                    {{-- <script src="{{ asset('assets/js/summernote_config.js') }}"></script> --}}
 
                                     <div class="row pt-3 justify-content-center" style="text-align: center;">
                                         <div class="col-md-4 d-flex flex-column align-items-center">
@@ -123,6 +123,32 @@
     <script src="{{ asset('assets/libs/owl.carousel/dist/owl.carousel.min.js') }}"></script>
     <script src="{{ asset('assets/libs/apexcharts/dist/apexcharts.min.js') }}"></script>
     <script src="{{ asset('assets/js/dashboards/dashboard.js') }}"></script>
+    <!-- jQuery primeiro -->
+    <script src="{{ asset('assets/libs/jquery/jquery.min.js') }}"></script>
+    <script src="{{ asset('assets/libs/bootstrap/dist/js/bootstrap.bundle.min.js') }}"></script>
+
+    <!-- Depois Summernote -->
+    <script src="{{ asset('assets/js/summernote/summernote-bs5.min.js') }}"></script>
+    <script src="{{ asset('assets/js/summenote/summernote-pt-PT.min.js') }}"></script>
+
+    <script>
+        $(document).ready(function() {
+            $('#summernote').summernote({
+                placeholder: 'Escreva a sua notícia...',
+                tabsize: 2,
+                height: 300,
+                toolbar: [
+                    ['style', ['style']],
+                    ['font', ['bold', 'underline', 'clear']],
+                    ['color', ['color']],
+                    ['para', ['ul', 'ol']],
+                    ['insert', ['link', 'picture', 'video']],
+                    ['view', ['fullscreen']]
+                ],
+                lang: 'pt-PT'
+            });
+        });
+    </script>
 </body>
 
 </html>
