@@ -125,11 +125,13 @@
     <script src="{{ asset('assets/js/dashboards/dashboard.js') }}"></script>
     <!-- jQuery primeiro -->
     <script src="{{ asset('assets/libs/jquery/jquery.min.js') }}"></script>
-    <script src="{{ asset('assets/libs/bootstrap/dist/js/bootstrap.bundle.min.js') }}"></script>
 
     <!-- Depois Summernote -->
-    <script src="{{ asset('assets/js/summernote/summernote-bs5.min.js') }}"></script>
+    <script src="{{ asset('assets/js/summernote/summernote-lite.min.js') }}"></script>
     <script src="{{ asset('assets/js/summenote/summernote-pt-PT.min.js') }}"></script>
+    <script src="{{ asset('assets/js/summenote/summernote-ext-databasic.min.js') }}"></script>
+    <script src="{{ asset('assets/js/summenote/summernote-ext-hello.min.js') }}"></script>
+    <script src="{{ asset('assets/js/summenote/summernote-ext-specialchars.min.js') }}"></script>
 
     <script>
         $(document).ready(function() {
@@ -141,9 +143,10 @@
                     ['style', ['style']],
                     ['font', ['bold', 'underline', 'clear']],
                     ['color', ['color']],
-                    ['para', ['ul', 'ol']],
+                    ['para', ['ul', 'ol', 'paragraph']],
+                    ['table', ['table']],
                     ['insert', ['link', 'picture', 'video']],
-                    ['view', ['fullscreen']]
+                    ['view', ['fullscreen', 'codeview', 'help']]
                 ],
                 lang: 'pt-PT'
             });

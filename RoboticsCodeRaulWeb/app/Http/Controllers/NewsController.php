@@ -47,7 +47,7 @@ class NewsController extends Controller
                 $extension = $file->getClientOriginalExtension();
                 $title = preg_replace('/[^A-Za-z0-9\-]/', '', $request->input('title'));
                 $name = $title . '_' . time() . '.' . $extension;
-                $path = $file->storeAs('public/images/news', $name);
+                $path = $file->storeAs('images/news', $name);
                 $news->photo = $name;
             }
 
@@ -95,5 +95,7 @@ class NewsController extends Controller
     public function destroy(News $news)
     {
         //
+        $news->delete();
+        return redirect()->route('news')->with('message', 'Notícia excluída com sucesso!');
     }
 }
