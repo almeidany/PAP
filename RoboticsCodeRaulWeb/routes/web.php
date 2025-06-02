@@ -34,7 +34,6 @@ Route::middleware('auth')->group(function () {
 
 //user
 Route::get('/utilizadores', [App\Http\Controllers\UserController::class, 'index'])->name('users')->middleware('auth');
-Route::get('/utilizadores/criar', [App\Http\Controllers\UserController::class, 'create'])->name('users.create')->middleware('auth');
 Route::post('/utilizadores', [App\Http\Controllers\UserController::class, 'store'])->name('users.store')->middleware('auth');
 Route::get('/utilizadores/{user}/visualizacao', [App\Http\Controllers\UserController::class, 'show'])->name('users.show')->middleware('auth');
 Route::get('/utilizadores/{user}/editar', [App\Http\Controllers\UserController::class, 'edit'])->name('users.edit')->middleware('auth');

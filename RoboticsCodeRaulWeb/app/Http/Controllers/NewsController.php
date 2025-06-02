@@ -39,31 +39,27 @@ class NewsController extends Controller
             'author_user' => 'required|string|max:255',
         ]);
 
-        try {
-            $news = new News();
 
-            if ($request->hasFile('photo')) {
-                $file = $request->file('photo');
-                $extension = $file->getClientOriginalExtension();
-                $title = preg_replace('/[^A-Za-z0-9\-]/', '', $request->input('title'));
-                $name = $title . '_' . time() . '.' . $extension;
-                $path = $file->storeAs('images/news', $name);
-                $news->photo = $name;
-            }
+        $news = new News();
 
-            $news->title = $request->input('title');
-            $news->news = $request->input('news'); // Considerar usar Purifier
-            $news->news_date = $request->input('news_date');
-            $news->author_user = $request->input('author_user');
-
-            $news->save();
-
-            return redirect()->route('news')->with('message', 'Notícia criada com sucesso!');
-        } catch (\Exception $e) {
-            return back()->withInput()->with('error', 'Erro ao criar notícia: ' . $e->getMessage());
+        if ($request->hasFile('photo')) {
+            $file = $request->file('photo');
+            $extension = $file->getClientOriginalExtension();
+            $title = preg_replace('/[^A-Za-z0-9\-]/', '', $request->input('title'));
+            $name = $title . '_' . time() . '.' . $extension;
+            $path = $file->storeAs('images/news', $name);
+            $news->photo = $name;
         }
-    }
 
+        $news->title = $request->input('title');
+        $news->news = $request->input('news'); // Considerar usar Purifier
+        $news->news_date = $request->input('news_date');
+        $news->author_user = $request->input('author_user');
+
+        $news->save();
+
+        return redirect()->route('news')->with('message', 'Notícia criada com sucesso!');
+    }
     /**
      * Display the specified resource.
      */
@@ -79,6 +75,7 @@ class NewsController extends Controller
     public function edit(News $news)
     {
         //
+        return view('news.edit', compact('news'));
     }
 
     /**
@@ -87,6 +84,29 @@ class NewsController extends Controller
     public function update(Request $request, News $news)
     {
         //
+        $request->validate([
+            'photo' => 'nullable|image|mimes:jpeg,png,jpg|max:10240', // 10MB max size in KB
+            'title' => 'required|string|max:255',
+            'news' => 'required|string',
+            'news_date' => 'required|date',
+            'author_user' => 'required|string|max:255',
+        ]);
+
+        if ($request->hasFile('photo')) {
+            $file = $request->file('photo');
+            $extension = $file->getClientOriginalExtension();
+            $title = preg_replace('/[^A-Za-z0-9\-]/', '', $request->input('title'));
+            $name = $title . '_' . time() . '.' . $extension;
+            $path = $file->storeAs('images/news', $name);
+            $news->photo = $name;
+        }
+
+        $news->title = $request->title;
+        $news->news = $request->news; // Considerar usar Purifier
+        $news->news_date = $request->news_date;
+        $news->author_user = $request->author_user;
+        $news->save();
+        return redirect()->route('news')->with('message', 'Notícia atualizada com sucesso!');
     }
 
     /**

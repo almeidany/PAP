@@ -17,8 +17,9 @@
             <div class="body-wrapper">
                 <div class="container-fluid">
 
-                    <form action="{{ route('news.store') }}" enctype="multipart/form-data" method="POST">
+                    <form action="{{ route('news.update', $news->id) }}" enctype="multipart/form-data" method="POST">
                         @csrf
+                        @method('PUT')
                         <div class="card">
                             <div class="card-header text-bg-primary">
                                 <h4 class="mb-0 text-white text-center">Publicar Noticia</h4>
@@ -29,7 +30,10 @@
                                         <div class="col-md-6 mb-3">
                                             <label class="form-label">Carregar Fotografia</label>
                                             <input class="form-control" type="file" id="formFile" name="photo">
-                                            @if (isset($news) && $news->photo)
+                                            @if (old('photo'))
+                                                <img src="{{ asset('storage/images/news/' . old('photo')) }}"
+                                                    width="100" class="mt-2">
+                                            @elseif (isset($news) && $news->photo)
                                                 <img src="{{ asset('storage/images/news/' . $news->photo) }}"
                                                     width="100" class="mt-2">
                                             @endif
@@ -37,13 +41,12 @@
                                         <div class="col-md-6 mb-3">
                                             <label class="form-label">Título</label>
                                             <input type="text" name="title" class="form-control"
-                                                value="{{ old('title') }}">
+                                                value="{{ old('title', $news->title) }}">
                                         </div>
                                     </div>
 
                                     <label class="form-label">Notícia</label>
-                                    <textarea id="summernote" name="news"></textarea>
-                                    {{-- <script src="{{ asset('assets/js/summernote_config.js') }}"></script> --}}
+                                    <textarea id="summernote" name="news">{{ old('news', $news->news) }}</textarea>
 
                                     <div class="row pt-3 justify-content-center" style="text-align: center;">
                                         <div class="col-md-4 d-flex flex-column align-items-center">
@@ -52,7 +55,7 @@
                                                 <div class="form-group w-100">
                                                     <input type="date" name="news_date" class="form-control"
                                                         style="width: 100%; text-align: center;"
-                                                        value="{{ \Carbon\Carbon::now()->format('Y-m-d') }}">
+                                                        value="{{ old('news_date', $news->news_date ?? \Carbon\Carbon::now()->format('Y-m-d')) }}">
                                                 </div>
                                             </div>
                                         </div>
@@ -62,7 +65,7 @@
                                                 <div class="form-group w-100">
                                                     <input type="text" name="author_user" class="form-control"
                                                         style="width: 100%; text-align: center;"
-                                                        value="{{ Auth::user()->first_name }} {{ Auth::user()->last_name }}"
+                                                        value="{{ old('author_user', Auth::user()->first_name . ' ' . Auth::user()->last_name) }}"
                                                         readonly>
                                                 </div>
                                             </div>
