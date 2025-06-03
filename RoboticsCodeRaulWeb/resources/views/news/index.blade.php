@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="en" dir="ltr" data-bs-theme="light" data-color-theme="Blue_Theme" data-layout="vertical">
 
-@include('layouts.backoffice.news.head')
+@include('layouts.backoffice.news.head_index')
 
 <body>
     <div id="main-wrapper">
@@ -36,6 +36,22 @@
                                     </span>
                                 </div>
                             </div>
+                            <!-- Modal para mostrar a imagem -->
+                            <div class="modal fade" id="newsImageModal{{ $item->id }}" tabindex="-1"
+                                aria-labelledby="newsImageModalLabel{{ $item->id }}" aria-hidden="true">
+                                <div class="modal-dialog modal-dialog-centered">
+                                    <div class="modal-content">
+                                        <div class="modal-body p-0">
+                                            @if (Storage::exists('public/images/news/' . $item->photo))
+                                                <img src="{{ asset('storage/images/news/' . $item->photo) }}"
+                                                    alt="Notícia" class="img-fluid w-100">
+                                            @else
+                                                <div class="text-center p-4">Sem imagem disponível</div>
+                                            @endif
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
                             <div class="news-card-footer" style="justify-content: center; ">
                                 <a href="{{ route('news.edit', $item->id) }}" class="btn btn-sm btn-outline-primary"
                                     title="Editar">
@@ -57,101 +73,11 @@
                         </div>
                     @endforeach
                 </div>
-
                 <!-- Paginação -->
                 <div class="news-pagination">
                     {{ $news->links() }}
                 </div>
             </div>
-
-            <style>
-                .news-grid {
-                    display: grid;
-                    grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
-                    gap: 20px;
-                    padding: 20px;
-                }
-
-                .news-card {
-                    border: 1px solid #e0e0e0;
-                    border-radius: 8px;
-                    overflow: hidden;
-                    display: flex;
-                    flex-direction: column;
-                    transition: transform 0.3s ease, box-shadow 0.3s ease;
-                }
-
-                .news-card:hover {
-                    transform: translateY(-5px);
-                    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
-                }
-
-                .news-card-header {
-                    height: 160px;
-                    background-color: #f5f5f5;
-                    position: relative;
-                }
-
-                .news-image {
-                    width: 100%;
-                    height: 100%;
-                    object-fit: cover;
-                }
-
-                .news-image-placeholder {
-                    width: 100%;
-                    height: 100%;
-                    display: flex;
-                    align-items: center;
-                    justify-content: center;
-                    color: #ccc;
-                    font-size: 48px;
-                }
-
-                .news-card-body {
-                    padding: 15px;
-                    flex-grow: 1;
-                }
-
-                .news-title {
-                    font-size: 1.1rem;
-                    margin-bottom: 10px;
-                    color: #333;
-                }
-
-                .news-meta {
-                    display: flex;
-                    justify-content: space-between;
-                    font-size: 0.85rem;
-                    color: #666;
-                }
-
-                .news-card-footer {
-                    padding: 10px 15px;
-                    border-top: 1px solid #eee;
-                    display: flex;
-                    justify-content: flex-end;
-                    gap: 10px;
-                }
-
-                .news-pagination {
-                    padding: 20px;
-                    display: flex;
-                    justify-content: center;
-                }
-
-                @media (max-width: 768px) {
-                    .news-grid {
-                        grid-template-columns: repeat(auto-fill, minmax(240px, 1fr));
-                    }
-                }
-
-                @media (max-width: 480px) {
-                    .news-grid {
-                        grid-template-columns: 1fr;
-                    }
-                }
-            </style>
             <!-- Div para o botão no canto inferior esquerdo -->
             <div class="fixed-bottom-left">
                 <button class="btn btn-primary p-3 rounded-circle d-flex align-items-center justify-content-center"

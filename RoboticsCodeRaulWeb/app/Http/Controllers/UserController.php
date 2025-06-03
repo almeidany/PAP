@@ -14,15 +14,10 @@ class UserController extends Controller
     //
     public function index()
     {
-        // Aqui você pode buscar os usuários do banco de dados e passá-los para a view
         $users = User::all();
         return view('users.index', compact('users'));
     }
-    public function create()
-    {
-        // Retorna a view para criar um novo usuário
-        return view('users.create');
-    }
+    public function create() {}
     public function store(Request $request)
     {
         // Validação dos dados
@@ -92,7 +87,6 @@ class UserController extends Controller
             ],
         ]);
 
-        // Atualização do usuário
         $user = User::findOrFail($id);
         $user->update($request->all());
 
@@ -101,7 +95,7 @@ class UserController extends Controller
 
     public function destroy($id)
     {
-        // Aqui você pode excluir o usuário pelo ID
+
         $user = User::findOrFail($id);
         $user->delete();
 
