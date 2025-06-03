@@ -120,7 +120,6 @@
                                         </div>
                                     </div>
                                 </div>
-
                                 <div class="form-actions text-center mt-4">
                                     <a href="{{ route('projects') }}" class="btn btn-danger ms-2">Voltar a
                                         Projetos</a>

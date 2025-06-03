@@ -37,6 +37,10 @@
                                     {{ \Carbon\Carbon::parse($news->news_date)->format('d/m/Y') }}</small>
                             </div>
                         </div>
+                        <div class="form-actions text-center mt-4">
+                            <a href="{{ route('news') }}" class="btn btn-danger ms-2">Voltar a
+                                Notícias</a>
+                        </div>
                     </div>
                 </div>
             </div>
