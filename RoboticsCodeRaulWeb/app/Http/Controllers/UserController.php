@@ -74,7 +74,7 @@ class UserController extends Controller
                 Rule::unique('users')->ignore($id),
             ],
             'class' => 'required|string|max:10',
-            'tshirt_size' => 'required|string|max:3',
+            'tshirt_size' => 'requiredstring|max:3',
             'food_allergies' => 'required|in:sim,nao',
             'image_authorization' => 'required|in:sim,nao',
             'allergies_description' => 'nullable|string|max:400',

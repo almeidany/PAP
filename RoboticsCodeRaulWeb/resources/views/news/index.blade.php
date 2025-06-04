@@ -43,8 +43,8 @@
                                     title="Editar">
                                     <i class="bi bi-pencil"></i>
                                 </a>
-                                <a href="{{ route('news.show', $item->id) }}" class="btn btn-sm btn-outline-secondary"
-                                    title="Ver Notícia Completa" target="_blank">
+                                <a href="{{ route('news.show', ['id' => $item->id, 'slug' => Str::slug($item->title)]) }}"
+                                    class="btn btn-sm btn-outline-secondary" title="Ver Notícia" target="_blank">
                                     <i class="bi bi-eye"></i>
                                 </a>
                                 <form action="{{ route('news.destroy', $item->id) }}" method="POST" class="d-inline">
@@ -81,7 +81,7 @@
             <button
                 class="btn btn-primary p-3 rounded-circle d-flex align-items-center justify-content-center position-fixed bottom-0 end-0 m-3"
                 type="button" data-bs-toggle="offcanvas" data-bs-target="#offcanvasExample"
-                aria-controls="offcanvasExample">
+                aria-controls="offcanvasExample" onclick="window.location.href='{{ route('news.create') }}'">
                 <i class="bi bi-file-earmark-arrow-up fs-7"></i>
             </button>
         </div>

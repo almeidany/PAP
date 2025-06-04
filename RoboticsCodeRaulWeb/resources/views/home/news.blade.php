@@ -1,18 +1,12 @@
-﻿<!DOCTYPE html>
+<!DOCTYPE html>
 <html lang="en" dir="ltr" data-bs-theme="light" data-color-theme="Blue_Theme" data-layout="vertical">
 
 @include('layouts.backoffice.news.head')
 
 <body>
     <div id="main-wrapper">
-        @include('layouts.backoffice.sidebar')
         <div class="page-wrapper">
-            <!--  Header Start -->
-            <header class="topbar">
-                <div class="with-vertical">
-                    @include('layouts.backoffice.nav')
-                </div>
-            </header>
+            @include('layouts.frontoffice.nav')
             <!--  Header End -->
             <div class="body-wrapper">
                 <div class="container-fluid">

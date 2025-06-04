@@ -13,7 +13,6 @@ Route::get('/sobre-nos', [App\Http\Controllers\FrontController::class, 'about_us
 Route::get('/galeria', [App\Http\Controllers\FrontController::class, 'gallery'])->name('gallery');
 Route::get('/concursos', [App\Http\Controllers\FrontController::class, 'contests'])->name('contest');
 
-
 //Index Back
 Route::get('/dashboard', [App\Http\Controllers\BackController::class, 'index'])->name('dashboard')->middleware('auth');
 
@@ -41,19 +40,26 @@ Route::put('/utilizadores/{user}', [App\Http\Controllers\UserController::class, 
 Route::delete('/utilizadores/{user}', [App\Http\Controllers\UserController::class, 'destroy'])->name('users.destroy')->middleware('auth');
 
 //news
-Route::get('noticias', [App\Http\Controllers\NewsController::class, 'index'])->name('news')->middleware('auth');
-Route::get('noticias/criar', [App\Http\Controllers\NewsController::class, 'create'])->name('news.create')->middleware('auth');
-Route::post('noticias', [App\Http\Controllers\NewsController::class, 'store'])->name('news.store')->middleware('auth');
-Route::get('noticias/{news}', [App\Http\Controllers\NewsController::class, 'show'])->name('news.show')->middleware('auth');
-Route::get('noticias/{news}/editar', [App\Http\Controllers\NewsController::class, 'edit'])->name('news.edit')->middleware('auth');
-Route::put('noticias/{news}', [App\Http\Controllers\NewsController::class, 'update'])->name('news.update')->middleware('auth');
-Route::delete('noticias/{news}', [App\Http\Controllers\NewsController::class, 'destroy'])->name('news.destroy')->middleware('auth');
+use App\Http\Controllers\NewsController;
+
+// Listar notícias (protegido)
+Route::get('noticias', [NewsController::class, 'index'])
+    ->name('news')
+    ->middleware('auth');
+
+
+Route::get('noticias/criar', [NewsController::class, 'create'])->name('news.create')->middleware('auth');
+Route::post('noticias', [NewsController::class, 'store'])->name('news.store')->middleware('auth');
+Route::get('noticias{news}', [NewsController::class, 'show'])->where('title', '[A-Za-z0-9\-]+')->name('news.show');
+Route::get('noticias/{news}/editar', [NewsController::class, 'edit'])->where('news', '[0-9]+')->name('news.edit')->middleware('auth');
+Route::put('noticias/{news}', [NewsController::class, 'update'])->where('news', '[0-9]+')->name('news.update')->middleware('auth');
+Route::delete('noticias/{news}', [NewsController::class, 'destroy'])->where('news', '[0-9]+')->name('news.destroy')->middleware('auth');
 
 //projects
 Route::get('/projetos', [App\Http\Controllers\ProjectController::class, 'index'])->name('projects')->middleware('auth');
 Route::get('/projetos/criar', [App\Http\Controllers\ProjectController::class, 'create'])->name('projects.create')->middleware('auth');
 Route::post('/projetos', [App\Http\Controllers\ProjectController::class, 'store'])->name('projects.store')->middleware('auth');
-Route::get('/projetos/{project}/visualizacao', [App\Http\Controllers\ProjectController::class, 'show'])->name('projects.show')->middleware('auth');
+Route::get('noticias/{slug}', [NewsController::class, 'show'])->where('slug', '[A-Za-z0-9\-]+')->name('news.show');
 Route::get('/projetos/{project}/editar', [App\Http\Controllers\ProjectController::class, 'edit'])->name('projects.edit')->middleware('auth');
 Route::put('/projetos/{project}', [App\Http\Controllers\ProjectController::class, 'update'])->name('projects.update')->middleware('auth');
 Route::delete('/projetos/{project}', [App\Http\Controllers\ProjectController::class, 'destroy'])->name('projects.destroy')->middleware('auth');

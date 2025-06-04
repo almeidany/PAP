@@ -166,8 +166,6 @@
                     </div>
                 </div>
             </div>
-
-            @include('layouts.backoffice.Settings_Script')
         </div>
     </div>
     <div class="dark-transparent sidebartoggler"></div>
@@ -192,8 +190,8 @@
     <script src="{{ asset('assets/libs/owl.carousel/dist/owl.carousel.min.js') }}"></script>
     <script src="{{ asset('assets/libs/apexcharts/dist/apexcharts.min.js') }}"></script>
     <script src="{{ asset('assets/js/dashboards/dashboard.js') }}"></script>
-    <script src="{{ asset('/assets/libs/select2/dist//js/select2.min.js') }}"></script>
     <script src="{{ asset('/assets/libs/jquery/js/jquery.min.js') }}"></script>
+    <script src="{{ asset('/assets/libs/select2/dist/js/select2.min.js') }}"></script>
     <script src="{{ asset('/assets/js/select2_config.js') }}"></script>
 </body>
 
