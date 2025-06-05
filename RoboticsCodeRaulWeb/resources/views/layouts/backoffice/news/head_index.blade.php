@@ -22,5 +22,6 @@
     <link rel="stylesheet" href="{{ asset('assets/css/create.css') }}">
     <link rel="stylesheet" href="{{ asset('assets/css/news.css') }}">
     <link rel="stylesheet" href="{{ asset('assets/css/news_card.css') }}">
+    <link rel="stylesheet" href="{{ asset('assets/css/pfp.css') }}">
 
 </head>
