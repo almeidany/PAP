@@ -29,8 +29,6 @@ Route::middleware('auth')->group(function () {
     Route::post('/logout', [App\Http\Controllers\Auth\LoginController::class, 'logout'])->name('logout');
 });
 
-//Backoffice
-
 //user
 Route::get('/utilizadores', [App\Http\Controllers\UserController::class, 'index'])->name('users')->middleware('auth');
 Route::post('/utilizadores', [App\Http\Controllers\UserController::class, 'store'])->name('users.store')->middleware('auth');

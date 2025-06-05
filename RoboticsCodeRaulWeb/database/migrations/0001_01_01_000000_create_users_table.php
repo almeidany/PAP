@@ -22,6 +22,7 @@ return new class extends Migration
             $table->string('tshirt_size', 3);
             $table->enum('food_allergies', ['sim', 'nao']);
             $table->enum('image_authorization', ['sim', 'nao']);
+            $table->string('photo')->nullable();
             $table->string('allergies_description', 400)->nullable();
             $table->string('email', 75)->unique();
             $table->string('password');

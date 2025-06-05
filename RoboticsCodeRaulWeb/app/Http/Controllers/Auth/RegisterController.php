@@ -32,16 +32,19 @@ class RegisterController extends Controller
 
     protected function create(array $data)
     {
+
         $photoName = null;
+
         if (isset($data['photo']) && $data['photo']) {
             $file = $data['photo'];
             $extension = $file->getClientOriginalExtension();
             $first = preg_replace('/[^A-Za-z0-9\-]/', '', $data['first_name']);
             $last = preg_replace('/[^A-Za-z0-9\-]/', '', $data['last_name']);
             $name = $first . '_' . $last . '_' . time() . '.' . $extension;
-            $file->storeAs('public/images/users', $name);
+            $file->storeAs('images/users', $name);
             $photoName = $name;
         }
+
         return User::create([
             'first_name' => $data['first_name'],
             'last_name' => $data['last_name'],

@@ -1,0 +1,17 @@
+.rounded-circle {
+    width: 48px;
+    /* Tamanho pequeno, como nos sites modernos */
+    height: 48px;
+    border-radius: 50%;
+    /* Deixa redondo */
+    object-fit: cover;
+    /* Mantém a imagem centralizada e sem distorção */
+    border: 2px solid #fff;
+    /* Borda branca opcional para destacar do fundo */
+    box-shadow: 0 0 3px rgba(0, 0, 0, 0.2);
+    /* Leve sombra para profundidade */
+    margin-top: 5px;
+    /* Espaço para não colar no topo */
+    cursor: pointer;
+    /* Mostra que é clicável (caso seja) */
+}

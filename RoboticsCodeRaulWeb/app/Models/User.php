@@ -27,6 +27,7 @@ class User extends Authenticatable
         'tshirt_size',
         'food_allergies',
         'image_authorization',
+        'photo',
         'allergies_description',
         'email',
         'password'
