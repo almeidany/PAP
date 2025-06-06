@@ -36,14 +36,24 @@
                                         </div>
                                         <div class="col-md-6 mb-3">
                                             <label class="form-label">Título</label>
-                                            <input type="text" name="title" class="form-control"
+                                            <input type="text" name="title"
+                                                class="form-control @error('title') is-invalid @enderror"
                                                 value="{{ old('title') }}">
+                                            @error('title')
+                                                <div class="invalid-feedback">
+                                                    {{ $message }}
+                                                </div>
+                                            @enderror
                                         </div>
                                     </div>
 
                                     <label class="form-label">Notícia</label>
-                                    <textarea id="summernote" name="news"></textarea>
-                                    {{-- <script src="{{ asset('assets/js/summernote_config.js') }}"></script> --}}
+                                    <textarea id="summernote" name="news" class="form-control @error('news') is-invalid @enderror">{{ old('news') }}</textarea>
+                                    @error('news')
+                                        <div class="invalid-feedback">
+                                            {{ $message }}
+                                        </div>
+                                    @enderror
 
                                     <div class="row pt-3 justify-content-center" style="text-align: center;">
                                         <div class="col-md-4 d-flex flex-column align-items-center">
@@ -74,15 +84,6 @@
                                     <a href="{{ route('news') }}" class="btn btn-danger ms-2">Cancelar</a>
                                 </div>
                     </form>
-                    @if ($errors->any())
-                        <div class="alert alert-danger">
-                            <ul>
-                                @foreach ($errors->all() as $error)
-                                    <li>{{ $error }}</li>
-                                @endforeach
-                            </ul>
-                        </div>
-                    @endif
                 </div>
             </div>
             @include('layouts.backoffice.Settings_Script')

@@ -123,16 +123,20 @@
                                     <div class="col-md-6">
                                         <div class="mb-3">
                                             <label class="form-label">Membros do Projeto</label>
-                                            <select class="select2 form-control" id="projectcolleagues"
-                                                name="projectcolleagues[]" multiple="multiple">
+                                            <select
+                                                class="select2 form-control @error('projectcolleagues') is-invalid @enderror"
+                                                id="projectcolleagues" name="projectcolleagues[]" multiple="multiple">
                                                 <option disabled>Selecione o colega de trabalho</option>
                                                 @foreach ($users as $user)
                                                     <option value="{{ $user->id }}"
-                                                        @if ($project->users->contains($user)) selected @endif>
+                                                        @if (collect(old('projectcolleagues', $project->users->pluck('id')->toArray()))->contains($user->id)) selected @endif>
                                                         {{ $user->first_name }} {{ $user->last_name }}
                                                     </option>
                                                 @endforeach
                                             </select>
+                                            @error('projectcolleagues')
+                                                <div class="invalid-feedback">{{ $message }}</div>
+                                            @enderror
                                         </div>
                                     </div>
                                 </div>

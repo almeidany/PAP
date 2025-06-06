@@ -8,6 +8,7 @@ use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Validation\Rule;
 use Illuminate\Support\Facades\Validator;
+use App\Models\tshirts;
 
 class UserController extends Controller
 {
@@ -31,6 +32,7 @@ class UserController extends Controller
             'tshirt_size' => 'required|string|max:3',
             'food_allergies' => 'required|in:sim,nao',
             'image_authorization' => 'required|in:sim,nao',
+            'photo' => 'nullable|image|mimes:jpeg,png,jpg|max:10920',
             'allergies_description' => 'nullable|string|max:400',
             'email' => 'required|string|email|max:75|unique:users,email',
             'password' => 'required|string|min:8|confirmed',
@@ -53,7 +55,8 @@ class UserController extends Controller
     {
         // Aqui você pode buscar o usuário pelo ID e passá-lo para a view de edição
         $user = User::findOrFail($id);
-        return view('users.edit', compact('user'));
+        $tshirt_sizes = Tshirts::all();
+        return view('users.edit', compact('user', 'tshirt_sizes'));
     }
 
     public function update(Request $request, $id)
@@ -74,9 +77,10 @@ class UserController extends Controller
                 Rule::unique('users')->ignore($id),
             ],
             'class' => 'required|string|max:10',
-            'tshirt_size' => 'requiredstring|max:3',
+            'tshirt_size' => 'required|string|max:3',
             'food_allergies' => 'required|in:sim,nao',
             'image_authorization' => 'required|in:sim,nao',
+            'photo' => 'nullable|image|mimes:jpeg,png,jpg|max:10920',
             'allergies_description' => 'nullable|string|max:400',
             'email' => [
                 'required',
@@ -87,8 +91,29 @@ class UserController extends Controller
             ],
         ]);
 
-        $user = User::findOrFail($id);
-        $user->update($request->all());
+        $data = $request->all();
+        $photoName = null;
+
+        $user = User::findOrFail($id); // Coloque antes para evitar chamada duplicada
+
+        if ($request->hasFile('photo')) {
+            $file = $request->file('photo');
+            $extension = $file->getClientOriginalExtension();
+            $first = preg_replace('/[^A-Za-z0-9\-]/', '', $data['first_name']);
+            $last = preg_replace('/[^A-Za-z0-9\-]/', '', $data['last_name']);
+            $name = $first . '_' . $last . '_' . time() . '.' . $extension;
+            $file->storeAs('images/users', $name);
+            $photoName = $name;
+            $data['photo'] = $photoName;
+        } else {
+            if (!$user->photo) {
+                $data['photo'] = null;
+            } else {
+                $data['photo'] = $user->photo;
+            }
+        }
+
+        $user->update($data);
 
         return redirect()->route('users')->with('Successo', 'Utilizador atualizado com sucesso!');
     }

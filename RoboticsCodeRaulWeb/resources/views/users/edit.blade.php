@@ -1,7 +1,7 @@
 ﻿<!DOCTYPE html>
 <html lang="en" dir="ltr" data-bs-theme="light" data-color-theme="Blue_Theme" data-layout="vertical">
 
-@include('layouts.backoffice.head')
+@include('layouts.backoffice.users.head')
 
 <body>
     <div class="main-wrapper">
@@ -19,7 +19,7 @@
                 <div class="container-fluid">
                     <div class="card">
                         <div class="card-header text-bg-primary">
-                            <h4 class="mb-0 text-white text-center">Editar Membro</h4>
+                            <h4 class="mb-0 text-white text-center">Editar Perfil</h4>
                         </div>
 
                         <div class="card-body">
@@ -119,14 +119,25 @@
                                                 value="{{ old('class', $user->class) }}">
                                         </div>
                                     </div>
-                                    <!-- Campo para Tamanho da T-shirt -->
-                                    <div class="col-md-6">
+                                    <div class="form-group col-md-6">
                                         <div class="mb-3">
-                                            <label class="form-label">Tamanho da T-shirt <span
-                                                    class="text-danger"></span></label>
-                                            <input type="text" name="tshirt_size"
-                                                class="form-control @error('tshirt_size') is-invalid @enderror"
-                                                value="{{ old('tshirt_size', $user->tshirt_size) }}">
+                                            <label class="form-label">Tamanho da T-shirt</label>
+                                            <select name="tshirt_size" id="tshirt_size"
+                                                class="select2 form-control @error('tshirt_size') is-invalid @enderror"
+                                                required style="width: 100%;">
+                                                <option value="" disabled
+                                                    {{ old('tshirt_size', $user->tshirt_size) ? '' : 'selected' }}>
+                                                    Selecione o tamanho</option>
+                                                @foreach ($tshirt_sizes as $size)
+                                                    <option value="{{ $size->tshirt_size }}"
+                                                        @if (old('tshirt_size', $user->tshirt_size) == $size->tshirt_size) selected @endif>
+                                                        {{ $size->tshirt_size }}
+                                                    </option>
+                                                @endforeach
+                                            </select>
+                                            @error('tshirt_size')
+                                                <div class="invalid-feedback">{{ $message }}</div>
+                                            @enderror
                                         </div>
                                     </div>
                                 </div>
@@ -178,6 +189,17 @@
                                     </div>
                                 </div>
 
+                                <div class="form-group col-md-12">
+                                    <div class="mb-3">
+                                        <label class="form-label">Foto de Perfil</label>
+                                        <input class="form-control @error('photo') is-invalid @enderror"
+                                            type="file" name="photo" id="formFile">
+                                        @error('photo')
+                                            <div class="invalid-feedback">{{ $message }}</div>
+                                        @enderror
+                                    </div>
+                                </div>
+
                                 <div class="row">
                                     <div class="col-md-12">
                                         <div class="mb-3">
@@ -223,6 +245,9 @@
             codeBlock.textContent = codeBlock.innerHTML;
         });
     </script>
+    <script src="{{ asset('/assets/libs/jquery/jquery.min.js') }}"></script>
+    <script src="{{ asset('/assets/libs/select2/dist/js/select2.min.js') }}"></script>
+    <script src="{{ asset('/assets/js/select2_config.js') }}"></script>
     <script src="{{ asset('assets/libs/owl.carousel/dist/owl.carousel.min.js') }}"></script>
     <script src="{{ asset('assets/libs/apexcharts/dist/apexcharts.min.js') }}"></script>
     <script src="{{ asset('assets/js/dashboards/dashboard.js') }}"></script>

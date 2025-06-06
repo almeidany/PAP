@@ -143,20 +143,6 @@
                                         </div>
                                     </div>
                                 </div>
-                                @if ($errors->any())
-                                    <div class="card mb-3">
-                                        <div class="card-body">
-                                            <div class="alert alert-danger mb-0">
-                                                <ul class="mb-0">
-                                                    @foreach ($errors->all() as $error)
-                                                        <li>{{ $error }}</li>
-                                                    @endforeach
-                                                </ul>
-                                            </div>
-                                        </div>
-                                    </div>
-                                @endif
-
                                 <div class="form-actions text-center mt-4">
                                     <button type="submit" class="btn btn-primary">Submeter</button>
                                     <a href="{{ route('projects') }}" class="btn btn-danger ms-2">Cancelar</a>

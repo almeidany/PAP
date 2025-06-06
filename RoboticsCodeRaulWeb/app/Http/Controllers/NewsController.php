@@ -63,9 +63,9 @@ class NewsController extends Controller
     /**
      * Display the specified resource.
      */
-    public function show($title)
+    public function show(News $news)
     {
-        $news = News::where('title', str_replace('-', ' ', $title))->firstOrFail();
+        //
         return view('news.show', compact('news'));
     }
 
