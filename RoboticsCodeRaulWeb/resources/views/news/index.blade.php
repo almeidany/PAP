@@ -74,8 +74,8 @@
                     </div>
                 </div>
                 <!-- Paginação -->
-                <div class="news-pagination">
-                    {{ $news->links() }}
+                <div class="fixed-pagination d-flex justify-content-center">
+                    {{ $news->links('pagination::bootstrap-4') }}
                 </div>
             </div>
             <button

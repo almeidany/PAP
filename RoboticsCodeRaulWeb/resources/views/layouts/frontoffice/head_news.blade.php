@@ -29,4 +29,5 @@
     <!-- Template Stylesheet -->
     <link href="{{ asset('assets/css/style.css') }}" rel="stylesheet">
     <link href="{{ asset('assets/css/news_front.css') }}" rel="stylesheet">
+    <link href="{{ asset('assets/css/news_front_show.css') }}" rel="stylesheet">
 </head>

@@ -36,18 +36,16 @@
             </div>
 
             {{-- Paginação --}}
-            <div class="d-flex justify-content-center mt-4">
-                {{ $news->links() }}
+            <div class="fixed-pagination d-flex justify-content-center">
+                {{ $news->links('pagination::bootstrap-5') }}
             </div>
         </div>
     </div>
-    <!-- Case End -->
 
     @include('layouts.frontoffice.footer')
 
     <!-- Back to Top -->
     <a href="#" class="btn btn-lg btn-primary btn-lg-square back-to-top pt-2"><i class="bi bi-arrow-up"></i></a>
-
 
     <!-- JavaScript Libraries -->
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.1/jquery.min.js"></script>

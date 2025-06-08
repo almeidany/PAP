@@ -2,11 +2,10 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\NewsFront;
-use App\Models\News;
+use App\Models\Raffles;
 use Illuminate\Http\Request;
 
-class NewsFrontController extends Controller
+class RafflesController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -14,8 +13,8 @@ class NewsFrontController extends Controller
     public function index()
     {
         //
-        $news = News::orderBy('news_date', 'desc')->paginate(9);
-        return view('news_front.index', compact('news'));
+        $raffles = Raffles::all();
+        return view('raffles.index', compact('raffles'));
     }
 
     /**
@@ -24,6 +23,7 @@ class NewsFrontController extends Controller
     public function create()
     {
         //
+        return view('raffles.create');
     }
 
     /**
@@ -37,15 +37,15 @@ class NewsFrontController extends Controller
     /**
      * Display the specified resource.
      */
-    public function show(News $news)
+    public function show(Raffles $raffles)
     {
-        return view('news_front.show', compact('news'));
+        //
     }
 
     /**
      * Show the form for editing the specified resource.
      */
-    public function edit(NewsFront $newsFront)
+    public function edit(Raffles $raffles)
     {
         //
     }
@@ -53,7 +53,7 @@ class NewsFrontController extends Controller
     /**
      * Update the specified resource in storage.
      */
-    public function update(Request $request, NewsFront $newsFront)
+    public function update(Request $request, Raffles $raffles)
     {
         //
     }
@@ -61,7 +61,7 @@ class NewsFrontController extends Controller
     /**
      * Remove the specified resource from storage.
      */
-    public function destroy(NewsFront $newsFront)
+    public function destroy(Raffles $raffles)
     {
         //
     }

@@ -3,18 +3,21 @@
         <div class="row g-5">
             <div class="col-md-6 col-lg-3 wow fadeIn" data-wow-delay="0.1s">
                 <a href="{{ route('home') }}" class="d-inline-block mb-3" style="display: flex; justify-content: center;">
-    <h1 style="margin-bottom: 10px;">
-        <img src="{{ asset('assets/img/logo.png') }}" alt="Logo" class="img-fluid" style="max-height: 100px;">
-    </h1>
-</a>
+                    <h1 style="margin-bottom: 10px;">
+                        <img src="{{ asset('assets/img/logo.png') }}" alt="Logo" class="img-fluid"
+                            style="max-height: 100px;">
+                    </h1>
+                </a>
 
-<p class="mb-0 text-center" style="margin-bottom: 12px;">
-    Robotics Code Raul: Incentivando a inovação e a aprendizagem através da tecnologia e da robótica.
-</p>
+                <p class="mb-0 text-center" style="margin-bottom: 12px;">
+                    Robotics Code Raul: Incentivando a inovação e a aprendizagem através da tecnologia e da robótica.
+                </p>
 
-<a href="https://www.sitestar.pt/" style="display: flex; justify-content: center; margin-top: 8px;" target="_blank">
-    <img src="{{ asset('assets/img/sitestar_logo.png') }}" alt="Logo" class="img-fluid" style="max-height: 75px;">
-</a> <!-- Fechado corretamente -->
+                <a href="https://www.sitestar.pt/" style="display: flex; justify-content: center; margin-top: 8px;"
+                    target="_blank">
+                    <img src="{{ asset('assets/img/sitestar_logo.png') }}" alt="Logo" class="img-fluid"
+                        style="max-height: 75px;">
+                </a> <!-- Fechado corretamente -->
 
             </div>
             <div class="col-md-6 col-lg-3 wow fadeIn" data-wow-delay="0.3s">
@@ -24,7 +27,7 @@
                 <p><i class="fa fa-phone-alt me-3"></i>262 740 560</p>
                 <p><i class="fa fa-envelope me-3"></i>clube.robotica@aerp.pt</p>
                 <div class="d-flex pt-2">
-                    <a class="btn btn-outline-light btn-redes-sociais px-4 py-2" 
+                    <a class="btn btn-outline-light btn-redes-sociais px-4 py-2"
                         href="https://linktr.ee/RoboticsCodeRaul/" target="_blank">
                         <i class="fas fa-share-alt me-2"></i>Redes Sociais
                     </a>

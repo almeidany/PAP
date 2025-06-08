@@ -60,6 +60,15 @@ Route::get('/projetos/{project}/visualizacao', [App\Http\Controllers\ProjectCont
 Route::put('/projetos/{project}', [App\Http\Controllers\ProjectController::class, 'update'])->name('projects.update')->middleware('auth');
 Route::delete('/projetos/{project}', [App\Http\Controllers\ProjectController::class, 'destroy'])->name('projects.destroy')->middleware('auth');
 
+//raffles
+Route::get('/sorteios/participantes', [App\Http\Controllers\RafflesController::class, 'index'])->name('raffles')->middleware('auth');
+Route::get('/sorteios/adicionar-concorrente', [App\Http\Controllers\RafflesController::class, 'create'])->name('raffles.create')->middleware('auth');
+Route::post('/sorteios', [App\Http\Controllers\RafflesController::class, 'store'])->name('raffles.store')->middleware('auth');
+Route::get('/sorteios/{raffle}/editar', [App\Http\Controllers\RafflesController::class, 'edit'])->name('raffles.edit')->middleware('auth');
+Route::get('/sorteios/{raffle}/ficha', [App\Http\Controllers\RafflesController::class, 'show'])->name('raffles.show')->middleware('auth');
+Route::put('/sorteios/{raffle}', [App\Http\Controllers\RafflesController::class, 'update'])->name('raffles.update')->middleware('auth');
+Route::delete('/sorteios/{raffle}', [App\Http\Controllers\RafflesController::class, 'destroy'])->name('raffles.destroy')->middleware('auth');
+
 //attendance
 Route::get('/presencas', [App\Http\Controllers\AttendanceController::class, 'index'])->name('attendance')->middleware('auth');
 Route::get('/presencas/marcar', [App\Http\Controllers\AttendanceController::class, 'create'])->name('attendance.create')->middleware('auth');
