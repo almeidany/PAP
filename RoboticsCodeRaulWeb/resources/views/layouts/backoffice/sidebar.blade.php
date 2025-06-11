@@ -57,6 +57,12 @@
                         </span>
                         <span class="hide-menu">Página Inicial</span>
                     </a>
+                    <a class="sidebar-link" href="{{ route('sponsers') }}" aria-expanded="false">
+                        <span class="d-flex">
+                            <i class="bi bi-rocket-takeoff"></i>
+                        </span>
+                        <span class="hide-menu">Patrocinadores</span>
+                    </a>
                     <a class="sidebar-link" href="{{ route('projects') }}" aria-expanded="false">
                         <span class="d-flex">
                             <i class="bi bi-box-seam"></i>

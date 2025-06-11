@@ -15,6 +15,9 @@ Route::get('/concursos', [App\Http\Controllers\FrontController::class, 'contests
 // Listar notícias frontoffice
 Route::get('noticias/front', [App\Http\Controllers\NewsFrontController::class, 'index'])->name('news.front');
 Route::get('noticias/front/{news}', [App\Http\Controllers\NewsFrontController::class, 'show'])->name('news.front.show');
+Route::get('patrocinadores', [App\Http\Controllers\SponserController::class, 'index'])->name('sponsers.front');
+Route::get('patrocinadores/front/{sponser}', [App\Http\Controllers\SponserController::class, 'index'])->name('sponsers.front.show');
+
 
 //Index Back
 Route::get('/dashboard', [App\Http\Controllers\BackController::class, 'index'])->name('dashboard')->middleware('auth');
@@ -63,10 +66,17 @@ Route::delete('/projetos/{project}', [App\Http\Controllers\ProjectController::cl
 
 //raffles
 Route::get('/rifas/consulta', [App\Http\Controllers\RafflesController::class, 'index'])->name('raffles')->middleware('auth');
-Route::get('/rifas/numero-de-vendas', [App\Http\Controllers\RafflesController::class, 'create'])->name('raffles.create')->middleware('auth');
 Route::post('/rifas', [App\Http\Controllers\RafflesController::class, 'store'])->name('raffles.store')->middleware('auth');
 Route::put('/rifas/{raffles}', [App\Http\Controllers\RafflesController::class, 'update'])->name('raffles.update')->middleware('auth');
 Route::put('/users/{id}/raffles', [App\Http\Controllers\UserController::class, 'updateRaffles'])->name('users.updateRaffles')->middleware('auth');
+
+//sponser
+Route::get('/patrocinadores', [App\Http\Controllers\SponserController::class, 'index'])->name('sponsers')->middleware('auth');
+Route::get('/patrocinadores/adicionar', [App\Http\Controllers\SponserController::class, 'create'])->name('sponsers.create')->middleware('auth');
+Route::post('/patrocinadores', [App\Http\Controllers\SponserController::class, 'store'])->name('sponsers.store')->middleware('auth');
+Route::get('/patrocinadores/{sponser}/editar', [App\Http\Controllers\SponserController::class, 'edit'])->name('sponsers.edit')->middleware('auth');
+Route::put('/patrocinadores/{sponser}', [App\Http\Controllers\SponserController::class, 'update'])->name('sponsers.update')->middleware('auth');
+Route::delete('/patrocinadores/{sponser}', [App\Http\Controllers\SponserController::class, 'destroy'])->name('sponsers.destroy')->middleware('auth');
 
 //attendance
 Route::get('/presencas', [App\Http\Controllers\AttendanceController::class, 'index'])->name('attendance')->middleware('auth');
@@ -74,9 +84,9 @@ Route::get('/presencas/marcar', [App\Http\Controllers\AttendanceController::clas
 Route::post('/presencas', [App\Http\Controllers\AttendanceController::class, 'store'])->name('attendance.store')->middleware('auth');
 Route::delete('/presencas/{attendance}', [App\Http\Controllers\AttendanceController::class, 'destroy'])->name('attendance.destroy')->middleware('auth');
 
-//schedules
+/* //schedules
 Route::get('/horario/editar', [App\Http\Controllers\ScheduleController::class, 'edit'])->name('schedule.edit')->middleware('auth');
 Route::put('/horario/editar', [App\Http\Controllers\ScheduleController::class, 'update'])->name('schedule.update')->middleware('auth');
-Route::delete('/horario/editar', [App\Http\Controllers\ScheduleController::class, 'destroy'])->name('schedule.destroy')->middleware('auth');
+Route::delete('/horario/editar', [App\Http\Controllers\ScheduleController::class, 'destroy'])->name('schedule.destroy')->middleware('auth'); */
 
 Auth::routes();
