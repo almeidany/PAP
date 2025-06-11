@@ -32,6 +32,27 @@ class SponserController extends Controller
     public function store(Request $request)
     {
         //
+        $request->validate([
+            'photo' => 'required|image|mimes:jpeg,png,jpg,gif,svg|max:2048',
+            'enterprise_name' => 'required|string|max:70',
+            'designation' => 'required|string',
+            'link' => 'required|url',
+        ]);
+        $sponsers = new Sponser();
+        if ($request->hasFile('photo')) {
+            $file = $request->file('photo');
+            $extension = $file->getClientOriginalExtension();
+            $enterpriseName = preg_replace('/[^A-Za-z0-9\-]/', '', $request->input('enterprise_name'));
+            $filename = $enterpriseName . '_' . time() . '.' . $extension;
+            $path = $file->storeAs('images/sponsers', $filename, 'public');
+            $sponsers->photo = $filename;
+        }
+        $sponsers->enterprise_name = $request->input('enterprise_name');
+        $sponsers->designation = $request->input('designation');
+        $sponsers->link = $request->input('link');
+
+        $sponsers->save();
+        return redirect()->route('sponsers')->with('success', 'Patrocinador Adicionado com Sucesso.');
     }
 
     /**
@@ -40,6 +61,7 @@ class SponserController extends Controller
     public function show(Sponser $sponser)
     {
         //
+        return view('sponsers.show', compact('sponser'));
     }
 
     /**
@@ -64,5 +86,7 @@ class SponserController extends Controller
     public function destroy(Sponser $sponser)
     {
         //
+        $sponser->delete();
+        return redirect()->route('sponsers')->with('message', 'Patrocinador Removido com Sucesso.');
     }
 }

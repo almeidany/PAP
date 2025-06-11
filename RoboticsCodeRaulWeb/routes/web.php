@@ -13,10 +13,10 @@ Route::get('/sobre-nos', [App\Http\Controllers\FrontController::class, 'about_us
 Route::get('/galeria', [App\Http\Controllers\FrontController::class, 'gallery'])->name('gallery');
 Route::get('/concursos', [App\Http\Controllers\FrontController::class, 'contests'])->name('contest');
 // Listar notícias frontoffice
-Route::get('noticias/front', [App\Http\Controllers\NewsFrontController::class, 'index'])->name('news.front');
-Route::get('noticias/front/{news}', [App\Http\Controllers\NewsFrontController::class, 'show'])->name('news.front.show');
-Route::get('patrocinadores', [App\Http\Controllers\SponserController::class, 'index'])->name('sponsers.front');
-Route::get('patrocinadores/front/{sponser}', [App\Http\Controllers\SponserController::class, 'index'])->name('sponsers.front.show');
+Route::get('/noticias/front', [App\Http\Controllers\NewsFrontController::class, 'index'])->name('news.front');
+Route::get('/noticias/front/{news}', [App\Http\Controllers\NewsFrontController::class, 'show'])->name('news.front.show');
+Route::get('/patrocinadores/front', [App\Http\Controllers\SponserFrontController::class, 'index'])->name('sponsers.front');
+Route::get('/patrocinadores/front/{sponser}', [App\Http\Controllers\SponserFrontController::class, 'index'])->name('sponsers.front.show');
 
 
 //Index Back
@@ -75,8 +75,10 @@ Route::get('/patrocinadores', [App\Http\Controllers\SponserController::class, 'i
 Route::get('/patrocinadores/adicionar', [App\Http\Controllers\SponserController::class, 'create'])->name('sponsers.create')->middleware('auth');
 Route::post('/patrocinadores', [App\Http\Controllers\SponserController::class, 'store'])->name('sponsers.store')->middleware('auth');
 Route::get('/patrocinadores/{sponser}/editar', [App\Http\Controllers\SponserController::class, 'edit'])->name('sponsers.edit')->middleware('auth');
+Route::get('/patrocinadores/{sponser}', [App\Http\Controllers\SponserController::class, 'show'])->name('sponsers.show')->middleware('auth');
 Route::put('/patrocinadores/{sponser}', [App\Http\Controllers\SponserController::class, 'update'])->name('sponsers.update')->middleware('auth');
 Route::delete('/patrocinadores/{sponser}', [App\Http\Controllers\SponserController::class, 'destroy'])->name('sponsers.destroy')->middleware('auth');
+
 
 //attendance
 Route::get('/presencas', [App\Http\Controllers\AttendanceController::class, 'index'])->name('attendance')->middleware('auth');

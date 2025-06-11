@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Sponser_front;
+use App\Models\Sponser;
 use Illuminate\Http\Request;
 
 class SponserFrontController extends Controller
@@ -13,6 +14,8 @@ class SponserFrontController extends Controller
     public function index()
     {
         //
+        $sponsers = Sponser::orderBy('created_at', 'desc')->paginate(10);
+        return view('sponsers_front.index', compact('sponsers'));
     }
 
     /**
@@ -37,6 +40,7 @@ class SponserFrontController extends Controller
     public function show(Sponser_front $sponser_front)
     {
         //
+        return view('sponsers_front.show', compact('sponsers'));
     }
 
     /**

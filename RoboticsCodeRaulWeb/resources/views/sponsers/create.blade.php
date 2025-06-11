@@ -28,11 +28,17 @@
                                     <div class="row mb-3">
                                         <div class="col-md-6 mb-3">
                                             <label class="form-label">Carregar Fotografia</label>
-                                            <input class="form-control" type="file" id="formFile" name="photo">
+                                            <input class="form-control @error('photo') is-invalid @enderror"
+                                                type="file" id="formFile" name="photo">
                                             @if (isset($sponsers) && $sponsers->photo)
                                                 <img src="{{ asset('storage/images/sponsers/' . $sponsers->photo) }}"
                                                     width="100" class="mt-2">
                                             @endif
+                                            @error('photo')
+                                                <div class="invalid-feedback">
+                                                    {{ $message }}
+                                                </div>
+                                            @enderror
                                         </div>
                                         <div class="col-md-6 mb-3">
                                             <label class="form-label">Empresa</label>
@@ -60,9 +66,15 @@
                                             <div class="mb-3 w-100">
                                                 <label class="form-label">Link</label>
                                                 <div class="form-group w-100">
-                                                    <input type="text" name="link" class="form-control"
+                                                    <input type="text" name="link"
+                                                        class="form-control @error('link') is-invalid @enderror"
                                                         style="width: 100%; text-align: center;"
                                                         value="{{ old('link') }}">
+                                                    @error('link')
+                                                        <div class="invalid-feedback">
+                                                            {{ $message }}
+                                                        </div>
+                                                    @enderror
                                                 </div>
                                             </div>
                                         </div>

@@ -10,26 +10,24 @@
     <div class="container-fluid bg-light py-5">
         <div class="container py-5">
             <div class="mx-auto text-center wow fadeIn" data-wow-delay="0.1s" style="max-width: 500px;">
-                <div class="btn btn-sm border rounded-pill text-primary px-3 mb-3">Notícias</div>
-                <h1 class="mb-4">Fique a par do acontecimento</h1>
+                <div class="btn btn-sm border rounded-pill text-primary px-3 mb-3">Patrocinios</div>
+                <h1 class="mb-4"></h1>
             </div>
             <div class="row g-4">
-                @foreach ($news as $item)
+                @foreach ($sponsers as $item)
                     <div class="col-lg-4 col-md-6 wow fadeIn" data-wow-delay="0.3s">
                         <div class="case-item position-relative overflow-hidden rounded mb-2">
                             <img class="img-fluid"
-                                src="{{ $item->photo ? asset('storage/images/news/' . $item->photo) : '' }}"
-                                alt="Imagem da notícia">
-                            <a class="case-overlay text-decoration-none"
-                                href="{{ route('news.front.show', $item->id) }}">
+                                src="{{ $item->photo ? asset('storage/images/sponsers/' . $item->photo) : asset('images/no-image.png') }}"
+                                alt="Imagem do patrocinador">
+                            <div class="case-overlay text-decoration-none" style="cursor: default;">
                                 <h6 class="lh-base text-white mb-2" style="font-size: 16px;">
-                                    {{ Str::limit($item->title, 60) }}
+                                    {{ Str::limit($item->enterprise_name, 60) }}
                                 </h6>
                                 <p class="text-white" style="font-size: 14px;">
-                                    {{ Str::limit(strip_tags($item->news), 80) }}
+                                    {{ Str::limit(strip_tags($item->description), 80) }}
                                 </p>
-                                <span class="btn btn-square btn-primary mt-2"><i class="fa fa-arrow-right"></i></span>
-                            </a>
+                            </div>
                         </div>
                     </div>
                 @endforeach
@@ -37,7 +35,7 @@
 
             {{-- Paginação --}}
             <div class="fixed-pagination d-flex justify-content-center">
-                {{ $news->links('pagination::bootstrap-5') }}
+                {{ $sponsers->links('pagination::bootstrap-5') }}
             </div>
         </div>
     </div>

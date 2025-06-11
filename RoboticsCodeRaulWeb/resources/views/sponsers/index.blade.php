@@ -77,7 +77,7 @@
                 class="btn btn-primary p-3 rounded-circle d-flex align-items-center justify-content-center position-fixed bottom-0 end-0 m-3"
                 type="button" data-bs-toggle="offcanvas" data-bs-target="#offcanvasExample"
                 aria-controls="offcanvasExample" onclick="window.location.href='{{ route('sponsers.create') }}'">
-                <i class="bi bi-file-earmark-arrow-up fs-7"></i>
+                <i class="bi bi-tag fs-7"></i>
             </button>
         </div>
     </div>
@@ -103,7 +103,7 @@
     <script src="{{ asset('assets/libs/owl.carousel/dist/owl.carousel.min.js') }}"></script>
     <script src="{{ asset('assets/libs/apexcharts/dist/apexcharts.min.js') }}"></script>
     <script src="{{ asset('assets/js/dashboards/dashboard.js') }}"></script>
-    <script src="{{ asset('assets/js/load_imgModal.js') }}"></script>
+    <script src="{{ asset('assets/js/load_imgModal_Sponser.js') }}"></script>
 </body>
 
 </html>
