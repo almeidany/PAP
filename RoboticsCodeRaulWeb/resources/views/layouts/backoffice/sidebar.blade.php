@@ -5,8 +5,10 @@
         <!-- ---------------------------------- -->
         <div class="brand-logo d-flex align-items-center justify-content-between">
             <a href="{{ route('dashboard') }}" class="text-nowrap logo-img">
-                <img src="{{ asset('assets/img/logo.png') }}" class="dark-logo d-block" alt="Logo-Dark" style="max-width: 150px;">
-                <img src="{{ asset('assets/img/logo-light.png') }}" class="light-logo d-none" alt="Logo-light" style="max-width: 150px;">
+                <img src="{{ asset('assets/img/logo.png') }}" class="dark-logo d-block" alt="Logo-Dark"
+                    style="max-width: 150px;">
+                <img src="{{ asset('assets/img/logo-light.png') }}" class="light-logo d-none" alt="Logo-light"
+                    style="max-width: 150px;">
             </a>
             <a href="javascript:void(0)" class="sidebartoggler ms-auto text-decoration-none fs-5 d-block d-xl-none">
                 <i class="bi bi-x"></i>
@@ -20,7 +22,7 @@
                     <a class="sidebar-link" href="https://tr.ee/P7H9oI" aria-expanded="false" target="_blank">
                         <span class="d-flex">
                             <i class="bi bi-info"></i>
-                        </span> 
+                        </span>
                         <span class="hide-menu">Acessos</span>
                     </a>
                     <a class="sidebar-link" href="{{ route('home') }}" aria-expanded="false" target="_blank">
@@ -37,7 +39,7 @@
                         <span class="hide-menu">Marcar Presença</span>
                     </a>
 
-                     <a class="sidebar-link" href="{{ route('users') }}" aria-expanded="false">
+                    <a class="sidebar-link" href="{{ route('users') }}" aria-expanded="false">
                         <span class="d-flex">
                             <i class="bi bi-people"></i>
                         </span>
@@ -60,6 +62,12 @@
                             <i class="bi bi-box-seam"></i>
                         </span>
                         <span class="hide-menu">Projetos</span>
+                    </a>
+                    <a class="sidebar-link" href="{{ route('raffles') }}" aria-expanded="false">
+                        <span class="d-flex">
+                            <i class="bi bi-card-text"></i>
+                        </span>
+                        <span class="hide-menu">Rifas</span>
                     </a>
                 </li>
             </ul>

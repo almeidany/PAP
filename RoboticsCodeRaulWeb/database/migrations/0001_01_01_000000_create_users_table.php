@@ -28,6 +28,10 @@ return new class extends Migration
             $table->string('password');
             $table->timestamp('email_verified_at')->nullable();
             $table->rememberToken();
+            $table->integer('raffles_given')->default(0);
+            $table->integer('raffles_sold')->default(0);
+            $table->integer('raffles_toReturn')->default(0);
+            $table->integer('total_sold_byuser')->default(0);
             $table->timestamps();
         });
 

@@ -91,11 +91,10 @@ class UserController extends Controller
             ],
         ]);
 
+        $user = User::findOrFail($id);
         $data = $request->all();
-        $photoName = null;
 
-        $user = User::findOrFail($id); // Coloque antes para evitar chamada duplicada
-
+        // Foto
         if ($request->hasFile('photo')) {
             $file = $request->file('photo');
             $extension = $file->getClientOriginalExtension();
@@ -103,19 +102,41 @@ class UserController extends Controller
             $last = preg_replace('/[^A-Za-z0-9\-]/', '', $data['last_name']);
             $name = $first . '_' . $last . '_' . time() . '.' . $extension;
             $file->storeAs('images/users', $name);
-            $photoName = $name;
-            $data['photo'] = $photoName;
+            $data['photo'] = $name;
         } else {
-            if (!$user->photo) {
-                $data['photo'] = null;
-            } else {
-                $data['photo'] = $user->photo;
-            }
+            $data['photo'] = $user->photo ?? null;
         }
 
+        // Atualiza tudo de uma vez
         $user->update($data);
 
         return redirect()->route('users')->with('Successo', 'Utilizador atualizado com sucesso!');
+    }
+
+    public function updateRaffles(Request $request, $id)
+    {
+        $request->validate([
+            'raffles_given' => 'nullable|integer',
+            'raffles_sold' => 'nullable|integer',
+        ]);
+
+        $user = User::findOrFail($id);
+
+        if ($request->has('raffles_given')) {
+            $user->raffles_given = $request->raffles_given;
+        }
+
+        if ($request->has('raffles_sold')) {
+            $user->raffles_sold = $request->raffles_sold;
+        }
+
+        // Calcula automaticamente os campos derivados
+        $user->raffles_toReturn = ($user->raffles_given ?? 0) - ($user->raffles_sold ?? 0);
+        $user->total_sold_byuser = ($user->raffles_sold ?? 0) * 1; // se for 1€ por rifa
+
+        $user->save();
+
+        return back()->with('success', 'Dados de rifas atualizados com sucesso!');
     }
 
     public function destroy($id)

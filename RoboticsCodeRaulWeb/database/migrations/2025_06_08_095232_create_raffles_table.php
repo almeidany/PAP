@@ -7,17 +7,13 @@ use Illuminate\Support\Facades\Schema;
 return new class extends Migration
 {
     /**
-     * Run the migrations.
+     * Run the migrations. 2025-06-08
      */
     public function up(): void
     {
         Schema::create('raffles', function (Blueprint $table) {
             $table->id();
-            $table->string('first_name');
-            $table->string('last_name');
-            $table->string('phonenumber');
-            $table->string('location');
-            $table->date('raffle_date');
+            $table->integer('total')->default(0);
             $table->timestamps();
         });
     }

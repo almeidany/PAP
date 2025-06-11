@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Raffles;
+use App\Models\User;
 use Illuminate\Http\Request;
 
 class RafflesController extends Controller
@@ -12,9 +13,8 @@ class RafflesController extends Controller
      */
     public function index()
     {
-        //
-        $raffles = Raffles::all();
-        return view('raffles.index', compact('raffles'));
+        $users = User::all();
+        return view('raffles.index', compact('users'));
     }
 
     /**
@@ -29,10 +29,7 @@ class RafflesController extends Controller
     /**
      * Store a newly created resource in storage.
      */
-    public function store(Request $request)
-    {
-        //
-    }
+    public function store(Request $request) {}
 
     /**
      * Display the specified resource.
@@ -40,6 +37,7 @@ class RafflesController extends Controller
     public function show(Raffles $raffles)
     {
         //
+        return view('raffles.show', compact('raffles'));
     }
 
     /**
@@ -48,15 +46,13 @@ class RafflesController extends Controller
     public function edit(Raffles $raffles)
     {
         //
+        return view('raffles.edit', compact('raffles'));
     }
 
     /**
      * Update the specified resource in storage.
      */
-    public function update(Request $request, Raffles $raffles)
-    {
-        //
-    }
+    public function update(Request $request, Raffles $raffles) {}
 
     /**
      * Remove the specified resource from storage.

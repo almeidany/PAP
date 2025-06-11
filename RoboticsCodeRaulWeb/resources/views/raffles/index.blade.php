@@ -27,76 +27,56 @@
                             @endif
                             <div class="table-responsive">
                                 <table id="zero_config" class="table table-striped table-bordered text-center">
-                                    <h4 class="card-title">Lista de Projetos</h4>
+                                    <h4 class="card-title">Rifas | Consulta</h4>
                                     <thead>
                                         <tr>
-                                            <th scope="col" class="px-0 text-muted text-center">Nome</th>
-                                            <th scope="col" class="px-0 text-muted text-center">Categoria</th>
-                                            <th scope="col" class="px-0 text-muted text-center">Github</th>
-                                            <th scope="col" class="px-0 text-muted text-center">Estado</th>
-                                            <th scope="col" class="px-0 text-muted text-center">Ações</th>
+                                            <th class="px-0 text-muted text-center">Nome</th>
+                                            <th class="px-0 text-muted text-center">Turma</th>
+                                            <th class="px-0 text-muted text-center">Rifas Atribuídas</th>
+                                            <th class="px-0 text-muted text-center">Total Vendido</th>
+                                            <th class="px-0 text-muted text-center">Angariado</th>
+                                            <th class="px-0 text-muted text-center">Rifas Por Devolver</th>
                                         </tr>
                                     </thead>
-                                    <tbody>
-                                        @foreach ($projects as $project)
-                                            <tr>
-                                                <td class="px-0">
-                                                    <div class="d-flex align-items-center justify-content-center">
-                                                        @if ($project->photo)
-                                                            <!-- Verifique se o campo se chama 'photo' ou 'foto' -->
-                                                            <img src="{{ asset('storage/images/projects/' . $project->photo) }}"
-                                                                class="rounded-circle" width="35"
-                                                                alt="{{ $project->projectname }}" />
-                                                        @else
-                                                            <img src="{{ asset('assets/images/profile/user-4.jpg') }}"
-                                                                class="rounded-circle" width="35" alt="Default" />
-                                                        @endif
-                                                        <div class="ms-3">
-                                                            <h6 class="mb-0 fw-bold">{{ $project->projectname }}</h6>
-                                                            <small
-                                                                class="text-muted">{{ \Carbon\Carbon::parse($project->start_date)->format('d/m/Y') }}</small>
-                                                        </div>
-                                                    </div>
-                                                </td>
-                                                <td class="px-0">{{ $project->category }}</td>
-                                                <!-- Exibe a categoria como sigla -->
-                                                <td class="px-0">
-                                                    <a href="{{ $project->github_url }}" target="_blank"
-                                                        class="text-primary text-decoration-underline">
-                                                        {{ $project->github_url }}
-                                                    </a>
-                                                </td>
-                                                <td class="px-0 text-dark font-weight-medium">
-                                                    @if ($project->end_date)
-                                                        <span class="badge bg-success">Concluído</span>
-                                                        <small
-                                                            class="text-muted d-block">{{ \Carbon\Carbon::parse($project->end_date)->format('d/m/Y') }}</small>
-                                                    @else
-                                                        <span class="badge bg-warning">Em Progresso</span>
-                                                    @endif
-                                                </td>
-                                                <td class="px-0">
-                                                    <form id="deleteProject{{ $project->id }}"
-                                                        action="{{ route('projects.destroy', $project->id) }}"
-                                                        method="POST">
-                                                        @csrf
-                                                        @method('DELETE')
-                                                        <button type="submit" class="btn btn-danger"
-                                                            onclick="return confirm('Tem certeza que deseja excluir este projeto?')">
-                                                            <i class="bi bi-trash"></i>
-                                                        </button>
-                                                        <a href="{{ route('projects.edit', $project->id) }}"
-                                                            class="btn btn-warning">
-                                                            <i class="bi bi-pencil"></i>
-                                                        </a>
-                                                        <a href="{{ route('projects.show', $project->id) }}"
-                                                            class="btn btn-info">
-                                                            <i class="bi bi-eye"></i>
-                                                        </a>
-                                                    </form>
-                                                </td>
-                                            </tr>
-                                        @endforeach
+                                    @foreach ($users as $user)
+                                        <tr>
+                                            <td class="px-0 text-center">
+                                                <strong>{{ $user->first_name }}
+                                                    {{ $user->last_name }}</strong>
+                                            </td>
+                                            <td class="px-0 text-center">
+                                                {{ $user->class }}
+                                            </td>
+                                            <td class="px-0 text-center">
+                                                <form method="POST"
+                                                    action="{{ route('users.updateRaffles', $user->id) }}">
+                                                    @csrf
+                                                    @method('PUT')
+                                                    <input type="number" name="raffles_given"
+                                                        value="{{ $user->raffles_given }}" class="form-control"
+                                                        style="width: 80px; margin: 0 auto; text-align: center;"
+                                                        onchange="this.form.submit()">
+                                                </form>
+                                            </td>
+                                            <td class="px-0 text-center">
+                                                <form method="POST"
+                                                    action="{{ route('users.updateRaffles', $user->id) }}">
+                                                    @csrf
+                                                    @method('PUT')
+                                                    <input type="number" name="raffles_sold"
+                                                        value="{{ $user->raffles_sold }}" class="form-control"
+                                                        style="width: 80px; margin: 0 auto; text-align: center;"
+                                                        onchange="this.form.submit()">
+                                                </form>
+                                            </td>
+                                            <td class="px-0 text-center">
+                                                {{ $user->total_sold_byuser }} €
+                                            </td>
+                                            <td class="px-0 text-center">
+                                                {{ $user->raffles_toReturn }}
+                                            </td>
+                                        </tr>
+                                    @endforeach
                                     </tbody>
                                 </table>
                             </div>
@@ -107,8 +87,8 @@
             <button
                 class="btn btn-primary p-3 rounded-circle d-flex align-items-center justify-content-center position-fixed bottom-0 end-0 m-3"
                 type="button" data-bs-toggle="offcanvas" data-bs-target="#offcanvasExample"
-                aria-controls="offcanvasExample" onclick="window.location.href='{{ route('projects.create') }}'">
-                <i class="bi bi-database-add fs-7"></i>
+                aria-controls="offcanvasExample" onclick="window.location.href='{{ route('raffles.create') }}'">
+                <i class="bi bi-person-vcard fs-7"></i>
             </button>
         </div>
     </div>

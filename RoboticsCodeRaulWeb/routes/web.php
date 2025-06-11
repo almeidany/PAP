@@ -39,6 +39,7 @@ Route::get('/utilizadores/{user}/visualizacao', [App\Http\Controllers\UserContro
 Route::get('/utilizadores/{user}/editar', [App\Http\Controllers\UserController::class, 'edit'])->name('users.edit')->middleware('auth');
 Route::put('/utilizadores/{user}', [App\Http\Controllers\UserController::class, 'update'])->name('users.update')->middleware('auth');
 Route::delete('/utilizadores/{user}', [App\Http\Controllers\UserController::class, 'destroy'])->name('users.destroy')->middleware('auth');
+Route::put('/users/{id}/raffles', [App\Http\Controllers\UserController::class, 'updateRaffles'])->name('users.updateRaffles')->middleware('auth');
 
 //news
 
@@ -61,13 +62,11 @@ Route::put('/projetos/{project}', [App\Http\Controllers\ProjectController::class
 Route::delete('/projetos/{project}', [App\Http\Controllers\ProjectController::class, 'destroy'])->name('projects.destroy')->middleware('auth');
 
 //raffles
-Route::get('/sorteios/participantes', [App\Http\Controllers\RafflesController::class, 'index'])->name('raffles')->middleware('auth');
-Route::get('/sorteios/adicionar-concorrente', [App\Http\Controllers\RafflesController::class, 'create'])->name('raffles.create')->middleware('auth');
-Route::post('/sorteios', [App\Http\Controllers\RafflesController::class, 'store'])->name('raffles.store')->middleware('auth');
-Route::get('/sorteios/{raffle}/editar', [App\Http\Controllers\RafflesController::class, 'edit'])->name('raffles.edit')->middleware('auth');
-Route::get('/sorteios/{raffle}/ficha', [App\Http\Controllers\RafflesController::class, 'show'])->name('raffles.show')->middleware('auth');
-Route::put('/sorteios/{raffle}', [App\Http\Controllers\RafflesController::class, 'update'])->name('raffles.update')->middleware('auth');
-Route::delete('/sorteios/{raffle}', [App\Http\Controllers\RafflesController::class, 'destroy'])->name('raffles.destroy')->middleware('auth');
+Route::get('/rifas/consulta', [App\Http\Controllers\RafflesController::class, 'index'])->name('raffles')->middleware('auth');
+Route::get('/rifas/numero-de-vendas', [App\Http\Controllers\RafflesController::class, 'create'])->name('raffles.create')->middleware('auth');
+Route::post('/rifas', [App\Http\Controllers\RafflesController::class, 'store'])->name('raffles.store')->middleware('auth');
+Route::put('/rifas/{raffles}', [App\Http\Controllers\RafflesController::class, 'update'])->name('raffles.update')->middleware('auth');
+Route::put('/users/{id}/raffles', [App\Http\Controllers\UserController::class, 'updateRaffles'])->name('users.updateRaffles')->middleware('auth');
 
 //attendance
 Route::get('/presencas', [App\Http\Controllers\AttendanceController::class, 'index'])->name('attendance')->middleware('auth');
