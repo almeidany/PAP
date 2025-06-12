@@ -11,7 +11,7 @@
         <div class="container py-5">
             <div class="mx-auto text-center wow fadeIn" data-wow-delay="0.1s" style="max-width: 500px;">
                 <div class="btn btn-sm border rounded-pill text-primary px-3 mb-3">Notícias</div>
-                <h1 class="mb-4">Fique a par do acontecimento</h1>
+                <h2 class="mb-4">Fique a par do acontecimento</h2>
             </div>
             <div class="row g-4">
                 @foreach ($news as $item)

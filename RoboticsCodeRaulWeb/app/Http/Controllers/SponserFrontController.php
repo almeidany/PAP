@@ -37,7 +37,7 @@ class SponserFrontController extends Controller
     /**
      * Display the specified resource.
      */
-    public function show(Sponser_front $sponser_front)
+    public function show(Sponser $sponsers)
     {
         //
         return view('sponsers_front.show', compact('sponsers'));

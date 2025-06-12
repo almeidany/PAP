@@ -84,12 +84,6 @@
                     </div>
                 </div>
             </div>
-            <button
-                class="btn btn-primary p-3 rounded-circle d-flex align-items-center justify-content-center position-fixed bottom-0 end-0 m-3"
-                type="button" data-bs-toggle="offcanvas" data-bs-target="#offcanvasExample"
-                aria-controls="offcanvasExample" onclick="window.location.href='{{ route('raffles.create') }}'">
-                <i class="bi bi-person-vcard fs-7"></i>
-            </button>
         </div>
     </div>
     <div class="dark-transparent sidebartoggler"></div>

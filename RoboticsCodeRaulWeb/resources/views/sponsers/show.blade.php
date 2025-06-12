@@ -20,26 +20,25 @@
                         <div class="card">
                             <!-- Title Header -->
                             <div class="card-header text-bg-primary text-center">
-                                <h3 class="text-white mb-0">{{ $news->title }}</h3>
+                                <h3 class="text-white mb-0">{{ $sponsers->enterprise_name }}</h3>
                             </div>
 
                             <!-- News Content With Scroll -->
                             <div class="card-body" style="max-height: 400px; overflow-y: auto;">
                                 <div class="news-body" style="font-size: 16px;">
-                                    {!! $news->news !!}
+                                    {!! $sponsers->designation !!}
                                 </div>
                             </div>
 
                             <!-- Footer with Author and Date -->
                             <div class="card-footer d-flex justify-content-between align-items-center">
-                                <small><strong>Publicado por:</strong> {{ $news->author_user }}</small>
-                                <small><strong>Publicado em:</strong>
-                                    {{ \Carbon\Carbon::parse($news->news_date)->format('d/m/Y') }}</small>
+                                <small><strong>Link da Empresa:</strong> <a href="{{ $sponsers->link }}" target="_blank"
+                                        rel="noopener">{{ $sponsers->link }}</a></small>
                             </div>
                         </div>
                         <div class="form-actions text-center mt-4">
-                            <a href="{{ route('news') }}" class="btn btn-danger ms-2">Voltar a
-                                Notícias</a>
+                            <a href="{{ route('sponsers') }}" class="btn btn-danger ms-2">Voltar a
+                                Patrocinadores</a>
                         </div>
                     </div>
                 </div>

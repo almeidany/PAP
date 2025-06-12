@@ -58,10 +58,10 @@ class SponserController extends Controller
     /**
      * Display the specified resource.
      */
-    public function show(Sponser $sponser)
+    public function show(Sponser $sponsers)
     {
         //
-        return view('sponsers.show', compact('sponser'));
+        return view('sponsers.show', compact('sponsers'));
     }
 
     /**
@@ -83,10 +83,10 @@ class SponserController extends Controller
     /**
      * Remove the specified resource from storage.
      */
-    public function destroy(Sponser $sponser)
+    public function destroy(Sponser $sponsers)
     {
         //
-        $sponser->delete();
+        $sponsers->delete();
         return redirect()->route('sponsers')->with('message', 'Patrocinador Removido com Sucesso.');
     }
 }

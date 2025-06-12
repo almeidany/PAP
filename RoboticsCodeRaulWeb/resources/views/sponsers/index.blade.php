@@ -21,24 +21,28 @@
                         <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
                     </div>
                 @endif
-                <div class="sponsers-grid">
+                <div class="news-grid">
                     @foreach ($sponsers as $item)
-                        <div class="sponsers-card">
-                            <div class="sponsers-card-header">
-                                <img class="sponsers-image" src="{{ asset('storage/images/sponsers/' . $item->photo) }}"
-                                    style="cursor: pointer;" data-bs-toggle="modal" data-bs-target="#sponsersImageModal"
+                        <div class="news-card">
+                            <div class="news-card-header">
+                                <img class="news-image" src="{{ asset('storage/images/sponsers/' . $item->photo) }}"
+                                    style="cursor: pointer;" data-bs-toggle="modal" data-bs-target="#newsImageModal"
                                     data-image="{{ asset('storage/images/sponsers/' . $item->photo) }}">
                             </div>
-                            <div class="sponsers-card-body">
-                                <h3 class="sponsers-title">{{ Str::limit($item->enterprise_name, 50) }}</h3>
+                            <div class="news-card-body">
+                                <h3 class="news-title">{{ Str::limit($item->enterprise_name, 50) }}</h3>
+                                <div class="news-meta">
+                                    <a href="{{ $item->link }}" target="_blank"
+                                        class="news-author">{{ $item->link }}</a>
+                                </div>
                             </div>
-                            <div class="sponsers-card-footer" style="justify-content: center; ">
+                            <div class="news-card-footer" style="justify-content: center; ">
                                 <a href="{{ route('sponsers.edit', $item->id) }}" class="btn btn-sm btn-outline-primary"
                                     title="Editar">
                                     <i class="bi bi-pencil"></i>
                                 </a>
                                 <a href="{{ route('sponsers.show', $item->id) }}"
-                                    class="btn btn-sm btn-outline-secondary" title="Ver Patrocinador" target="_blank">
+                                    class="btn btn-sm btn-outline-secondary" title="Ver Notícia" target="_blank">
                                     <i class="bi bi-eye"></i>
                                 </a>
                                 <form action="{{ route('sponsers.destroy', $item->id) }}" method="POST"
@@ -46,23 +50,23 @@
                                     @csrf
                                     @method('DELETE')
                                     <button type="submit" class="btn btn-sm btn-outline-danger" title="Apagar"
-                                        onclick="return confirm('Tem certeza que deseja apagar este patrocinador?')">
+                                        onclick="return confirm('Tem certeza que deseja apagar esta notícia?')">
                                         <i class="bi bi-trash"></i>
                                     </button>
                                 </form>
                             </div>
                         </div>
                     @endforeach
-                    <div class="modal fade" id="sponsersImageModal" tabindex="-1" aria-hidden="true">
+                    <div class="modal fade" id="newsImageModal" tabindex="-1" aria-hidden="true">
                         <div class="modal-dialog modal-dialog-centered">
                             <div class="modal-content">
                                 <div class="modal-header">
-                                    <h5 class="modal-title">Imagem do Patrocinador</h5>
+                                    <h5 class="modal-title">Imagem da Notícia</h5>
                                     <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
                                 </div>
                                 <div class="modal-body p-0">
-                                    <img id="modalSponsersImage" src="" class="img-fluid w-100"
-                                        alt="Imagem do patrocinador">
+                                    <img id="modalNewsImage" src="" class="img-fluid w-100"
+                                        alt="Imagem da notícia">
                                 </div>
                             </div>
                         </div>
@@ -77,7 +81,7 @@
                 class="btn btn-primary p-3 rounded-circle d-flex align-items-center justify-content-center position-fixed bottom-0 end-0 m-3"
                 type="button" data-bs-toggle="offcanvas" data-bs-target="#offcanvasExample"
                 aria-controls="offcanvasExample" onclick="window.location.href='{{ route('sponsers.create') }}'">
-                <i class="bi bi-tag fs-7"></i>
+                <i class="bi bi-file-earmark-arrow-up fs-7"></i>
             </button>
         </div>
     </div>
@@ -103,7 +107,7 @@
     <script src="{{ asset('assets/libs/owl.carousel/dist/owl.carousel.min.js') }}"></script>
     <script src="{{ asset('assets/libs/apexcharts/dist/apexcharts.min.js') }}"></script>
     <script src="{{ asset('assets/js/dashboards/dashboard.js') }}"></script>
-    <script src="{{ asset('assets/js/load_imgModal_Sponser.js') }}"></script>
+    <script src="{{ asset('assets/js/load_imgModal.js') }}"></script>
 </body>
 
 </html>

@@ -16,7 +16,7 @@ Route::get('/concursos', [App\Http\Controllers\FrontController::class, 'contests
 Route::get('/noticias/front', [App\Http\Controllers\NewsFrontController::class, 'index'])->name('news.front');
 Route::get('/noticias/front/{news}', [App\Http\Controllers\NewsFrontController::class, 'show'])->name('news.front.show');
 Route::get('/patrocinadores/front', [App\Http\Controllers\SponserFrontController::class, 'index'])->name('sponsers.front');
-Route::get('/patrocinadores/front/{sponser}', [App\Http\Controllers\SponserFrontController::class, 'index'])->name('sponsers.front.show');
+Route::get('/patrocinadores/front/{sponsers}', [App\Http\Controllers\SponserFrontController::class, 'show'])->name('sponsers.front.show');
 
 
 //Index Back
@@ -74,10 +74,10 @@ Route::put('/users/{id}/raffles', [App\Http\Controllers\UserController::class, '
 Route::get('/patrocinadores', [App\Http\Controllers\SponserController::class, 'index'])->name('sponsers')->middleware('auth');
 Route::get('/patrocinadores/adicionar', [App\Http\Controllers\SponserController::class, 'create'])->name('sponsers.create')->middleware('auth');
 Route::post('/patrocinadores', [App\Http\Controllers\SponserController::class, 'store'])->name('sponsers.store')->middleware('auth');
-Route::get('/patrocinadores/{sponser}/editar', [App\Http\Controllers\SponserController::class, 'edit'])->name('sponsers.edit')->middleware('auth');
-Route::get('/patrocinadores/{sponser}', [App\Http\Controllers\SponserController::class, 'show'])->name('sponsers.show')->middleware('auth');
-Route::put('/patrocinadores/{sponser}', [App\Http\Controllers\SponserController::class, 'update'])->name('sponsers.update')->middleware('auth');
-Route::delete('/patrocinadores/{sponser}', [App\Http\Controllers\SponserController::class, 'destroy'])->name('sponsers.destroy')->middleware('auth');
+Route::get('/patrocinadores/{sponsers}/editar', [App\Http\Controllers\SponserController::class, 'edit'])->name('sponsers.edit')->middleware('auth');
+Route::get('/patrocinadores/{sponsers}/visualizacao', [App\Http\Controllers\SponserController::class, 'show'])->name('sponsers.show')->middleware('auth');
+Route::put('/patrocinadores/{sponsers}', [App\Http\Controllers\SponserController::class, 'update'])->name('sponsers.update')->middleware('auth');
+Route::delete('/patrocinadores/{sponsers}', [App\Http\Controllers\SponserController::class, 'destroy'])->name('sponsers.destroy')->middleware('auth');
 
 
 //attendance

@@ -11,7 +11,7 @@
         <div class="container py-5">
             <div class="mx-auto text-center wow fadeIn" data-wow-delay="0.1s" style="max-width: 500px;">
                 <div class="btn btn-sm border rounded-pill text-primary px-3 mb-3">Patrocinios</div>
-                <h1 class="mb-4"></h1>
+                <h2 class="mb-4">Quem apoia o conhecimento, apoia o futuro</h2>
             </div>
             <div class="row g-4">
                 @foreach ($sponsers as $item)
@@ -20,14 +20,16 @@
                             <img class="img-fluid"
                                 src="{{ $item->photo ? asset('storage/images/sponsers/' . $item->photo) : asset('images/no-image.png') }}"
                                 alt="Imagem do patrocinador">
-                            <div class="case-overlay text-decoration-none" style="cursor: default;">
+                            <a class="case-overlay text-decoration-none"
+                                href="{{ route('sponsers.front.show', $item->id) }}">
                                 <h6 class="lh-base text-white mb-2" style="font-size: 16px;">
                                     {{ Str::limit($item->enterprise_name, 60) }}
                                 </h6>
                                 <p class="text-white" style="font-size: 14px;">
-                                    {{ Str::limit(strip_tags($item->description), 80) }}
+                                    {{ Str::limit(strip_tags($item->designation), 50) }}
                                 </p>
-                            </div>
+                                <span class="btn btn-square btn-primary mt-2"><i class="fa fa-arrow-right"></i></span>
+                            </a>
                         </div>
                     </div>
                 @endforeach

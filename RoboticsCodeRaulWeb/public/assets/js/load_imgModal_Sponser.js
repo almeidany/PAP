@@ -1,11 +1,11 @@
-document.addEventListener('DOMContentLoaded', function () {
-    const imageElements = document.querySelectorAll('.sponsers-image');
-    const modalImage = document.getElementById('modalSponsersImage');
+document.addEventListener("DOMContentLoaded", function () {
+    const images = document.querySelectorAll('[data-bs-toggle="modal"][data-image]');
+    const modalImage = document.getElementById("modalSponsersImage");
 
-    imageElements.forEach(img => {
-        img.addEventListener('click', () => {
-            const imageUrl = img.getAttribute('data-image');
-            modalImage.src = imageUrl;
+    images.forEach((img) => {
+        img.addEventListener("click", function () {
+            const src = this.getAttribute("data-image");
+            modalImage.setAttribute("src", src);
         });
     });
 });

@@ -12,24 +12,23 @@
         <div class="container-fluid bg-light py-5">
             <div class="container py-5">
                 <div class="mx-auto text-center wow fadeIn" data-wow-delay="0.1s" style="max-width: 700px;">
-                    <h1 class="mb-4">{{ $news->title }}</h1>
+                    <h1 class="mb-4">{{ $sponsers->enterprise_name }}</h1>
                 </div>
 
                 <div class="row justify-content-center">
                     <div class="col-lg-10">
                         <div class="bg-white p-4 rounded shadow-sm">
                             <div class="mb-4" style="text-align: justify; font-size: 1rem; line-height: 1.6;">
-                                {!! $news->news !!}
+                                {!! $sponsers->designation !!}
                             </div>
 
                             <div class="d-flex justify-content-between flex-wrap mb-4">
-                                <small><strong>Publicado por:</strong> {{ $news->author_user }}</small>
-                                <small><strong>Publicado em:</strong>
-                                    {{ \Carbon\Carbon::parse($news->news_date)->format('d/m/Y') }}</small>
+                                <small><strong>Website da Empresa</strong> {{ $sponsers->link }}</small>
                             </div>
 
                             <div class="text-center">
-                                <a href="{{ route('news.front') }}" class="btn btn-danger">Voltar a Notícias</a>
+                                <a href="{{ route('sponsers.front') }}" class="btn btn-danger">Voltar a
+                                    Patrocinadores</a>
                             </div>
                         </div>
                     </div>
